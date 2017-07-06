@@ -56,7 +56,7 @@ public class classifyFragment extends BaseFragment {
 
     @Override
     public String getUrl() {
-        return NetWorkUrl.CLASSIFY;
+        return NetWorkUrl.CLASSIFYFRAGMENTURL;
     }
 
 }

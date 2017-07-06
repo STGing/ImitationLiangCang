@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  * Created by PC on 2017/7/6.
  */
 
-public class ClassifyFragmentRecyclerViewAdapter extends RecyclerView.Adapter<ClassifyFragmentRecyclerViewAdapter.ViewHolder> {
+public class ClassifyFragmentRecyclerViewAdapter extends RecyclerView.Adapter<ClassifyFragmentRecyclerViewAdapter.ClassifyViewHolder> {
     private final FragmentActivity mContext;
     private final List<ClassifyFragmentBean.DataBean.ItemsBean> items;
     private final LayoutInflater mLayoutInflater;
@@ -32,12 +32,12 @@ public class ClassifyFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Cl
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(mLayoutInflater.inflate(R.layout.classify_fragment_item,null));
+    public ClassifyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ClassifyViewHolder(mLayoutInflater.inflate(R.layout.classify_fragment_item,null));
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ClassifyViewHolder holder, int position) {
         ClassifyFragmentBean.DataBean.ItemsBean itemsBean = items.get(position);
 
         //设置图片
@@ -52,11 +52,11 @@ public class ClassifyFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Cl
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ClassifyViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.classify_fragment_iv)
         ImageView classifyFragmentIv;
 
-        ViewHolder(View view) {
+        ClassifyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }

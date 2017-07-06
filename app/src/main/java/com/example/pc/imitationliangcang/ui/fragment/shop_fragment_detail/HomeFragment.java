@@ -50,7 +50,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public String getUrl() {
-        return NetWorkUrl.HOMEFRAGMENT;
+        return NetWorkUrl.HOMEFRAGMENTURL;
     }
 
     @Override
