@@ -37,7 +37,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
         super.initView();
-
         //初始化fragments集合
         fragments = new ArrayList<>();
         fragments.add(new ShopFragment());

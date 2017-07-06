@@ -120,5 +120,6 @@ public class SplashActivity extends BaseActivity {
     public void onViewClicked() {
         //点击图片，进入MainActivity
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        finish();
     }
 }

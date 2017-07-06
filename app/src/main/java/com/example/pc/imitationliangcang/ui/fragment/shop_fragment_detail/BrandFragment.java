@@ -1,4 +1,4 @@
-package com.example.pc.imitationliangcang.ui.fragment;
+package com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail;
 
 import android.view.View;
 
@@ -9,10 +9,10 @@ import com.example.pc.imitationliangcang.base.BaseFragment;
  * Created by PC on 2017/7/6.
  */
 
-public class MagazineFragment extends BaseFragment {
+public class BrandFragment extends BaseFragment {
     @Override
     public int getLayoutID() {
-        return R.layout.magazine_fragment;
+        return R.layout.shop_fragment_brand_fragment;
     }
 
     @Override

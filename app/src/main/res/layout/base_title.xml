@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#1c1c1c">
+
+    <ImageView
+        android:id="@+id/title_iv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/title_search_alpha"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/title_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        tools:text="商店" />
+
+    <ImageView
+        android:id="@+id/title_iv_shopCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/tital_actionbar_navigation_cart"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_iv_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/title_actionbar_navigation_menu"
+        android:visibility="gone" />
+</RelativeLayout>

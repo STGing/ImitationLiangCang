@@ -16,8 +16,7 @@ public class UserCenterFragment extends BaseFragment {
     }
 
     @Override
-    public View initView() {
-        return null;
+    public void initView() {
     }
 
     @Override
