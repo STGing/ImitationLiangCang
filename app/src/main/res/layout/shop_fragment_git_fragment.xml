@@ -81,7 +81,7 @@
     <ImageView
         android:background="@drawable/shopfragment_giffragment_gift_remind_entrance"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="60dp" />
 
 
 </LinearLayout>

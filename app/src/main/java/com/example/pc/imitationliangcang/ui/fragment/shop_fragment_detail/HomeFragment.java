@@ -9,17 +9,11 @@ import com.example.pc.imitationliangcang.base.BaseFragment;
 import com.example.pc.imitationliangcang.bean.HomeFragmentBean;
 import com.example.pc.imitationliangcang.common.NetWorkUrl;
 import com.example.pc.imitationliangcang.ui.adapter.shopfragment.HomeFragmentRecyclerViewAdapter;
-import com.example.pc.imitationliangcang.utils.HttpUtils;
 import com.google.gson.Gson;
 
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by PC on 2017/7/6.
@@ -49,56 +43,22 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        super.initData();
         //Log.e(TAG, "initData: 方法执行");
-        //联网获取数据
-        getNetData(NetWorkUrl.HOMEFRAGMENT);
 
     }
 
-
-    /**
-     * 联网获取数据
-     */
-    public void getNetData(String url) {
-
-        //Log.e(TAG, "联网获取数据，地址==="+url );
-
-        HttpUtils.getInstance().getJsonData(url)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull String s) {
-                        //接收数据，并处理
-                        //Log.e(TAG, "onNext:====="+s );
-                        progressJson(s);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
+    @Override
+    public String getUrl() {
+        return NetWorkUrl.HOMEFRAGMENT;
     }
 
-    /**
-     * 处理json数据
-     * @param s
-     */
-    private void progressJson(String s) {
+    @Override
+    public void processData(String s) {
+        super.processData(s);
+
         if (TextUtils.isEmpty(s)) {
-            //throw new NullPointerException();
+            throw new NullPointerException();
         }
 
         homeFragmentBean = new Gson().fromJson(s, HomeFragmentBean.class);
@@ -116,8 +76,11 @@ public class HomeFragment extends BaseFragment {
             homeFragmentRecyclerView.setAdapter(adapter);
 
         }
-
     }
+
+
+
+
 
 
 }

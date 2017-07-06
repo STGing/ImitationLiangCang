@@ -4,12 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pc.imitationliangcang.utils.HttpUtils;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Fragment的基类
@@ -52,8 +60,50 @@ public abstract class BaseFragment extends Fragment {
         initListener();
     }
 
-    public abstract void initData();
+    public void initData(){
+        getNetData(getUrl());
+    }
 
+    public String getUrl(){
+        return null;
+    }
+
+    public void getNetData(String url){
+
+        if (!TextUtils.isEmpty(url)) {
+            HttpUtils.getInstance().getNetData(url)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<String>() {
+                        @Override
+                        public void onSubscribe(@NonNull Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(@NonNull String s) {
+                            if (!TextUtils.isEmpty(s)) {
+                                processData(s);
+                            }
+                        }
+
+                        @Override
+                        public void onError(@NonNull Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }
+
+    }
+
+    public void processData(String s) {
+
+    }
 
     @Override
     public void onDestroyView() {

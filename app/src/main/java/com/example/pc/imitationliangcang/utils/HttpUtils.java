@@ -33,7 +33,7 @@ public class HttpUtils {
 
 
     //从网络获取数据
-    public Observable<String> getJsonData(final String url){
+    public Observable<String> getNetData(final String url){
         return Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(@NonNull final ObservableEmitter<String> e) throws Exception {

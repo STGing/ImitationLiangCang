@@ -72,7 +72,7 @@ public class ShopFragment extends BaseFragment {
 
     @Override
     public void initData() {
-
+        super.initData();
         //初始化Fragments
         fragments = new ArrayList<>();
         fragments.add(new classifyFragment());
