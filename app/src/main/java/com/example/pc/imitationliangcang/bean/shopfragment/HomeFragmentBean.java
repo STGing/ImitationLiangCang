@@ -1,4 +1,4 @@
-package com.example.pc.imitationliangcang.bean;
+package com.example.pc.imitationliangcang.bean.shopfragment;
 
 import java.util.List;
 

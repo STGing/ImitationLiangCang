@@ -6,7 +6,7 @@ import android.text.TextUtils;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseFragment;
-import com.example.pc.imitationliangcang.bean.HomeFragmentBean;
+import com.example.pc.imitationliangcang.bean.shopfragment.HomeFragmentBean;
 import com.example.pc.imitationliangcang.common.NetWorkUrl;
 import com.example.pc.imitationliangcang.ui.adapter.shopfragment.HomeFragmentRecyclerViewAdapter;
 import com.google.gson.Gson;

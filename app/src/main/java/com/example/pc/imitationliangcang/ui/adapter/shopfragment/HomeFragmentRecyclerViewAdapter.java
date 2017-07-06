@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.pc.imitationliangcang.R;
-import com.example.pc.imitationliangcang.bean.HomeFragmentBean;
+import com.example.pc.imitationliangcang.bean.shopfragment.HomeFragmentBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
