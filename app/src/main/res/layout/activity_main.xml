@@ -7,47 +7,48 @@
     tools:context="com.example.pc.imitationliangcang.ui.activity.MainActivity">
 
     <FrameLayout
-        android:layout_weight="1"
+        android:id="@+id/mainActivity_frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <RadioGroup
-        android:background="#16171a"
-        android:orientation="horizontal"
         android:id="@+id/mainActivity_radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="#16171a"
+        android:orientation="horizontal">
 
 
         <RadioButton
+            android:id="@+id/radioButton_shop"
             style="@style/MainRadioButton"
             android:drawableTop="@drawable/shop_selecter"
-            android:text="商店"
-            />
+            android:text="商店" />
 
         <RadioButton
+            android:id="@+id/radioButton_magazine"
             style="@style/MainRadioButton"
             android:drawableTop="@drawable/magazine_selecter"
-            android:text="杂志"
-            />
+            android:text="杂志" />
 
         <RadioButton
+            android:id="@+id/radioButton_trendPerson"
             style="@style/MainRadioButton"
             android:drawableTop="@drawable/trendperson_selecter"
-            android:text="达人"
-            />
+            android:text="达人" />
 
         <RadioButton
+            android:id="@+id/radioButton_share"
             style="@style/MainRadioButton"
             android:drawableTop="@drawable/share_selecter"
-            android:text="分享"
-            />
+            android:text="分享" />
 
         <RadioButton
+            android:id="@+id/radioButton_user"
             style="@style/MainRadioButton"
             android:drawableTop="@drawable/usercenter_selecter"
-            android:text="用户"
-            />
+            android:text="用户" />
 
     </RadioGroup>
 
