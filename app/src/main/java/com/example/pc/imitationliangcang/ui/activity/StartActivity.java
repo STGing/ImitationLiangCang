@@ -1,10 +1,8 @@
 package com.example.pc.imitationliangcang.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -17,12 +15,13 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.request.target.Target;
 import com.example.pc.imitationliangcang.R;
+import com.example.pc.imitationliangcang.base.BaseActivity;
 
 /**
  * 启动页面：播放GIF
  */
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends BaseActivity {
 
     private ImageView start_iv;
     private static final String TAG = "StartActivity";
@@ -47,14 +46,15 @@ public class StartActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+    public void initView() {
+        super.initView();
 
         start_iv = (ImageView) findViewById(R.id.start_iv);
+    }
 
-        //Glide.with(this).asGif().load(R.drawable.loading_start).into(start_iv);
 
+    @Override
+    public void initData() {
         Glide.with(this)
                 .load(R.drawable.loading_start)//加载图片地址
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)//设置缓存为：缓存全部
@@ -83,5 +83,10 @@ public class StartActivity extends AppCompatActivity {
                     }
                 })
                 .into(new GlideDrawableImageViewTarget(start_iv,1));//设置只加载一次gif
+    }
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.activity_start;
     }
 }
