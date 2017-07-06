@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseFragment;
-import com.example.pc.imitationliangcang.ui.adapter.ShopFragmenViewPagerAdapter;
+import com.example.pc.imitationliangcang.ui.adapter.shopfragment.ShopFragmenViewPagerAdapter;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.BrandFragment;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.GiftFragment;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.HomeFragment;
@@ -98,6 +98,9 @@ public class ShopFragment extends BaseFragment {
         //设置tablayout
         shopFragmentTablayout.setTabMode(TabLayout.MODE_FIXED);
         shopFragmentTablayout.setupWithViewPager(shopFragmentViewPager);
+
+        //设置默认选中首页页面
+        shopFragmentViewPager.setCurrentItem(2);
     }
 
 

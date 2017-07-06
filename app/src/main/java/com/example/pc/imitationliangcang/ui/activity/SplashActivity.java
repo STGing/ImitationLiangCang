@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
-import com.example.pc.imitationliangcang.ui.adapter.SplashViewPagerAdapter;
+import com.example.pc.imitationliangcang.ui.adapter.SplashActivityViewPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity {
     @BindView(R.id.splashActivity_iv_startActivity)
     ImageView splashActivityIvStartActivity;
     //适配器
-    private SplashViewPagerAdapter adapter;
+    private SplashActivityViewPagerAdapter adapter;
 
     //用于存放ImageView的集合
     private List<ImageView> images;
@@ -103,7 +103,7 @@ public class SplashActivity extends BaseActivity {
 
         //设置ViewPager
 
-        adapter = new SplashViewPagerAdapter(images);
+        adapter = new SplashActivityViewPagerAdapter(images);
         splashActivityViewPager.setAdapter(adapter);
 
     }

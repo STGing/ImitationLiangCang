@@ -34,4 +34,14 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //design
     compile 'com.android.support:design:25.3.1'
+    //okgo:封装okhttp，联网请求
+    compile 'com.lzy.net:okgo:3.0.2'
+    //gson
+    compile 'com.google.code.gson:gson:2.8.1'
+    //RxJava
+    compile'io.reactivex.rxjava2:rxjava:2.1.0'
+    compile'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //加载图片
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
 }

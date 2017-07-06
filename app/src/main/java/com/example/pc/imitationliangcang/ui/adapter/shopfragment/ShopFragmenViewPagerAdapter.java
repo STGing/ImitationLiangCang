@@ -1,4 +1,4 @@
-package com.example.pc.imitationliangcang.ui.adapter;
+package com.example.pc.imitationliangcang.ui.adapter.shopfragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
