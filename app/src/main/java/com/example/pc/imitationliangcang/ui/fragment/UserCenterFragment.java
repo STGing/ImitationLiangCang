@@ -1,7 +1,5 @@
 package com.example.pc.imitationliangcang.ui.fragment;
 
-import android.view.View;
-
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseFragment;
 
@@ -21,6 +19,6 @@ public class UserCenterFragment extends BaseFragment {
 
     @Override
     public void initData() {
-
+        super.initData();
     }
 }

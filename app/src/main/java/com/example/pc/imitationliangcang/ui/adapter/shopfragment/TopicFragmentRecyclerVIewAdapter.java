@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
-import com.example.pc.imitationliangcang.bean.TopicFragmentBean;
+import com.example.pc.imitationliangcang.bean.shopfragment.TopicFragmentBean;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
