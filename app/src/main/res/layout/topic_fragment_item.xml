@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="#202428"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:layout_margin="10dp"
+        android:id="@+id/topic_fragment_item_iv"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/topic_fragment_item_tvName"
+        android:textColor="#ffffff"
+        android:layout_centerInParent="true"
+        tools:text="2017商品集合"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
