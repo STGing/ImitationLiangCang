@@ -24,7 +24,8 @@
         <activity android:name=".ui.activity.SplashActivity" />
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.ShopFragmentWebViewActivity" />
-        <activity android:name=".ui.activity.GoodsListActivity"></activity>
+        <activity android:name=".ui.activity.GoodsListActivity" />
+        <activity android:name=".ui.activity.BrandGoodsListActivity"></activity>
     </application>
 
 </manifest>

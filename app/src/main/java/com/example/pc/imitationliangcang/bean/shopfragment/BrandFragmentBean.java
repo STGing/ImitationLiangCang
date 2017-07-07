@@ -6,7 +6,7 @@ import java.util.List;
  * Created by PC on 2017/7/6.
  */
 
-public class BrandFragmentBean {
+public class BrandFragmentBean{
     /**
      * meta : {"status":0,"server_time":"2017-07-06 20:11:03","account_id":0,"cost":0.0078771114349365,"errdata":null,"errmsg":""}
      * version : 1

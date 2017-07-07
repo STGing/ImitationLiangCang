@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1e2125"
+    android:orientation="vertical"
+    tools:context="com.example.pc.imitationliangcang.ui.activity.BrandGoodsListActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/brand_goods_list_bg">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/brand_goodsList_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/brand_goodsList_tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/brand_goodsList_iv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="#fefefe"
+            tools:text="品牌" />
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/brand_goodsList_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/brand_goodsList_brandStory"
+            style="@style/BrandGoodsListRadioButton"
+            android:text="品牌故事" />
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/brand_goodsList_brandProduct"
+            style="@style/BrandGoodsListRadioButton"
+            android:text="品牌产品" />
+
+
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/brand_goodsList_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/brand_goodsList_brandStoryDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="#ababab"
+            tools:text="品牌的故事" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

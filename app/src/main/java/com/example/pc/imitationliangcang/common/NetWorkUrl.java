@@ -17,6 +17,10 @@ public class NetWorkUrl {
     //品牌总API
     public static final String BRANDFRAGMENTURL = "http://mobile.iliangcang.com/brand/brandList?app_key=Android&count=20&page=1&sig=430BD99E6C913B8B8C3ED109737ECF15%7C830952120106768&v=1.0";
 
+    //品牌子类API,根据 brand_id来获取不同品牌的数据，这里截取2部分，中间加ID
+    public static final String BrandChildUrl01 = "http://mobile.iliangcang.com/brand/brandShopList?app_key=Android&brand_id=";
+    public static final String BrandChildUrl02 = "&count=20&page=1&sig=430BD99E6C913B8B8C3ED109737ECF15%7C830952120106768&v=1.0";
+
     //专题总API
     public static final String TOPICFRAGMENTURL = "http://mobile.iliangcang.com/goods/shopSpecial?app_key=Android&count=10&page=1&sig=3780CB0808528F7CE99081D295EE8C0F%7C116941220826768&uid=626138098&user_token=0516ed9429352c8e1e3bd11c63ba6f54&v=1.0";
 
