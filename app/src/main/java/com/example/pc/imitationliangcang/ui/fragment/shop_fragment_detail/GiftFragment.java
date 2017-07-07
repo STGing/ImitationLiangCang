@@ -10,6 +10,7 @@ import com.example.pc.imitationliangcang.common.NetWorkUrl;
 import com.example.pc.imitationliangcang.ui.activity.GoodsListActivity;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by PC on 2017/7/6.
@@ -18,6 +19,18 @@ import butterknife.BindView;
 public class GiftFragment extends BaseFragment {
     @BindView(R.id.gift_fragment_topIv)
     ImageView giftFragmentTopIv;
+    @BindView(R.id.gift_fragment_first_oneiv)
+    ImageView giftFragmentFirstOneiv;
+    @BindView(R.id.gift_fragment_first_twoiv)
+    ImageView giftFragmentFirstTwoiv;
+    @BindView(R.id.gift_fragment_first_threeiv)
+    ImageView giftFragmentFirstThreeiv;
+    @BindView(R.id.gift_fragment_second_oneiv)
+    ImageView giftFragmentSecondOneiv;
+    @BindView(R.id.gift_fragment_second_twoiv)
+    ImageView giftFragmentSecondTwoiv;
+    @BindView(R.id.gift_fragment_second_threeiv)
+    ImageView giftFragmentSecondThreeiv;
 
     @Override
     public int getLayoutID() {
@@ -37,17 +50,42 @@ public class GiftFragment extends BaseFragment {
     public void initListener() {
         super.initListener();
 
-        //顶部图片的点击事件
-        giftFragmentTopIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
+    @OnClick({R.id.gift_fragment_topIv, R.id.gift_fragment_first_oneiv, R.id.gift_fragment_first_twoiv, R.id.gift_fragment_first_threeiv, R.id.gift_fragment_second_oneiv, R.id.gift_fragment_second_twoiv, R.id.gift_fragment_second_threeiv})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.gift_fragment_topIv:
                 //礼物界面是跳转到商品详情页面，后面再做。
+                start(NetWorkUrl.GIFTFRAGMENT_FIRSTPICURL);
+                break;
+            case R.id.gift_fragment_first_oneiv:
+                //节日
+                start(NetWorkUrl.GIFTFRAGMENT_HOLIDAY);
+                break;
+            case R.id.gift_fragment_first_twoiv:
+                start(NetWorkUrl.GIFFRAGMENT_LOVE);
+                break;
+            case R.id.gift_fragment_first_threeiv:
+                start(NetWorkUrl.GIFFRAGMENT_BIRTHDAY);
+                break;
+            case R.id.gift_fragment_second_oneiv:
+                start(NetWorkUrl.GIFFRAGMENT_FRIEND);
+                break;
+            case R.id.gift_fragment_second_twoiv:
+                start(NetWorkUrl.GIFFRAGMENT_CHILD);
+                break;
+            case R.id.gift_fragment_second_threeiv:
+                start(NetWorkUrl.GIFFRAGMENT_PARENTS);
+                break;
+        }
+    }
 
-                Intent intent = new Intent(mContext, GoodsListActivity.class);
-                intent.putExtra("topic_url", NetWorkUrl.GIFTFRAGMENT_FIRSTPICURL);
-                mContext.startActivity(intent);
-            }
-        });
+
+    private void start(String url) {
+        Intent intent = new Intent(mContext, GoodsListActivity.class);
+        intent.putExtra("topic_url", url);
+        mContext.startActivity(intent);
+        mContext.overridePendingTransition(R.anim.slide_int_right, R.anim.slide_out_left);
     }
 }

@@ -25,6 +25,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/gift_fragment_first_oneiv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -32,6 +33,7 @@
                 android:src="@drawable/shopfragment_gitfragment_1" />
 
             <ImageView
+                android:id="@+id/gift_fragment_first_twoiv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -39,6 +41,7 @@
                 android:src="@drawable/shopfragment_gitfragment_2" />
 
             <ImageView
+                android:id="@+id/gift_fragment_first_threeiv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -54,6 +57,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/gift_fragment_second_oneiv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -61,6 +65,7 @@
                 android:src="@drawable/shopfragment_gitfragment_4" />
 
             <ImageView
+                android:id="@+id/gift_fragment_second_twoiv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -68,6 +73,7 @@
                 android:src="@drawable/shopfragment_gitfragment_5" />
 
             <ImageView
+                android:id="@+id/gift_fragment_second_threeiv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

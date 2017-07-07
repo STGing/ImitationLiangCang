@@ -102,7 +102,7 @@ public class ClassifyFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Cl
                 Intent intent = new Intent(mContext, GoodsListActivity.class);
                 intent.putExtra("topic_url", topic_url);
                 mContext.startActivity(intent);
-
+                mContext.overridePendingTransition(R.anim.slide_int_right, R.anim.slide_out_left);
             }
         });
     }
