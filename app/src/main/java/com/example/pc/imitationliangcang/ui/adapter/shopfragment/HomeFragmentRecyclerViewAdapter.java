@@ -1,5 +1,6 @@
 package com.example.pc.imitationliangcang.ui.adapter.shopfragment;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.shopfragment.HomeFragmentBean;
+import com.example.pc.imitationliangcang.ui.activity.ShopFragmentWebViewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,10 +45,20 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
 
     private final List<HomeFragmentBean.DataBean.ItemsBean.ListBean> list;
 
+
     public HomeFragmentRecyclerViewAdapter(FragmentActivity mContext, List<HomeFragmentBean.DataBean.ItemsBean.ListBean> list) {
         this.mContext = mContext;
         this.list = list;
         mLayoutInflater = LayoutInflater.from(mContext);
+
+        initWebView();
+    }
+
+    /**
+     * 初始化WebView
+     */
+    private void initWebView() {
+
     }
 
     @Override
@@ -80,12 +92,16 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
         //数据操作
         if (holder instanceof Type1ViewHolder) {
             ((Type1ViewHolder) holder).setData(position);
+            ((Type1ViewHolder) holder).setListener(position);
         } else if (holder instanceof Type2ViewHolder) {
             ((Type2ViewHolder) holder).setData(position);
+            ((Type2ViewHolder) holder).setListener(position);
         } else if (holder instanceof Type3ViewHolder) {
             ((Type3ViewHolder) holder).setData(position);
+            ((Type3ViewHolder) holder).setListener(position);
         } else if (holder instanceof Type4ViewHolder) {
             ((Type4ViewHolder) holder).setData(position);
+            ((Type4ViewHolder) holder).setListener(position);
         }
     }
 
@@ -126,6 +142,10 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
         return list == null ? 0 : list.size();
     }
 
+
+
+
+
     class Type1ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.type1_iv)
@@ -136,8 +156,32 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
+        /**
+         * 设置数据
+         * @param position
+         */
         public void setData(int position) {
             Picasso.with(mContext).load(list.get(position).getOne().getPic_url()).into(type1Iv);
+        }
+
+        /**
+         * 设置监听器
+         * @param position
+         */
+        public void setListener(int position) {
+            HomeFragmentBean.DataBean.ItemsBean.ListBean listBean = list.get(position);
+            final String topic_url = listBean.getOne().getTopic_url();
+            //点击图片跳转到H5页面
+            type1Iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Log.e("TAG","首页面的第一种类型点击事件");
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url);
+                    mContext.startActivity(intent);
+
+                }
+            });
         }
     }
 
@@ -157,6 +201,34 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
             Picasso.with(mContext).load(list.get(position).getOne().getPic_url()).into(type2LeftIv);
             Picasso.with(mContext).load(list.get(position).getTwo().getPic_url()).into(type2RightIv);
         }
+
+        /**
+         * 设置监听器
+         * @param position
+         */
+        public void setListener(int position) {
+            HomeFragmentBean.DataBean.ItemsBean.ListBean listBean = list.get(position);
+            final String topic_url1 = listBean.getOne().getTopic_url();
+            final String topic_url2 = listBean.getTwo().getTopic_url();
+            //左侧图片
+            type2LeftIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url1);
+                    mContext.startActivity(intent);
+                }
+            });
+            //右侧图片
+            type2RightIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url2);
+                    mContext.startActivity(intent);
+                }
+            });
+        }
     }
 
     class Type3ViewHolder extends RecyclerView.ViewHolder {
@@ -167,6 +239,14 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
         }
 
         public void setData(int position) {
+
+        }
+
+        /**
+         * 设置监听器
+         * @param position
+         */
+        public void setListener(int position) {
 
         }
     }
@@ -192,6 +272,57 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
             Picasso.with(mContext).load(list.get(position).getTwo().getPic_url()).into(type4LeftBottomIv);
             Picasso.with(mContext).load(list.get(position).getThree().getPic_url()).into(type4RightTopIv);
             Picasso.with(mContext).load(list.get(position).getFour().getPic_url()).into(type4RightBottomIv);
+        }
+
+        /**
+         * 设置监听器
+         * @param position
+         */
+        public void setListener(int position) {
+            HomeFragmentBean.DataBean.ItemsBean.ListBean listBean = list.get(position);
+            final String topic_url1 = listBean.getOne().getTopic_url();
+            final String topic_url2 = listBean.getTwo().getTopic_url();
+            final String topic_url3 = listBean.getThree().getTopic_url();
+            final String topic_url4 = listBean.getFour().getTopic_url();
+
+            //左上图片
+            type4LeftTopIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url1);
+                    mContext.startActivity(intent);
+                }
+            });
+            //左下图片
+            type4LeftBottomIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url2);
+                    mContext.startActivity(intent);
+                }
+            });
+
+            //右上图片
+            type4RightTopIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url3);
+                    mContext.startActivity(intent);
+                }
+            });
+
+            //右下图片
+            type4RightBottomIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                    intent.putExtra("topic_url",topic_url4);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 }

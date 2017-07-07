@@ -3,7 +3,6 @@ package com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseFragment;
@@ -40,7 +39,7 @@ public class TopicFragment extends BaseFragment {
     public void processData(String s) {
         super.processData(s);
 
-        Log.e("TAG","TopicFragment的数据==="+s);
+        //Log.e("TAG","TopicFragment的数据==="+s);
 
         if (!TextUtils.isEmpty(s)) {
             //解析数据

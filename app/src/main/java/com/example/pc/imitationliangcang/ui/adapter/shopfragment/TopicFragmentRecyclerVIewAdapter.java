@@ -1,5 +1,6 @@
 package com.example.pc.imitationliangcang.ui.adapter.shopfragment;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.shopfragment.TopicFragmentBean;
+import com.example.pc.imitationliangcang.ui.activity.ShopFragmentWebViewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -47,6 +49,19 @@ public class TopicFragmentRecyclerVIewAdapter extends RecyclerView.Adapter<Topic
         Picasso.with(mContext)
                 .load(itemsBean.getCover_img())
                 .into(holder.topicFragmentItemIv);
+
+        //点击事件
+        //获取地址
+        final String topic_url = itemsBean.getTopic_url();
+
+        holder.topicFragmentItemIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+                intent.putExtra("topic_url",topic_url);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
