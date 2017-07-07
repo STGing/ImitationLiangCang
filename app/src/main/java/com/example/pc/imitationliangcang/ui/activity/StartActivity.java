@@ -55,6 +55,7 @@ public class StartActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        super.initData();
         Glide.with(this)
                 .load(R.drawable.loading_start)//加载图片地址
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)//设置缓存为：缓存全部

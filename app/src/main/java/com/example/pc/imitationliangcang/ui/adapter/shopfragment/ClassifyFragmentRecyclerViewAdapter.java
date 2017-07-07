@@ -44,6 +44,15 @@ public class ClassifyFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Cl
         Picasso.with(mContext)
                 .load(itemsBean.getNew_cover_img())
                 .into(holder.classifyFragmentIv);
+
+        //设置点击事件
+        holder.classifyFragmentIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击之后，跳转到商品详情页面
+
+            }
+        });
     }
 
     @Override

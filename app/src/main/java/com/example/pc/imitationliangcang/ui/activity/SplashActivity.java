@@ -100,7 +100,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        super.initData();
         //设置ViewPager
 
         adapter = new SplashActivityViewPagerAdapter(images);

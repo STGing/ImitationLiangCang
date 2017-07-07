@@ -39,6 +39,7 @@ public class ShopFragmentWebViewActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        super.initData();
         String topic_url = getIntent().getStringExtra("topic_url");
 
         //建立webview
