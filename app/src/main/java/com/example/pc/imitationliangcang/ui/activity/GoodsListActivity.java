@@ -31,6 +31,9 @@ public class GoodsListActivity extends BaseActivity {
     ImageView titleIvShopCar;
     @BindView(R.id.goodsList_recyclerView)
     RecyclerView goodsListRecyclerView;
+    @BindView(R.id.goodsList_item_priceFilter)
+    ImageView goodsListItemPriceFilter;
+
     private GoodsListRecyclerViewAdapter adapter;
 
     @Override

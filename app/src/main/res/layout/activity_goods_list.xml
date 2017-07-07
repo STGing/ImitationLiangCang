@@ -9,6 +9,30 @@
 
     <include layout="@layout/base_title"/>
 
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:textColor="#5b6167"
+            android:layout_centerVertical="true"
+            android:text="价格筛选"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:src="@drawable/goods_list_arrow_down_big"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/goodsList_item_priceFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:layout_weight="1"
         android:id="@+id/goodsList_recyclerView"
