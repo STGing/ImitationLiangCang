@@ -1,6 +1,7 @@
 package com.example.pc.imitationliangcang.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.GoodsListBean;
+import com.example.pc.imitationliangcang.ui.activity.GoodsDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -22,14 +24,14 @@ import butterknife.ButterKnife;
  */
 
 public class GoodsListRecyclerViewAdapter extends RecyclerView.Adapter<GoodsListRecyclerViewAdapter.GoodsListViewHolder> {
-    private final Context context;
+    private final Context mContext;
     private final List<GoodsListBean.DataBean.ItemsBean> items;
     private final LayoutInflater mLayoutInflater;
 
-    public GoodsListRecyclerViewAdapter(Context context, List<GoodsListBean.DataBean.ItemsBean> items) {
-        this.context = context;
+    public GoodsListRecyclerViewAdapter(Context mContext, List<GoodsListBean.DataBean.ItemsBean> items) {
+        this.mContext = mContext;
         this.items = items;
-        this.mLayoutInflater = LayoutInflater.from(context);
+        this.mLayoutInflater = LayoutInflater.from(mContext);
     }
 
     @Override
@@ -43,7 +45,7 @@ public class GoodsListRecyclerViewAdapter extends RecyclerView.Adapter<GoodsList
         GoodsListBean.DataBean.ItemsBean itemsBean = items.get(position);
         //Log.e("TAG", "适配器中的数据" + itemsBean.getGoods_name());
         //设置数据
-        Picasso.with(context)
+        Picasso.with(mContext)
                 .load(itemsBean.getGoods_image())
                 .into(holder.goodsListItemIv);
 
@@ -51,6 +53,9 @@ public class GoodsListRecyclerViewAdapter extends RecyclerView.Adapter<GoodsList
         holder.goodsListItemBrandName.setText(itemsBean.getBrand_info().getBrand_name());
         holder.goodsListItemLikeCount.setText(itemsBean.getLike_count());
         holder.goodsListItemPrice.setText(itemsBean.getPrice());
+
+        //设置点击事件
+        holder.setListener(position);
     }
 
     @Override
@@ -59,7 +64,8 @@ public class GoodsListRecyclerViewAdapter extends RecyclerView.Adapter<GoodsList
     }
 
 
-    static class GoodsListViewHolder extends RecyclerView.ViewHolder{
+    class GoodsListViewHolder extends RecyclerView.ViewHolder{
+        private final View view;
         @BindView(R.id.goodsList_item_iv)
         ImageView goodsListItemIv;
         @BindView(R.id.goodsList_item_tvName)
@@ -74,6 +80,22 @@ public class GoodsListRecyclerViewAdapter extends RecyclerView.Adapter<GoodsList
         GoodsListViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            this.view = view;
+        }
+
+        public void setListener(int position){
+
+            GoodsListBean.DataBean.ItemsBean itemsBean = items.get(position);
+            final String goods_id = itemsBean.getGoods_id();
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, GoodsDetailActivity.class);
+                    intent.putExtra("goods_id",goods_id);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 }

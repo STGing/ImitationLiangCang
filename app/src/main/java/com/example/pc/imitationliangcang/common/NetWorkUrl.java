@@ -46,4 +46,9 @@ public class NetWorkUrl {
     //总API
     public static final String TRENDPERSONFRAGMENTURL = "http://mobile.iliangcang.com/user/masterList?app_key=Android&count=18&page=1&sig=BF287AF953103F390674E73DDA18CFD8|639843030233268&v=1.0";
 
+
+    //商品的详细页面的API,根据 goods_id 来获取不同商品的数据，这里截取2部分，中间加ID
+    public static final String GoodsDetailUrl01 = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id=";
+    public static final String GoodsDetailUrl02 = "&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
+
 }
