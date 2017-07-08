@@ -1,7 +1,7 @@
 package com.example.pc.imitationliangcang.ui.activity;
 
+import android.graphics.Color;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -79,12 +79,26 @@ public class GoodsDetailActivity extends BaseActivity {
     Button goodsDetailAddShopCar;
     @BindView(R.id.goods_detail_buy)
     Button goodsDetailBuy;
-    @BindView(R.id.goods_detail_price)
-    TextView goodsDetailPrice;
+    @BindView(R.id.goods_detail_current_price)
+    TextView goodsDetailCurrentPrice;
     @BindView(R.id.goods_detail_goodsPack)
     TextView goodsDetailGoodsPack;
     @BindView(R.id.goods_detail_brandName3)
     TextView goodsDetailBrandName3;
+    @BindView(R.id.goods_detail_promotionNote)
+    TextView goodsDetailPromotionNote;
+    @BindView(R.id.goods_detail_last_price)
+    TextView goodsDetailLastPrice;
+    @BindView(R.id.goods_detail_goodsInfo_pic_ll)
+    LinearLayout goodsDetailGoodsInfoPicLl;
+
+    @Override
+    public void initView() {
+        super.initView();
+
+        //设置标题
+
+    }
 
     @Override
     public String getUrl() {
@@ -95,7 +109,7 @@ public class GoodsDetailActivity extends BaseActivity {
         if (!TextUtils.isEmpty(goods_id)) {
             //获取地址
             String url = NetWorkUrl.GOODSDETAILURL01 + goods_id + NetWorkUrl.GOODSDETAILURL02;
-            Log.e("TAG", "商品的url===" + url);
+            //Log.e("TAG", "商品的url===" + url);
             return url;
         }
 
@@ -129,7 +143,7 @@ public class GoodsDetailActivity extends BaseActivity {
         goodsDetailTvLikeCount.setText(items.getLike_count());
 
         //6.设置价格
-        goodsDetailPrice.setText(items.getPrice());
+        goodsDetailCurrentPrice.setText(items.getPrice());
 
         //7.设置发货的预计时间
         goodsDetailSend.setText(items.getShipping_str());
@@ -140,15 +154,98 @@ public class GoodsDetailActivity extends BaseActivity {
                 .into(goodsDetailBrandIv);
         goodsDetailBrandName2.setText(items.getBrand_info().getBrand_name());//品牌名称
 
-        //9.设置商品的包装
-        goodsDetailGoodsPack.setText(items.getGoods_desc());
+        //9.设置商品的包装(根据不同的商品，判断是否显示)
+        List<GoodsDetailBean.DataBean.ItemsBean.GoodsInfoBean> goods_info = items.getGoods_info();
+        //Log.e("TAG","goods_info的信息是"+goods_info);
+        if (goods_info.size() == 0) {
+            goodsDetailGoodsPack.setVisibility(View.VISIBLE);
+            goodsDetailGoodsPack.setText(items.getGoods_desc());
+        } else {
+            goodsDetailGoodsPack.setVisibility(View.GONE);
+        }
 
-        //10.设置品牌故事
+
+        //10.设置商品的图片列表（如果有数据的话就显示)
+        if (goods_info.size() > 0){
+            goodsDetailGoodsInfoPicLl.setVisibility(View.VISIBLE);
+
+            //根据商品信息动态的建立图片
+            for (int i = 0; i < goods_info.size(); i++) {
+                //获取图片链接
+                GoodsDetailBean.DataBean.ItemsBean.GoodsInfoBean goodsInfoBean = goods_info.get(i);
+                GoodsDetailBean.DataBean.ItemsBean.GoodsInfoBean.ContentBean content = goodsInfoBean.getContent();
+                int type = goodsInfoBean.getType();
+                switch (type) {
+                    case 1://1表示是商品图片信息
+
+                        //建立图片
+                        ImageView iv = new ImageButton(this);
+
+                        //加载图片
+                        Picasso.with(this)
+                                .load(content.getImg())
+                                //.resize(content.getWidth(),content.getHeight())
+                                .into(iv);
+
+                        LinearLayout.LayoutParams params1 =
+                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                        iv.setLayoutParams(params1);
+                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
+                        //图片添加到布局上
+                        goodsDetailGoodsInfoPicLl.addView(iv);
+
+                        break;
+                    case 0://1表示是商品说明
+
+                        //动态添加文字
+                        TextView tv = new TextView(this);
+                        tv.setText(content.getText());
+                        LinearLayout.LayoutParams params0 =
+                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                        params0.setMargins(10,10,10,10);
+                        tv.setLayoutParams(params0);
+                        tv.setTextColor(Color.parseColor("#959697"));
+                        goodsDetailGoodsInfoPicLl.addView(tv);
+
+                        break;
+                    case 2://1表示是商品注意事项
+
+                        //动态添加文字
+                        TextView tv2 = new TextView(this);
+                        tv2.setText(content.getText());
+                        LinearLayout.LayoutParams params2 =
+                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                        params2.setMargins(10,10,10,10);
+                        tv2.setLayoutParams(params2);
+                        tv2.setTextColor(Color.parseColor("#e1e2e2"));
+                        goodsDetailGoodsInfoPicLl.addView(tv2);
+
+                        break;
+                    default:
+                
+                        break;
+                }
+
+            }
+
+
+        } else {
+            goodsDetailGoodsInfoPicLl.setVisibility(View.GONE);
+        }
+
+
+
+        //11.设置品牌故事
         goodsDetailBrandName3.setText(items.getBrand_info().getBrand_name());//名称
         goodsDetailBrandStory.setText(items.getBrand_info().getBrand_desc());//故事描述
 
-        //11.设置良仓推荐
+        //12.设置良仓推荐
         goodsDetailRecommendReasonTv.setText(items.getRec_reason());
+
+        //13.设置购物须知
+        goodsDetailBuyReadDetailTv.setText(items.getGood_guide().getContent());
     }
 
     @Override

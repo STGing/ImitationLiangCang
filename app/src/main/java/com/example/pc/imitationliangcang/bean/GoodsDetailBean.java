@@ -7,10 +7,11 @@ import java.util.List;
  */
 
 public class GoodsDetailBean {
+
     /**
-     * meta : {"status":0,"server_time":"2017-07-08 08:38:24","account_id":0,"cost":0.018900156021118,"errdata":null,"errmsg":""}
+     * meta : {"status":0,"server_time":"2017-07-08 10:13:58","account_id":0,"cost":0.025512933731079,"errdata":null,"errmsg":""}
      * version : 1
-     * data : {"has_more":false,"num_items":1,"items":{"goods_id":"254396","goods_image":"http://imgs-qn.iliangcang.com/ware/goods/big/2/254/254396.jpg","goods_url":"http://www.iliangcang.com/i/goods/?id=254396","goods_name":"兰汤包 | 溯 Sound of Blossom","goods_desc":"礼品盒套装：内含10包，每包15克\r\n随身便携装：内含11包，每包15克\r\n\r\n【主要原料】\r\n藏木香，肉桂，干姜，藏菖蒲，川芎，红景天，等\r\n【使用效果】 \r\n活血暖宫，滋养美容。\r\n溯，即寻找生命的源泉。\r\n当感到身体和世界是冰冷无助时，通过藏木香、肉桂等蕴藏阳气的药材活血暖宫，找回温暖和力量，灿烂面对每一天。\r\n【适合人群】\r\n常感手脚冰凉、痛经、经期不调、备孕中的女士 。\r\n四季适用，春夏尤佳。\r\n【使用方法】\r\n泡脚泡澡均可。\r\n将兰汤包放入盆中，以少量70度以上温度热水浸泡5分钟使有效成分充分渗透，再加入温水调到人体适宜的温度。\r\n因体质不同，建议根据个人情况适当调整水温，控制浸泡时间，微微出汗、体感舒适即可。\r\n建议水温在37-42度之间，时间不超过30分钟。\r\n同时配合面膜、弥若间MiroMiro线香系列效果更佳。\r\n【注意事项】\r\n不建议严重心脏病、心脑血栓患者使用。\r\n请注意水温不宜太高。\r\n孕妇请遵医嘱。","price":"198.00","comment_count":"0","like_count":"286","liked":"0","owner_id":"0","shipping_type":"1","shipping_time":"3","shipping_str":"现货商品3天发货","is_overseas_goods":0,"brand_info":{"brand_id":"549","brand_name":"弥若间MiroMiro","brand_desc":"弥若间MiroMiro专注于香、芳香疗法和生活美学，从中国古典香方中汲取灵感、用时尚的方式加以呈现、提供与西方香水香精不同的审美角度，不仅带来愉悦气味，更有不同功效对应不同人群和生活场景，让奔波在钢铁森林里的人们身心得到修复。弥若间MiroMiro认为，借一支香、一杯茶，日常生活的仪式感可以带来幸福感，是生活美学，也是物我对峙的哲学。","brand_logo":"http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653"},"owner_name":"弥若间MiroMiro","owner_desc":"","is_daren":"0","headimg":"http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653","rec_reason":"含藏木香、肉桂、干姜、红景天等天然香材，具有活血暖宫、滋养气血的功效。适合常感手脚冰凉、痛经、备孕中的女士 。","is_gift":"0","promotion_imgurl":"","discount_price":"","promotion_note":"","sku_info":[{"type_id":"7","type_name":"数量","isColor":"0","attrList":[{"attr_id":"37","attr_name":"礼品盒套装","img_path":""},{"attr_id":"38","attr_name":"随身便携装","img_path":""}]}],"good_ship_rule":"","good_guide":{"title":"购物指南","content":"所有商品均为正品保证。\r\n中国大陆地区免运费，默认商家合作快递。\r\n蜡烛、液态品、手表等含电池产品无法空运，运输时间相较普通空运件会更久。\r\n如出现产品质量问题请在签收后72小时内联系客服。"},"category_id":"0","able_buy":"1","able_buy_note":"","images_item":["http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358262.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358264.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358265.jpg"],"is_sold_out":"0","sold_out_img_url":"","sku_inv":[{"goods_sku_sn":"0101000000000000254396000700370000000000000000000000000000000000","type_keys":"7","attr_keys":"37","price":"198.00","discount_price":"","amount":"982"},{"goods_sku_sn":"0101000000000000254396000700380000000000000000000000000000000000","type_keys":"7","attr_keys":"38","price":"198.00","discount_price":"","amount":"975"}],"goods_info":[]}}
+     * data : {"has_more":false,"num_items":1,"items":{"goods_id":"258055","goods_image":"http://imgs-qn.iliangcang.com/ware/goods/big/2/258/258055.jpg?t=1497525912","goods_url":"http://www.iliangcang.com/i/goods/?id=258055","goods_name":"【独家首发】乐可丽舒漱口水 | 乳酸菌强效抗菌 清爽低刺激【300ml】","goods_desc":"1","price":"128.00","comment_count":"0","like_count":"876","liked":"0","owner_id":"0","shipping_type":"1","shipping_time":"3","shipping_str":"现货商品3天发货","is_overseas_goods":0,"brand_info":{"brand_id":"819","brand_name":"JEX捷古斯","brand_desc":"捷古斯(JEX)是于昭和35年（1960年）成立的日本知名综合医疗用品制造商。产品涵盖了母婴，成人，个人护理，医疗用品等诸多领域。致力于提高民众的生活健康水平。其中如chuchubaby奶瓶奶嘴，JEX成人用品，乐可丽舒L8020漱口液等产品在日本国内享有非常高的人气和市场占有率。","brand_logo":"http://imgs-qn.iliangcang.com/ware/brand/819.jpg"},"owner_name":"JEX捷古斯","owner_desc":"","is_daren":"0","headimg":"http://imgs-qn.iliangcang.com/ware/brand/819.jpg","rec_reason":"乐可丽舒L8020漱口水，是由广岛大学二川浩树教授在健康婴儿口腔中发现并提取的L8020乳酸菌为主要成分制成的。L8020乳酸菌与市面上常见的木糖醇无论从分类，作用机理，还是抗菌效果来看，都有非常大区别。L8020乳酸菌在起到抑制致病菌作用的同时，还能不伤害口腔中健康有益的益生菌。（L8020乳酸菌的命名来自于由日本厚生劳动省以及牙科医师学会，主导提出并开展的全民爱牙护齿8020运动，旨在通过保护牙齿来提高老年生活质量以及通过预防牙周病降低多种老年疾病发病率。8020的含义是以80岁时仍有20颗健康牙齿为目标。）乐可丽舒L8020系列以支援8020运动为宗旨，目标是服务全体家庭成员。提供安心，安全，方便的产品。产品分为婴幼儿系列以及成人系列，其中包含了漱口液，护齿糖，含片等系列产品。乐可丽舒L8020漱口水不使用研磨剂，减轻对牙齿磨损，特别适合牙齿敏感，有磨损的脆弱人群；不使用杀菌剂，消灭有害菌同时，保护口腔内有益菌，可以有效抑制蛀牙致病菌，牙周病菌。试验表明，杀菌率高达99.9%以上。","is_gift":"0","promotion_imgurl":"http://imgs-qn.iliangcang.com/ware/promotion/icon/19.jpg","discount_price":"98.00","promotion_note":"乳酸菌漱口水，建立健康口腔新环境","sku_info":[{"type_id":"7","type_name":"数量","isColor":"0","attrList":[{"attr_id":"24","attr_name":"一瓶","img_path":""}]}],"good_ship_rule":"","good_guide":{"title":"购物指南","content":"所有商品均为正品保证。\r\n中国大陆地区免运费，默认商家合作快递。\r\n蜡烛、液态品、手表等含电池产品无法空运，运输时间相较普通空运件会更久。\r\n如出现产品质量问题请在签收后72小时内联系客服。"},"category_id":"0","able_buy":"1","able_buy_note":"","images_item":["http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386815.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386777.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386778.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/385/385913.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386780.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386779.jpg"],"is_sold_out":"0","sold_out_img_url":"","sku_inv":[{"goods_sku_sn":"0101000000000000258055000700240000000000000000000000000000000000","type_keys":"7","attr_keys":"24","price":"128.00","discount_price":"98.00","amount":"6981"}],"goods_info":[{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517601881120.jpg","width":661,"height":792,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517603610555.jpg","width":661,"height":744,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517605663394.jpg","width":661,"height":664,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517607170926.jpg","width":661,"height":696,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517609961642.jpg","width":661,"height":768,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517612661529.jpg","width":661,"height":768,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517614136917.jpg","width":661,"height":664,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517616584299.jpg","width":661,"height":656,"length":79}},{"type":0,"content":{"text":"规格：300ml,358g,17.5cm*6cm*5cm","length":28}},{"type":0,"content":{"text":"材料成分:水、丙三醇、没食子酸丙酯、葡聚糖、柠檬酸钠、嗜酸乳杆菌、香料、木糖醇、蔗糖素、PEG-60氢化蓖麻油、对羟基苯甲酸乙酯、对羟基苯甲酸丁酯","length":73}},{"type":0,"content":{"text":"产地：日本","length":5}},{"type":2,"content":{"text":"特殊说明：","length":5}},{"type":0,"content":{"text":"此商品非牙膏，请不要当牙膏使用。此商品不是饮料，请勿引用。有发生身上发痒或发疹子等过敏症状，或哮喘的症状的时候请停止使用，并联系医生。液体变色或成分沉淀属于正常情况，不是品质问题。请置于阴凉通风处保存，避免高温、低温和阳光直射。请勿置于婴儿触及之处。","length":125}}]}}
      */
 
     private MetaBean meta;
@@ -44,9 +45,9 @@ public class GoodsDetailBean {
     public static class MetaBean {
         /**
          * status : 0
-         * server_time : 2017-07-08 08:38:24
+         * server_time : 2017-07-08 10:13:58
          * account_id : 0
-         * cost : 0.018900156021118
+         * cost : 0.025512933731079
          * errdata : null
          * errmsg :
          */
@@ -111,7 +112,7 @@ public class GoodsDetailBean {
         /**
          * has_more : false
          * num_items : 1
-         * items : {"goods_id":"254396","goods_image":"http://imgs-qn.iliangcang.com/ware/goods/big/2/254/254396.jpg","goods_url":"http://www.iliangcang.com/i/goods/?id=254396","goods_name":"兰汤包 | 溯 Sound of Blossom","goods_desc":"礼品盒套装：内含10包，每包15克\r\n随身便携装：内含11包，每包15克\r\n\r\n【主要原料】\r\n藏木香，肉桂，干姜，藏菖蒲，川芎，红景天，等\r\n【使用效果】 \r\n活血暖宫，滋养美容。\r\n溯，即寻找生命的源泉。\r\n当感到身体和世界是冰冷无助时，通过藏木香、肉桂等蕴藏阳气的药材活血暖宫，找回温暖和力量，灿烂面对每一天。\r\n【适合人群】\r\n常感手脚冰凉、痛经、经期不调、备孕中的女士 。\r\n四季适用，春夏尤佳。\r\n【使用方法】\r\n泡脚泡澡均可。\r\n将兰汤包放入盆中，以少量70度以上温度热水浸泡5分钟使有效成分充分渗透，再加入温水调到人体适宜的温度。\r\n因体质不同，建议根据个人情况适当调整水温，控制浸泡时间，微微出汗、体感舒适即可。\r\n建议水温在37-42度之间，时间不超过30分钟。\r\n同时配合面膜、弥若间MiroMiro线香系列效果更佳。\r\n【注意事项】\r\n不建议严重心脏病、心脑血栓患者使用。\r\n请注意水温不宜太高。\r\n孕妇请遵医嘱。","price":"198.00","comment_count":"0","like_count":"286","liked":"0","owner_id":"0","shipping_type":"1","shipping_time":"3","shipping_str":"现货商品3天发货","is_overseas_goods":0,"brand_info":{"brand_id":"549","brand_name":"弥若间MiroMiro","brand_desc":"弥若间MiroMiro专注于香、芳香疗法和生活美学，从中国古典香方中汲取灵感、用时尚的方式加以呈现、提供与西方香水香精不同的审美角度，不仅带来愉悦气味，更有不同功效对应不同人群和生活场景，让奔波在钢铁森林里的人们身心得到修复。弥若间MiroMiro认为，借一支香、一杯茶，日常生活的仪式感可以带来幸福感，是生活美学，也是物我对峙的哲学。","brand_logo":"http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653"},"owner_name":"弥若间MiroMiro","owner_desc":"","is_daren":"0","headimg":"http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653","rec_reason":"含藏木香、肉桂、干姜、红景天等天然香材，具有活血暖宫、滋养气血的功效。适合常感手脚冰凉、痛经、备孕中的女士 。","is_gift":"0","promotion_imgurl":"","discount_price":"","promotion_note":"","sku_info":[{"type_id":"7","type_name":"数量","isColor":"0","attrList":[{"attr_id":"37","attr_name":"礼品盒套装","img_path":""},{"attr_id":"38","attr_name":"随身便携装","img_path":""}]}],"good_ship_rule":"","good_guide":{"title":"购物指南","content":"所有商品均为正品保证。\r\n中国大陆地区免运费，默认商家合作快递。\r\n蜡烛、液态品、手表等含电池产品无法空运，运输时间相较普通空运件会更久。\r\n如出现产品质量问题请在签收后72小时内联系客服。"},"category_id":"0","able_buy":"1","able_buy_note":"","images_item":["http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358262.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358264.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358265.jpg"],"is_sold_out":"0","sold_out_img_url":"","sku_inv":[{"goods_sku_sn":"0101000000000000254396000700370000000000000000000000000000000000","type_keys":"7","attr_keys":"37","price":"198.00","discount_price":"","amount":"982"},{"goods_sku_sn":"0101000000000000254396000700380000000000000000000000000000000000","type_keys":"7","attr_keys":"38","price":"198.00","discount_price":"","amount":"975"}],"goods_info":[]}
+         * items : {"goods_id":"258055","goods_image":"http://imgs-qn.iliangcang.com/ware/goods/big/2/258/258055.jpg?t=1497525912","goods_url":"http://www.iliangcang.com/i/goods/?id=258055","goods_name":"【独家首发】乐可丽舒漱口水 | 乳酸菌强效抗菌 清爽低刺激【300ml】","goods_desc":"1","price":"128.00","comment_count":"0","like_count":"876","liked":"0","owner_id":"0","shipping_type":"1","shipping_time":"3","shipping_str":"现货商品3天发货","is_overseas_goods":0,"brand_info":{"brand_id":"819","brand_name":"JEX捷古斯","brand_desc":"捷古斯(JEX)是于昭和35年（1960年）成立的日本知名综合医疗用品制造商。产品涵盖了母婴，成人，个人护理，医疗用品等诸多领域。致力于提高民众的生活健康水平。其中如chuchubaby奶瓶奶嘴，JEX成人用品，乐可丽舒L8020漱口液等产品在日本国内享有非常高的人气和市场占有率。","brand_logo":"http://imgs-qn.iliangcang.com/ware/brand/819.jpg"},"owner_name":"JEX捷古斯","owner_desc":"","is_daren":"0","headimg":"http://imgs-qn.iliangcang.com/ware/brand/819.jpg","rec_reason":"乐可丽舒L8020漱口水，是由广岛大学二川浩树教授在健康婴儿口腔中发现并提取的L8020乳酸菌为主要成分制成的。L8020乳酸菌与市面上常见的木糖醇无论从分类，作用机理，还是抗菌效果来看，都有非常大区别。L8020乳酸菌在起到抑制致病菌作用的同时，还能不伤害口腔中健康有益的益生菌。（L8020乳酸菌的命名来自于由日本厚生劳动省以及牙科医师学会，主导提出并开展的全民爱牙护齿8020运动，旨在通过保护牙齿来提高老年生活质量以及通过预防牙周病降低多种老年疾病发病率。8020的含义是以80岁时仍有20颗健康牙齿为目标。）乐可丽舒L8020系列以支援8020运动为宗旨，目标是服务全体家庭成员。提供安心，安全，方便的产品。产品分为婴幼儿系列以及成人系列，其中包含了漱口液，护齿糖，含片等系列产品。乐可丽舒L8020漱口水不使用研磨剂，减轻对牙齿磨损，特别适合牙齿敏感，有磨损的脆弱人群；不使用杀菌剂，消灭有害菌同时，保护口腔内有益菌，可以有效抑制蛀牙致病菌，牙周病菌。试验表明，杀菌率高达99.9%以上。","is_gift":"0","promotion_imgurl":"http://imgs-qn.iliangcang.com/ware/promotion/icon/19.jpg","discount_price":"98.00","promotion_note":"乳酸菌漱口水，建立健康口腔新环境","sku_info":[{"type_id":"7","type_name":"数量","isColor":"0","attrList":[{"attr_id":"24","attr_name":"一瓶","img_path":""}]}],"good_ship_rule":"","good_guide":{"title":"购物指南","content":"所有商品均为正品保证。\r\n中国大陆地区免运费，默认商家合作快递。\r\n蜡烛、液态品、手表等含电池产品无法空运，运输时间相较普通空运件会更久。\r\n如出现产品质量问题请在签收后72小时内联系客服。"},"category_id":"0","able_buy":"1","able_buy_note":"","images_item":["http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386815.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386777.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386778.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/385/385913.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386780.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386779.jpg"],"is_sold_out":"0","sold_out_img_url":"","sku_inv":[{"goods_sku_sn":"0101000000000000258055000700240000000000000000000000000000000000","type_keys":"7","attr_keys":"24","price":"128.00","discount_price":"98.00","amount":"6981"}],"goods_info":[{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517601881120.jpg","width":661,"height":792,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517603610555.jpg","width":661,"height":744,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517605663394.jpg","width":661,"height":664,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517607170926.jpg","width":661,"height":696,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517609961642.jpg","width":661,"height":768,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517612661529.jpg","width":661,"height":768,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517614136917.jpg","width":661,"height":664,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517616584299.jpg","width":661,"height":656,"length":79}},{"type":0,"content":{"text":"规格：300ml,358g,17.5cm*6cm*5cm","length":28}},{"type":0,"content":{"text":"材料成分:水、丙三醇、没食子酸丙酯、葡聚糖、柠檬酸钠、嗜酸乳杆菌、香料、木糖醇、蔗糖素、PEG-60氢化蓖麻油、对羟基苯甲酸乙酯、对羟基苯甲酸丁酯","length":73}},{"type":0,"content":{"text":"产地：日本","length":5}},{"type":2,"content":{"text":"特殊说明：","length":5}},{"type":0,"content":{"text":"此商品非牙膏，请不要当牙膏使用。此商品不是饮料，请勿引用。有发生身上发痒或发疹子等过敏症状，或哮喘的症状的时候请停止使用，并联系医生。液体变色或成分沉淀属于正常情况，不是品质问题。请置于阴凉通风处保存，避免高温、低温和阳光直射。请勿置于婴儿触及之处。","length":125}}]}
          */
 
         private boolean has_more;
@@ -144,62 +145,41 @@ public class GoodsDetailBean {
 
         public static class ItemsBean {
             /**
-             * goods_id : 254396
-             * goods_image : http://imgs-qn.iliangcang.com/ware/goods/big/2/254/254396.jpg
-             * goods_url : http://www.iliangcang.com/i/goods/?id=254396
-             * goods_name : 兰汤包 | 溯 Sound of Blossom
-             * goods_desc : 礼品盒套装：内含10包，每包15克
-             随身便携装：内含11包，每包15克
-
-             【主要原料】
-             藏木香，肉桂，干姜，藏菖蒲，川芎，红景天，等
-             【使用效果】
-             活血暖宫，滋养美容。
-             溯，即寻找生命的源泉。
-             当感到身体和世界是冰冷无助时，通过藏木香、肉桂等蕴藏阳气的药材活血暖宫，找回温暖和力量，灿烂面对每一天。
-             【适合人群】
-             常感手脚冰凉、痛经、经期不调、备孕中的女士 。
-             四季适用，春夏尤佳。
-             【使用方法】
-             泡脚泡澡均可。
-             将兰汤包放入盆中，以少量70度以上温度热水浸泡5分钟使有效成分充分渗透，再加入温水调到人体适宜的温度。
-             因体质不同，建议根据个人情况适当调整水温，控制浸泡时间，微微出汗、体感舒适即可。
-             建议水温在37-42度之间，时间不超过30分钟。
-             同时配合面膜、弥若间MiroMiro线香系列效果更佳。
-             【注意事项】
-             不建议严重心脏病、心脑血栓患者使用。
-             请注意水温不宜太高。
-             孕妇请遵医嘱。
-             * price : 198.00
+             * goods_id : 258055
+             * goods_image : http://imgs-qn.iliangcang.com/ware/goods/big/2/258/258055.jpg?t=1497525912
+             * goods_url : http://www.iliangcang.com/i/goods/?id=258055
+             * goods_name : 【独家首发】乐可丽舒漱口水 | 乳酸菌强效抗菌 清爽低刺激【300ml】
+             * goods_desc : 1
+             * price : 128.00
              * comment_count : 0
-             * like_count : 286
+             * like_count : 876
              * liked : 0
              * owner_id : 0
              * shipping_type : 1
              * shipping_time : 3
              * shipping_str : 现货商品3天发货
              * is_overseas_goods : 0
-             * brand_info : {"brand_id":"549","brand_name":"弥若间MiroMiro","brand_desc":"弥若间MiroMiro专注于香、芳香疗法和生活美学，从中国古典香方中汲取灵感、用时尚的方式加以呈现、提供与西方香水香精不同的审美角度，不仅带来愉悦气味，更有不同功效对应不同人群和生活场景，让奔波在钢铁森林里的人们身心得到修复。弥若间MiroMiro认为，借一支香、一杯茶，日常生活的仪式感可以带来幸福感，是生活美学，也是物我对峙的哲学。","brand_logo":"http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653"}
-             * owner_name : 弥若间MiroMiro
+             * brand_info : {"brand_id":"819","brand_name":"JEX捷古斯","brand_desc":"捷古斯(JEX)是于昭和35年（1960年）成立的日本知名综合医疗用品制造商。产品涵盖了母婴，成人，个人护理，医疗用品等诸多领域。致力于提高民众的生活健康水平。其中如chuchubaby奶瓶奶嘴，JEX成人用品，乐可丽舒L8020漱口液等产品在日本国内享有非常高的人气和市场占有率。","brand_logo":"http://imgs-qn.iliangcang.com/ware/brand/819.jpg"}
+             * owner_name : JEX捷古斯
              * owner_desc :
              * is_daren : 0
-             * headimg : http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653
-             * rec_reason : 含藏木香、肉桂、干姜、红景天等天然香材，具有活血暖宫、滋养气血的功效。适合常感手脚冰凉、痛经、备孕中的女士 。
+             * headimg : http://imgs-qn.iliangcang.com/ware/brand/819.jpg
+             * rec_reason : 乐可丽舒L8020漱口水，是由广岛大学二川浩树教授在健康婴儿口腔中发现并提取的L8020乳酸菌为主要成分制成的。L8020乳酸菌与市面上常见的木糖醇无论从分类，作用机理，还是抗菌效果来看，都有非常大区别。L8020乳酸菌在起到抑制致病菌作用的同时，还能不伤害口腔中健康有益的益生菌。（L8020乳酸菌的命名来自于由日本厚生劳动省以及牙科医师学会，主导提出并开展的全民爱牙护齿8020运动，旨在通过保护牙齿来提高老年生活质量以及通过预防牙周病降低多种老年疾病发病率。8020的含义是以80岁时仍有20颗健康牙齿为目标。）乐可丽舒L8020系列以支援8020运动为宗旨，目标是服务全体家庭成员。提供安心，安全，方便的产品。产品分为婴幼儿系列以及成人系列，其中包含了漱口液，护齿糖，含片等系列产品。乐可丽舒L8020漱口水不使用研磨剂，减轻对牙齿磨损，特别适合牙齿敏感，有磨损的脆弱人群；不使用杀菌剂，消灭有害菌同时，保护口腔内有益菌，可以有效抑制蛀牙致病菌，牙周病菌。试验表明，杀菌率高达99.9%以上。
              * is_gift : 0
-             * promotion_imgurl :
-             * discount_price :
-             * promotion_note :
-             * sku_info : [{"type_id":"7","type_name":"数量","isColor":"0","attrList":[{"attr_id":"37","attr_name":"礼品盒套装","img_path":""},{"attr_id":"38","attr_name":"随身便携装","img_path":""}]}]
+             * promotion_imgurl : http://imgs-qn.iliangcang.com/ware/promotion/icon/19.jpg
+             * discount_price : 98.00
+             * promotion_note : 乳酸菌漱口水，建立健康口腔新环境
+             * sku_info : [{"type_id":"7","type_name":"数量","isColor":"0","attrList":[{"attr_id":"24","attr_name":"一瓶","img_path":""}]}]
              * good_ship_rule :
              * good_guide : {"title":"购物指南","content":"所有商品均为正品保证。\r\n中国大陆地区免运费，默认商家合作快递。\r\n蜡烛、液态品、手表等含电池产品无法空运，运输时间相较普通空运件会更久。\r\n如出现产品质量问题请在签收后72小时内联系客服。"}
              * category_id : 0
              * able_buy : 1
              * able_buy_note :
-             * images_item : ["http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358262.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358264.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/358/358265.jpg"]
+             * images_item : ["http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386815.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386777.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386778.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/385/385913.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386780.jpg","http://imgs-qn.iliangcang.com/ware/upload/big/2/386/386779.jpg"]
              * is_sold_out : 0
              * sold_out_img_url :
-             * sku_inv : [{"goods_sku_sn":"0101000000000000254396000700370000000000000000000000000000000000","type_keys":"7","attr_keys":"37","price":"198.00","discount_price":"","amount":"982"},{"goods_sku_sn":"0101000000000000254396000700380000000000000000000000000000000000","type_keys":"7","attr_keys":"38","price":"198.00","discount_price":"","amount":"975"}]
-             * goods_info : []
+             * sku_inv : [{"goods_sku_sn":"0101000000000000258055000700240000000000000000000000000000000000","type_keys":"7","attr_keys":"24","price":"128.00","discount_price":"98.00","amount":"6981"}]
+             * goods_info : [{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517601881120.jpg","width":661,"height":792,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517603610555.jpg","width":661,"height":744,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517605663394.jpg","width":661,"height":664,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517607170926.jpg","width":661,"height":696,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517609961642.jpg","width":661,"height":768,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517612661529.jpg","width":661,"height":768,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517614136917.jpg","width":661,"height":664,"length":79}},{"type":1,"content":{"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517616584299.jpg","width":661,"height":656,"length":79}},{"type":0,"content":{"text":"规格：300ml,358g,17.5cm*6cm*5cm","length":28}},{"type":0,"content":{"text":"材料成分:水、丙三醇、没食子酸丙酯、葡聚糖、柠檬酸钠、嗜酸乳杆菌、香料、木糖醇、蔗糖素、PEG-60氢化蓖麻油、对羟基苯甲酸乙酯、对羟基苯甲酸丁酯","length":73}},{"type":0,"content":{"text":"产地：日本","length":5}},{"type":2,"content":{"text":"特殊说明：","length":5}},{"type":0,"content":{"text":"此商品非牙膏，请不要当牙膏使用。此商品不是饮料，请勿引用。有发生身上发痒或发疹子等过敏症状，或哮喘的症状的时候请停止使用，并联系医生。液体变色或成分沉淀属于正常情况，不是品质问题。请置于阴凉通风处保存，避免高温、低温和阳光直射。请勿置于婴儿触及之处。","length":125}}]
              */
 
             private String goods_id;
@@ -236,7 +216,7 @@ public class GoodsDetailBean {
             private List<SkuInfoBean> sku_info;
             private List<String> images_item;
             private List<SkuInvBean> sku_inv;
-            private List<?> goods_info;
+            private List<GoodsInfoBean> goods_info;
 
             public String getGoods_id() {
                 return goods_id;
@@ -510,20 +490,20 @@ public class GoodsDetailBean {
                 this.sku_inv = sku_inv;
             }
 
-            public List<?> getGoods_info() {
+            public List<GoodsInfoBean> getGoods_info() {
                 return goods_info;
             }
 
-            public void setGoods_info(List<?> goods_info) {
+            public void setGoods_info(List<GoodsInfoBean> goods_info) {
                 this.goods_info = goods_info;
             }
 
             public static class BrandInfoBean {
                 /**
-                 * brand_id : 549
-                 * brand_name : 弥若间MiroMiro
-                 * brand_desc : 弥若间MiroMiro专注于香、芳香疗法和生活美学，从中国古典香方中汲取灵感、用时尚的方式加以呈现、提供与西方香水香精不同的审美角度，不仅带来愉悦气味，更有不同功效对应不同人群和生活场景，让奔波在钢铁森林里的人们身心得到修复。弥若间MiroMiro认为，借一支香、一杯茶，日常生活的仪式感可以带来幸福感，是生活美学，也是物我对峙的哲学。
-                 * brand_logo : http://imgs-qn.iliangcang.com/ware/brand/549.jpg?t=1477288653
+                 * brand_id : 819
+                 * brand_name : JEX捷古斯
+                 * brand_desc : 捷古斯(JEX)是于昭和35年（1960年）成立的日本知名综合医疗用品制造商。产品涵盖了母婴，成人，个人护理，医疗用品等诸多领域。致力于提高民众的生活健康水平。其中如chuchubaby奶瓶奶嘴，JEX成人用品，乐可丽舒L8020漱口液等产品在日本国内享有非常高的人气和市场占有率。
+                 * brand_logo : http://imgs-qn.iliangcang.com/ware/brand/819.jpg
                  */
 
                 private String brand_id;
@@ -598,7 +578,7 @@ public class GoodsDetailBean {
                  * type_id : 7
                  * type_name : 数量
                  * isColor : 0
-                 * attrList : [{"attr_id":"37","attr_name":"礼品盒套装","img_path":""},{"attr_id":"38","attr_name":"随身便携装","img_path":""}]
+                 * attrList : [{"attr_id":"24","attr_name":"一瓶","img_path":""}]
                  */
 
                 private String type_id;
@@ -640,8 +620,8 @@ public class GoodsDetailBean {
 
                 public static class AttrListBean {
                     /**
-                     * attr_id : 37
-                     * attr_name : 礼品盒套装
+                     * attr_id : 24
+                     * attr_name : 一瓶
                      * img_path :
                      */
 
@@ -677,12 +657,12 @@ public class GoodsDetailBean {
 
             public static class SkuInvBean {
                 /**
-                 * goods_sku_sn : 0101000000000000254396000700370000000000000000000000000000000000
+                 * goods_sku_sn : 0101000000000000258055000700240000000000000000000000000000000000
                  * type_keys : 7
-                 * attr_keys : 37
-                 * price : 198.00
-                 * discount_price :
-                 * amount : 982
+                 * attr_keys : 24
+                 * price : 128.00
+                 * discount_price : 98.00
+                 * amount : 6981
                  */
 
                 private String goods_sku_sn;
@@ -738,6 +718,87 @@ public class GoodsDetailBean {
 
                 public void setAmount(String amount) {
                     this.amount = amount;
+                }
+            }
+
+            public static class GoodsInfoBean {
+                /**
+                 * type : 1
+                 * content : {"img":"http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517601881120.jpg","width":661,"height":792,"length":79}
+                 */
+
+                private int type;
+                private ContentBean content;
+
+                public int getType() {
+                    return type;
+                }
+
+                public void setType(int type) {
+                    this.type = type;
+                }
+
+                public ContentBean getContent() {
+                    return content;
+                }
+
+                public void setContent(ContentBean content) {
+                    this.content = content;
+                }
+
+                public static class ContentBean {
+                    /**
+                     * img : http://imgs-qn.iliangcang.com//ware/ueditor/image/20170615/1497517601881120.jpg
+                     * width : 661
+                     * height : 792
+                     * length : 79
+                     */
+
+                    private String img;
+                    private int width;
+                    private int height;
+                    private int length;
+                    private String text;
+
+                    public String getText() {
+                        return text;
+                    }
+
+                    public void setText(String text) {
+                        this.text = text;
+                    }
+
+                    public String getImg() {
+                        return img;
+                    }
+
+                    public void setImg(String img) {
+                        this.img = img;
+                    }
+
+                    public int getWidth() {
+                        return width;
+                    }
+
+                    public void setWidth(int width) {
+                        this.width = width;
+                    }
+
+                    public int getHeight() {
+                        return height;
+                    }
+
+                    public void setHeight(int height) {
+                        this.height = height;
+                    }
+
+                    public int getLength() {
+                        return length;
+                    }
+
+                    public void setLength(int length) {
+                        this.length = length;
+                    }
                 }
             }
         }

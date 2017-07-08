@@ -18,12 +18,11 @@
             android:layout_height="500dp" />
 
         <RelativeLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <TextView
-                android:textSize="20sp"
                 android:id="@+id/goods_detail_brandName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,6 +30,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:textColor="#cccccc"
+                android:textSize="20sp"
                 tools:text="品牌名称" />
 
             <ImageView
@@ -49,7 +49,6 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:textSize="16sp"
                 android:id="@+id/goods_detail_goodName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,6 +56,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:textColor="#c1c1c2"
+                android:textSize="16sp"
                 tools:text="商品名称" />
 
             <TextView
@@ -78,15 +78,41 @@
             android:layout_marginRight="10dp"
             android:src="@drawable/goods_detail_share_shopgood" />
 
+
         <TextView
-            android:layout_marginTop="20dp"
-            android:id="@+id/goods_detail_price"
+            android:id="@+id/goods_detail_promotionNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="#5e7fa2"
+            tools:text="商品促销的说明" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:textColor="#6f98c3"
-            android:textSize="20sp"
-            tools:text="199.00" />
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/goods_detail_current_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#6f98c3"
+                android:textSize="24sp"
+                tools:text="199.00" />
+
+            <TextView
+                android:id="@+id/goods_detail_last_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:textColor="#6f98c3"
+                android:textSize="20sp"
+                tools:text="299.00" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -216,9 +242,9 @@
 
             <LinearLayout
                 android:id="@+id/goods_detail_goodsDetail_ll"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/goods_detail_goodsPack"
@@ -226,8 +252,19 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:textColor="#a7a7a7"
+                    android:visibility="gone"
                     tools:text="商品的介绍情------------------------------------------------------------------------------------" />
 
+                <!--商品信息的图片列表-->
+                <LinearLayout
+                    android:id="@+id/goods_detail_goodsInfo_pic_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -238,10 +275,10 @@
                     android:layout_marginTop="20dp">
 
                     <View
-                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
                         android:background="#485f78" />
 
                     <TextView
@@ -254,10 +291,10 @@
                         android:textColor="#989899" />
 
                     <View
-                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
                         android:background="#485f78" />
 
                 </LinearLayout>
@@ -337,10 +374,10 @@
                     android:layout_marginTop="20dp">
 
                     <View
-                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
                         android:background="#485f78" />
 
                     <TextView
@@ -353,10 +390,10 @@
                         android:textColor="#989899" />
 
                     <View
-                        android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="1dp"
                         android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
                         android:background="#485f78" />
 
                 </LinearLayout>
@@ -371,29 +408,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
-                android:layout_margin="10dp"
                 android:id="@+id/goods_detail_buyRead"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
-                    android:textColor="#8c8d8e"
                     android:id="@+id/goods_detail_buyRead_Detail_tv"
-                    tools:text="购物须知的明细"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="#8c8d8e"
+                    tools:text="购物须知的明细" />
 
                 <Button
                     android:id="@+id/goods_detail_buyRead_Detail_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="#444950"
                     android:text="售后须知"
-                    android:textColor="#777778"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
+                    android:textColor="#777778" />
 
 
             </LinearLayout>
