@@ -68,16 +68,16 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
         //根据ViewType建立对应的ViewHolder
         switch (viewType) {
             case TYPE1:
-                viewHolder = new Type1ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item1, null));
+                viewHolder = new Type1ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item1, null,false));
                 break;
             case TYPE2:
-                viewHolder = new Type2ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item2, null));
+                viewHolder = new Type2ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item2, parent,false));
                 break;
             case TYPE3:
-                viewHolder = new Type3ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item3, null));
+                viewHolder = new Type3ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item3, null,false));
                 break;
             case TYPE4:
-                viewHolder = new Type4ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item4, null));
+                viewHolder = new Type4ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item4, parent,false));
                 break;
             default:
 
