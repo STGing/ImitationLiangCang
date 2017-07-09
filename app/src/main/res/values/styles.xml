@@ -32,8 +32,16 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
-
     </style>
 
+    <!--达人页面menu下面popupwindow里面RadioButton菜单-->
+    <style name="TrendPersonRadioButton">
+        <item name="android:background">@drawable/trend_person_menu_rbbg_selecter</item>
+        <item name="android:textColor">@drawable/trend_person_menu_rbtvcolor_selecter</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
 
 </resources>

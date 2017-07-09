@@ -92,13 +92,21 @@ public class GoodsDetailActivity extends BaseActivity {
     TextView goodsDetailLastPrice;
     @BindView(R.id.goods_detail_goodsInfo_pic_ll)
     LinearLayout goodsDetailGoodsInfoPicLl;
+    @BindView(R.id.title_iv_back)
+    ImageView titleIvBack;
+    @BindView(R.id.title_iv_shopCar)
+    ImageView titleIvShopCar;
+    @BindView(R.id.base_title_layout)
+    RelativeLayout baseTitleLayout;
 
     @Override
     public void initView() {
         super.initView();
 
         //设置标题
-
+        baseTitleLayout.setBackgroundColor(Color.parseColor("#00ffffff"));//背景透明
+        titleIvBack.setVisibility(View.VISIBLE);//显示返回键
+        titleIvShopCar.setVisibility(View.VISIBLE);//显示购物车
     }
 
     @Override
@@ -167,7 +175,7 @@ public class GoodsDetailActivity extends BaseActivity {
 
 
         //10.设置商品的图片列表（如果有数据的话就显示)
-        if (goods_info.size() > 0){
+        if (goods_info.size() > 0) {
             goodsDetailGoodsInfoPicLl.setVisibility(View.VISIBLE);
 
             //根据商品信息动态的建立图片
@@ -194,7 +202,7 @@ public class GoodsDetailActivity extends BaseActivity {
                         //加载图片
                         Picasso.with(this)
                                 .load(content.getImg())
-                                .resize(content.getWidth(),content.getHeight())
+                                .resize(content.getWidth(), content.getHeight())
                                 .into(iv);
 
                         //图片添加到布局上
@@ -207,8 +215,8 @@ public class GoodsDetailActivity extends BaseActivity {
                         TextView tv = new TextView(this);
                         tv.setText(content.getText());
                         LinearLayout.LayoutParams params0 =
-                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params0.setMargins(10,30,10,10);
+                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        params0.setMargins(10, 30, 10, 10);
                         tv.setLayoutParams(params0);
                         tv.setTextColor(Color.parseColor("#959697"));
                         goodsDetailGoodsInfoPicLl.addView(tv);
@@ -220,15 +228,15 @@ public class GoodsDetailActivity extends BaseActivity {
                         TextView tv2 = new TextView(this);
                         tv2.setText(content.getText());
                         LinearLayout.LayoutParams params2 =
-                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params2.setMargins(10,10,10,10);
+                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        params2.setMargins(10, 10, 10, 10);
                         tv2.setLayoutParams(params2);
                         tv2.setTextColor(Color.parseColor("#e1e2e2"));
                         goodsDetailGoodsInfoPicLl.addView(tv2);
 
                         break;
                     default:
-                
+
                         break;
                 }
 
@@ -238,7 +246,6 @@ public class GoodsDetailActivity extends BaseActivity {
         } else {
             goodsDetailGoodsInfoPicLl.setVisibility(View.GONE);
         }
-
 
 
         //11.设置品牌故事
@@ -258,7 +265,7 @@ public class GoodsDetailActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.goods_detail_IvlikeCount, R.id.goods_detail_shared, R.id.goods_detail_goodsChoiceType, R.id.goods_detail_brandIv, R.id.goods_detail_brand_detail_rl, R.id.goods_detail_goodsRb, R.id.goods_detail_buyReadRb, R.id.goods_detail_radioGroup, R.id.goods_detail_buyRead_Detail_btn, R.id.goods_detail_ibServer, R.id.goods_detail_addShopCar, R.id.goods_detail_buy})
+    @OnClick({R.id.title_iv_back, R.id.title_iv_shopCar,R.id.goods_detail_IvlikeCount, R.id.goods_detail_shared, R.id.goods_detail_goodsChoiceType, R.id.goods_detail_brandIv, R.id.goods_detail_brand_detail_rl, R.id.goods_detail_goodsRb, R.id.goods_detail_buyReadRb, R.id.goods_detail_radioGroup, R.id.goods_detail_buyRead_Detail_btn, R.id.goods_detail_ibServer, R.id.goods_detail_addShopCar, R.id.goods_detail_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.goods_detail_IvlikeCount:
@@ -294,8 +301,14 @@ public class GoodsDetailActivity extends BaseActivity {
                 break;
             case R.id.goods_detail_buy:
                 break;
+            case R.id.title_iv_back://标题返回
+                finish();
+                break;
+            case R.id.title_iv_shopCar://标题购物车
+                break;
         }
     }
+
 
 
 }

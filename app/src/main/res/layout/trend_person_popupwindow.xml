@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#66313335"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/trend_person_menu_RadioGroup"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/trend_person_defaultRecommend"
+            style="@style/TrendPersonRadioButton"
+            android:text="默认推荐"
+            />
+
+        <RadioButton
+            style="@style/TrendPersonRadioButton"
+            android:id="@+id/trend_person_MostRecommend"
+            android:text="最多推荐" />
+
+        <RadioButton
+            style="@style/TrendPersonRadioButton"
+            android:id="@+id/trend_person_MostWelcome"
+            android:text="最受欢迎"
+            />
+
+        <RadioButton
+            style="@style/TrendPersonRadioButton"
+            android:id="@+id/trend_person_latestRecommend"
+            android:text="最新推荐"
+           />
+
+        <RadioButton
+            style="@style/TrendPersonRadioButton"
+            android:id="@+id/trend_person_latestJoin"
+            android:text="最新加入" />
+
+    </RadioGroup>
+
+</LinearLayout>
