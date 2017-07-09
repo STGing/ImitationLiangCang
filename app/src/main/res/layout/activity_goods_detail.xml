@@ -230,7 +230,7 @@
                 android:text="商品详情" />
 
             <RadioButton
-                android:id="@+id/goods_detail_bugRb"
+                android:id="@+id/goods_detail_buyReadRb"
                 style="@style/BrandGoodsListRadioButton"
                 android:text="购物须知" />
 
@@ -257,10 +257,10 @@
 
                 <!--商品信息的图片列表-->
                 <LinearLayout
+                    android:layout_margin="10dp"
                     android:id="@+id/goods_detail_goodsInfo_pic_ll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 

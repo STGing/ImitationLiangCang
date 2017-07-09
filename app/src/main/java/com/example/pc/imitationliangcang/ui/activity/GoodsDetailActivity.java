@@ -3,6 +3,7 @@ package com.example.pc.imitationliangcang.ui.activity;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -55,8 +56,8 @@ public class GoodsDetailActivity extends BaseActivity {
     RelativeLayout goodsDetailBrandDetailRl;
     @BindView(R.id.goods_detail_goodsRb)
     RadioButton goodsDetailGoodsRb;
-    @BindView(R.id.goods_detail_bugRb)
-    RadioButton goodsDetailBugRb;
+    @BindView(R.id.goods_detail_buyReadRb)
+    RadioButton goodsDetailBuyReadRb;
     @BindView(R.id.goods_detail_radioGroup)
     RadioGroup goodsDetailRadioGroup;
     @BindView(R.id.goods_detail_brandName2)
@@ -181,17 +182,20 @@ public class GoodsDetailActivity extends BaseActivity {
                         //建立图片
                         ImageView iv = new ImageButton(this);
 
+                        LinearLayout.LayoutParams params1 =
+                                new LinearLayout.LayoutParams(
+                                        ViewGroup.LayoutParams.MATCH_PARENT,
+                                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                        iv.setLayoutParams(params1);
+                        params1.bottomMargin = -60;
+                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                        //背景透明
+                        iv.setBackgroundColor(Color.parseColor("#00ffffff"));
                         //加载图片
                         Picasso.with(this)
                                 .load(content.getImg())
-                                //.resize(content.getWidth(),content.getHeight())
+                                .resize(content.getWidth(),content.getHeight())
                                 .into(iv);
-
-                        LinearLayout.LayoutParams params1 =
-                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                        iv.setLayoutParams(params1);
-                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
-
 
                         //图片添加到布局上
                         goodsDetailGoodsInfoPicLl.addView(iv);
@@ -204,7 +208,7 @@ public class GoodsDetailActivity extends BaseActivity {
                         tv.setText(content.getText());
                         LinearLayout.LayoutParams params0 =
                                 new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                        params0.setMargins(10,10,10,10);
+                        params0.setMargins(10,30,10,10);
                         tv.setLayoutParams(params0);
                         tv.setTextColor(Color.parseColor("#959697"));
                         goodsDetailGoodsInfoPicLl.addView(tv);
@@ -254,7 +258,7 @@ public class GoodsDetailActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.goods_detail_IvlikeCount, R.id.goods_detail_shared, R.id.goods_detail_goodsChoiceType, R.id.goods_detail_brandIv, R.id.goods_detail_brand_detail_rl, R.id.goods_detail_goodsRb, R.id.goods_detail_bugRb, R.id.goods_detail_radioGroup, R.id.goods_detail_buyRead_Detail_btn, R.id.goods_detail_ibServer, R.id.goods_detail_addShopCar, R.id.goods_detail_buy})
+    @OnClick({R.id.goods_detail_IvlikeCount, R.id.goods_detail_shared, R.id.goods_detail_goodsChoiceType, R.id.goods_detail_brandIv, R.id.goods_detail_brand_detail_rl, R.id.goods_detail_goodsRb, R.id.goods_detail_buyReadRb, R.id.goods_detail_radioGroup, R.id.goods_detail_buyRead_Detail_btn, R.id.goods_detail_ibServer, R.id.goods_detail_addShopCar, R.id.goods_detail_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.goods_detail_IvlikeCount:
@@ -268,8 +272,17 @@ public class GoodsDetailActivity extends BaseActivity {
             case R.id.goods_detail_brand_detail_rl:
                 break;
             case R.id.goods_detail_goodsRb:
+
+                //点击显示商品情况
+                goodsDetailBuyRead.setVisibility(View.GONE);//隐藏
+                goodsDetailGoodsDetailLl.setVisibility(View.VISIBLE);//显示
                 break;
-            case R.id.goods_detail_bugRb:
+            case R.id.goods_detail_buyReadRb:
+
+                //点击显示购买须知
+                goodsDetailGoodsDetailLl.setVisibility(View.GONE);//隐藏
+                goodsDetailBuyRead.setVisibility(View.VISIBLE);//显示
+
                 break;
             case R.id.goods_detail_radioGroup:
                 break;
