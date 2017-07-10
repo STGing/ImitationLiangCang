@@ -52,4 +52,14 @@
         android:layout_marginRight="20dp"
         android:src="@drawable/title_actionbar_navigation_menu"
         android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_iv_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/goods_detail_share_shopgood"
+        android:visibility="gone" />
 </RelativeLayout>

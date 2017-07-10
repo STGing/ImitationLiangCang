@@ -27,7 +27,8 @@
         <activity android:name=".ui.activity.GoodsListActivity" />
         <activity android:name=".ui.activity.BrandGoodsListActivity" />
         <activity android:name=".ui.activity.GoodsDetailActivity" />
-        <activity android:name=".ui.activity.TrendPersonActivity"></activity>
+        <activity android:name=".ui.activity.TrendPersonActivity" />
+        <activity android:name=".ui.activity.TrendPersonGoodsDetailActivity"></activity>
     </application>
 
 </manifest>

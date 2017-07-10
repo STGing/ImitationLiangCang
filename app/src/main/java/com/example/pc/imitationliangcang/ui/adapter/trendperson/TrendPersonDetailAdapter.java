@@ -1,6 +1,7 @@
 package com.example.pc.imitationliangcang.ui.adapter.trendperson;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.trenpersonfragment.TrendPersonDetailBean;
+import com.example.pc.imitationliangcang.ui.activity.GoodsDetailActivity;
+import com.example.pc.imitationliangcang.ui.activity.TrendPersonGoodsDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -49,16 +52,38 @@ public class TrendPersonDetailAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+
+        final TrendPersonDetailBean.DataBean.ItemsBean.GoodsBean goodsBean = goods.get(position);
 
         //设置数据
         if (holder instanceof TrendPersonDetailGoodsViewHolder){
 
             //设置图片
             Picasso.with(mContext)
-                    .load(goods.get(position).getGoods_image())
+                    .load(goodsBean.getGoods_image())
                     .into(((TrendPersonDetailGoodsViewHolder) holder).trendPersonDetailGoosIv);
 
+            //点击事件
+            final String is_outter = goodsBean.getIs_outter();
+            ((TrendPersonDetailGoodsViewHolder) holder).trendPersonDetailGoosIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //判断跳转到哪里
+                    if (is_outter.equals("0")){
+                        //跳转到商品详情页面
+                        Intent intent = new Intent(mContext, GoodsDetailActivity.class);
+                        intent.putExtra("goods_id",goodsBean.getGoods_id());
+                        mContext.startActivity(intent);
+
+                    } else if (is_outter.equals("1")){
+                        //跳转到达人商品详情页面
+                        Intent intent = new Intent(mContext, TrendPersonGoodsDetailActivity.class);
+                        intent.putExtra("goods_id",goodsBean.getGoods_id());
+                        mContext.startActivity(intent);
+                    }
+                }
+            });
 
 
         } else if (holder instanceof TrendPersonDetailUserViewHolder){
