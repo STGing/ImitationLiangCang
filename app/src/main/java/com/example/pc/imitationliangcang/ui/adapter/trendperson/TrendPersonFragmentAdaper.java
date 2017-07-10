@@ -1,6 +1,7 @@
 package com.example.pc.imitationliangcang.ui.adapter.trendperson;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.trenpersonfragment.TrendPersonFragmentBean;
+import com.example.pc.imitationliangcang.ui.activity.TrendPersonActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -50,6 +52,8 @@ public class TrendPersonFragmentAdaper extends RecyclerView.Adapter<TrendPersonF
         holder.trendPersonItemTvName.setText(itemsBean.getUsername());
         holder.trendPersonItemTvSummary.setText(itemsBean.getDuty());
 
+        //设置点击事件
+        holder.setLinstener(position);
     }
 
     @Override
@@ -58,7 +62,8 @@ public class TrendPersonFragmentAdaper extends RecyclerView.Adapter<TrendPersonF
     }
 
 
-    static class TrendPersonFragmentViewHolder extends RecyclerView.ViewHolder {
+    class TrendPersonFragmentViewHolder extends RecyclerView.ViewHolder {
+        private final View view;
         @BindView(R.id.trend_person_item_iv)
         ImageView trendPersonItemIv;
         @BindView(R.id.trend_person_item_tvName)
@@ -69,6 +74,23 @@ public class TrendPersonFragmentAdaper extends RecyclerView.Adapter<TrendPersonF
         TrendPersonFragmentViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            this.view = view;
+        }
+
+        public void setLinstener(int position){
+            //获取数据
+            TrendPersonFragmentBean.DataBean.ItemsBean itemsBean = items.get(position);
+            final String uid = itemsBean.getUid();
+
+            //点击事件
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, TrendPersonActivity.class);
+                    intent.putExtra("uid",uid);
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 }

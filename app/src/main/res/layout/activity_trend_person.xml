@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1e2125"
+    tools:context="com.example.pc.imitationliangcang.ui.activity.TrendPersonActivity">
+
+    <include layout="@layout/base_title"/>
+
+    <RelativeLayout
+        android:layout_margin="5dp"
+        android:background="#1e2125"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/trend_person_detail_userIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/trend_person_detail_userIv"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/trend_person_detail_nameTv"
+                android:textColor="#b2b2b3"
+                tools:text="达人的名称"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/trend_person_detail_workTv"
+                android:textColor="#6d6e70"
+                tools:text="达人的工作"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_marginRight="20dp"
+                android:textColor="#c3c4c4"
+                android:background="#575b61"
+                android:id="@+id/trend_person_detail_careBtn"
+                android:text="关注"
+                android:layout_width="50dp"
+                android:layout_height="40dp" />
+
+            <Button
+                android:textColor="#c1c1c1"
+                android:background="#464749"
+                android:id="@+id/trend_person_detail_messageBtn"
+                android:text="私信"
+                android:layout_width="50dp"
+                android:layout_height="40dp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:layout_margin="5dp"
+        android:id="@+id/trend_person_detail_radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/trend_person_detail_likeConuntRB"
+            style="@style/BrandGoodsListRadioButton"
+            tools:text="喜欢 \n 0  " />
+
+        <RadioButton
+            android:id="@+id/trend_person_detail_recommendRB"
+            style="@style/BrandGoodsListRadioButton"
+            tools:text="推荐  \n 3 " />
+
+        <RadioButton
+            android:id="@+id/trend_person_detail_careRB"
+            style="@style/BrandGoodsListRadioButton"
+            tools:text="关注 \n 3" />
+
+        <RadioButton
+            android:id="@+id/trend_person_detail_fansRB"
+            style="@style/BrandGoodsListRadioButton"
+            tools:text="粉丝 \n 2000" />
+
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/trend_person_detail_framenLayout"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+
+</LinearLayout>

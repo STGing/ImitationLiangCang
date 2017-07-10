@@ -53,8 +53,16 @@ public class NetWorkUrl {
     //4.最新推荐
     public static final String TRENDPERSONLATESTRECOMMEND = "http://mobile.iliangcang.com/user/masterList?app_key=Android&count=18&orderby=reg_time&page=9&sig=05D2057FE3D726A43A94505807516FC3|136072130089168&v=1.0";
     //5.最新加入
-    public static final String TRENDPERSONLATESTJOIN= "http://mobile.iliangcang.com/user/masterList?app_key=Android&count=18&orderby=action_time&page=9&sig=05D2057FE3D726A43A94505807516FC3|136072130089168&v=1.0";
-    //
+    public static final String TRENDPERSONLATESTJOIN = "http://mobile.iliangcang.com/user/masterList?app_key=Android&count=18&orderby=action_time&page=9&sig=05D2057FE3D726A43A94505807516FC3|136072130089168&v=1.0";
+
+    //达人页面点击某个人触发的API(根据 owner_id 来切换)
+    public static final String TRENDPERSONDETAILURL01 = "http://mobile.iliangcang.com/user/masterFollowed?app_key=Android&count=12&owner_id=";
+    public static final String TRENDPERSONDETAILURL02 = "&page=1&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
+
+    //达人详情页面的推荐fragment的API(根据 owner_id 来切换)
+    public static final String TRENDPERSONDETAILRECOMMENDURL01 = "http://mobile.iliangcang.com/user/masterListInfo?app_key=Android&count=10&owner_id=";
+    public static final String TRENDPERSONDETAILRECOMMENDURL02 = "&page=1&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
+
 
     //商品的详细页面的API,根据 goods_id 来获取不同商品的数据，这里截取2部分，中间加ID
     public static final String GOODSDETAILURL01 = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id=";

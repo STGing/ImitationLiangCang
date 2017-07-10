@@ -26,7 +26,8 @@
         <activity android:name=".ui.activity.ShopFragmentWebViewActivity" />
         <activity android:name=".ui.activity.GoodsListActivity" />
         <activity android:name=".ui.activity.BrandGoodsListActivity" />
-        <activity android:name=".ui.activity.GoodsDetailActivity"></activity>
+        <activity android:name=".ui.activity.GoodsDetailActivity" />
+        <activity android:name=".ui.activity.TrendPersonActivity"></activity>
     </application>
 
 </manifest>
