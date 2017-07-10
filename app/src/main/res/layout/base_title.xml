@@ -25,6 +25,17 @@
         android:visibility="gone" />
 
     <TextView
+        tools:text="JUL.01"
+        android:textColor="#6e96c1"
+        android:id="@+id/title_tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        />
+
+    <TextView
         android:id="@+id/title_tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +43,18 @@
         android:textColor="#ffffff"
         android:textSize="18sp"
         tools:text="商店" />
+
+    <TextView
+        android:drawablePadding="6dp"
+        android:drawableRight="@drawable/magazine_fragment_title_arrawdown"
+        android:id="@+id/title_tv_magazine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#e8e9e9"
+        android:textSize="18sp"
+        android:visibility="gone"
+        tools:text="杂志" />
 
     <ImageView
         android:id="@+id/title_iv_shopCar"

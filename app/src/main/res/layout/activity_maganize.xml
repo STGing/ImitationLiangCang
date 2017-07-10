@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#dae0e6"
+    android:orientation="vertical"
+    tools:context="com.example.pc.imitationliangcang.ui.activity.MaganizeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e9ecf0"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/magazine_iv_classify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/magazine_topic_category" />
+
+        <ImageView
+            android:id="@+id/magazine_iv_auther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/magazine_topic_author" />
+
+
+    </LinearLayout>
+
+    <com.androidkun.xtablayout.XTabLayout
+        android:id="@+id/magazine_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:xTabIndicatorColor="#ced3d9"
+        app:xTabSelectedTextColor="#373737"
+        app:xTabTextColor="#b8babd"
+        app:xTabIndicatorWidth="20dp"
+        android:background="#e9ecf0" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/magazine_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/magazine_bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#15171a"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/magazine_arraw_top"
+            android:gravity="center"
+            android:text="杂志"
+            android:textColor="#bcc4c5"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

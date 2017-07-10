@@ -44,4 +44,14 @@
         <item name="android:paddingLeft">20dp</item>
     </style>
 
+    <!--杂志页面的RadioButton-->
+    <style name="MagazineRadioButton">
+        <item name="android:textColor">@drawable/magazine_tv_selecter</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 </resources>

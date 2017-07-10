@@ -8,7 +8,7 @@ import android.widget.RadioGroup;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
 import com.example.pc.imitationliangcang.base.BaseFragment;
-import com.example.pc.imitationliangcang.ui.fragment.MagazineFragment;
+import com.example.pc.imitationliangcang.ui.fragment.magazine_fragment.MagazineFragment;
 import com.example.pc.imitationliangcang.ui.fragment.ShareFragment;
 import com.example.pc.imitationliangcang.ui.fragment.ShopFragment;
 import com.example.pc.imitationliangcang.ui.fragment.TrendPersonFragment;
