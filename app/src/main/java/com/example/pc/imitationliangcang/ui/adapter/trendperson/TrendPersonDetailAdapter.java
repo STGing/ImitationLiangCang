@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.trenpersonfragment.TrendPersonDetailBean;
 import com.example.pc.imitationliangcang.ui.activity.GoodsDetailActivity;
+import com.example.pc.imitationliangcang.ui.activity.TrendPersonActivity;
 import com.example.pc.imitationliangcang.ui.activity.TrendPersonGoodsDetailActivity;
 import com.squareup.picasso.Picasso;
 
@@ -54,11 +55,10 @@ public class TrendPersonDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        final TrendPersonDetailBean.DataBean.ItemsBean.GoodsBean goodsBean = goods.get(position);
 
         //设置数据
         if (holder instanceof TrendPersonDetailGoodsViewHolder){
-
+            final TrendPersonDetailBean.DataBean.ItemsBean.GoodsBean goodsBean = goods.get(position);
             //设置图片
             Picasso.with(mContext)
                     .load(goodsBean.getGoods_image())
@@ -87,14 +87,29 @@ public class TrendPersonDetailAdapter extends RecyclerView.Adapter {
 
 
         } else if (holder instanceof TrendPersonDetailUserViewHolder){
+
+            final TrendPersonDetailBean.DataBean.ItemsBean.UsersBean usersBean = users.get(position);
+
             //设置用户图片，用户名称
             Picasso.with(mContext)
-                    .load(users.get(position).getUser_image().getOrig())
+                    .load(usersBean.getUser_image().getOrig())
                     .into(((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserPic);
             //名称
-            ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserName.setText(users.get(position).getUser_name());
+            ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserName.setText(usersBean.getUser_name());
             //工作
-            ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserWork.setText(users.get(position).getUser_desc()+"");
+            ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserWork.setText(usersBean.getUser_desc()+"");
+
+            //设置点击事件
+            ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //跳转到对应达人的页面
+                    Intent intent = new Intent(mContext, TrendPersonActivity.class);
+                    intent.putExtra("uid",usersBean.getUser_id());
+                    mContext.startActivity(intent);
+                }
+            });
+
         }
     }
 
