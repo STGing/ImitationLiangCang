@@ -100,7 +100,7 @@ public class TrendPersonActivity extends BaseActivity {
                     case R.id.trend_person_detail_careRB://关注
                         position = 2;
                         break;
-                    case R.id.trend_person_detail_framenLayout://粉丝
+                    case R.id.trend_person_detail_fansRB://粉丝
                         position = 3;
                         break;
                 }

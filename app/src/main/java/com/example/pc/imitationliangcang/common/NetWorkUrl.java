@@ -63,6 +63,17 @@ public class NetWorkUrl {
     public static final String TRENDPERSONDETAILRECOMMENDURL01 = "http://mobile.iliangcang.com/user/masterListInfo?app_key=Android&count=10&owner_id=";
     public static final String TRENDPERSONDETAILRECOMMENDURL02 = "&page=1&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
 
+    //达人详情页面喜欢的fragment的API
+    public static final String TRENDPERSONDETAILLIKEURL01 = "http://mobile.iliangcang.com/user/masterLike?app_key=Android&count=10&owner_id=";
+    public static final String TRENDPERSONDETAILLIKEURL02 = "&page=1&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
+
+    //达人详情页面关注的fragment的API
+    public static final String TRENDPERSONDETAILCAREURL01 = "http://mobile.iliangcang.com/user/masterFollow?app_key=Android&count=10&owner_id=";
+    public static final String TRENDPERSONDETAILCAREURL02 = "&page=1&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
+
+    //达人详情页面粉丝的fragment的API
+    public static final String TRENDPERSONDETAILFANSURL01 = "http://mobile.iliangcang.com/user/masterFollowed?app_key=Android&count=10&owner_id=";
+    public static final String TRENDPERSONDETAILFANSURL02 = "&page=1&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
 
     //商品的详细页面的API,根据 goods_id 来获取不同商品的数据，这里截取2部分，中间加ID
     public static final String GOODSDETAILURL01 = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id=";

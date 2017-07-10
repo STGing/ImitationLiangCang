@@ -66,8 +66,10 @@ public class TrendPersonDetailAdapter extends RecyclerView.Adapter {
             Picasso.with(mContext)
                     .load(users.get(position).getUser_image().getOrig())
                     .into(((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserPic);
-
+            //名称
             ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserName.setText(users.get(position).getUser_name());
+            //工作
+            ((TrendPersonDetailUserViewHolder) holder).trendPersonDetailUserWork.setText(users.get(position).getUser_desc()+"");
         }
     }
 
@@ -103,6 +105,8 @@ public class TrendPersonDetailAdapter extends RecyclerView.Adapter {
         ImageView trendPersonDetailUserPic;
         @BindView(R.id.trend_person_detail_userName)
         TextView trendPersonDetailUserName;
+        @BindView(R.id.trend_person_detail_userWork)
+        TextView trendPersonDetailUserWork;
 
         TrendPersonDetailUserViewHolder(View view) {
             super(view);
