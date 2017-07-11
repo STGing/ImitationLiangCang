@@ -79,4 +79,18 @@ public class NetWorkUrl {
     public static final String GOODSDETAILURL01 = "http://mobile.iliangcang.com/goods/goodsDetail?app_key=Android&goods_id=";
     public static final String GOODSDETAILURL02 = "&sig=BF287AF953103F390674E73DDA18CFD8%7C639843030233268&v=1.0";
 
+
+    /**
+     * 杂志页面
+     */
+
+    //杂志页面中作者API
+    public static final String MAGAZINEAUTHERURL = "http://mobile.iliangcang.com/topic/magazineAuthorList?app_key=Android&sig=2FA0974FFF1BC3DFA562AA63C8B5A84F%7C118265010131868&v=1.0";
+
+    //作者API明细(根据author_id来切换不同页面)
+    public static final String MAGAZINEAUTHERDETAILURL01 = "http://mobile.iliangcang.com/topic/magazineList?app_key=Android&author_id=";
+    public static final String MAGAZINEAUTHERDETAILURL02 = "&sig=2FA0974FFF1BC3DFA562AA63C8B5A84F%7C118265010131868&v=1.0";
+
+    //杂志列表页面API
+    public static final String MAGAZINELISTURL = "http://mobile.iliangcang.com/topic/magazineList?app_key=Android&author_id=1&sig=2FA0974FFF1BC3DFA562AA63C8B5A84F%7C118265010131868&v=1.0";
 }

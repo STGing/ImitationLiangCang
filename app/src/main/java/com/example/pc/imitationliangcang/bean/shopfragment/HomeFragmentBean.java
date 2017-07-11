@@ -175,6 +175,24 @@ public class HomeFragmentBean {
                 private TwoBean two;
                 private ThreeBean three;
                 private FourBean four;
+                private int content_type;//新增了类型
+                private String pic_url;//新增类型中的图片
+
+                public String getPic_url() {
+                    return pic_url;
+                }
+
+                public void setPic_url(String pic_url) {
+                    this.pic_url = pic_url;
+                }
+
+                public int getContent_type() {
+                    return content_type;
+                }
+
+                public void setContent_type(int content_type) {
+                    this.content_type = content_type;
+                }
 
                 public String getHome_id() {
                     return home_id;

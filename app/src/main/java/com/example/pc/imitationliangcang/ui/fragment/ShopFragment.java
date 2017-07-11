@@ -100,7 +100,7 @@ public class ShopFragment extends BaseFragment {
         shopFragmentTablayout.setupWithViewPager(shopFragmentViewPager);
 
         //设置默认选中首页页面
-        shopFragmentViewPager.setCurrentItem(2);
+        shopFragmentViewPager.setCurrentItem(0);
     }
 
 

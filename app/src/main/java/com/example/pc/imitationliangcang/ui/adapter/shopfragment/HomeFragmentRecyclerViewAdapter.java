@@ -26,7 +26,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
 
 
     /**
-     * 共有4中类型
+     * 共有5中类型
      *
      * @param list
      */
@@ -34,6 +34,7 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
     public static final int TYPE2 = 1;
     public static final int TYPE3 = 2;
     public static final int TYPE4 = 3;
+    public static final int TYPE6 = 6;//一张图片，但是指向商品列表
 
 
 
@@ -79,6 +80,9 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
             case TYPE4:
                 viewHolder = new Type4ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item4, parent,false));
                 break;
+            case TYPE6:
+                viewHolder = new Type6ViewHolder(mLayoutInflater.inflate(R.layout.home_fragment_item1, null,false));
+                break;
             default:
 
                 break;
@@ -102,6 +106,8 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
         } else if (holder instanceof Type4ViewHolder) {
             ((Type4ViewHolder) holder).setData(position);
             ((Type4ViewHolder) holder).setListener(position);
+        } else if (holder instanceof Type6ViewHolder){
+            ((Type6ViewHolder) holder).setData(position);
         }
     }
 
@@ -111,25 +117,30 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
         //判断是那个ViewHolder类型
         //获取bean
         HomeFragmentBean.DataBean.ItemsBean.ListBean listBean = list.get(position);
-        //获取type
-        int type = Integer.parseInt(listBean.getHome_type());
-        //判断
-        switch (type) {
-            case 1://第一种类型
-                currentType = TYPE1;
-                break;
-            case 2://第二种类型
-                currentType = TYPE2;
-                break;
-            case 3://第三种类型
-                currentType = TYPE3;
-                break;
-            case 4://第四种类型
-                currentType = TYPE4;
-                break;
-            default:
+        int content_type = listBean.getContent_type();
+        if (content_type == 0){
+            //获取type
+            int type = Integer.parseInt(listBean.getHome_type());
+            //判断
+            switch (type) {
+                case 1://第一种类型
+                    currentType = TYPE1;
+                    break;
+                case 2://第二种类型
+                    currentType = TYPE2;
+                    break;
+                case 3://第三种类型
+                    currentType = TYPE3;
+                    break;
+                case 4://第四种类型
+                    currentType = TYPE4;
+                    break;
+                default:
 
-                break;
+                    break;
+            }
+        } else {
+            currentType = TYPE6;
         }
 
         // return super.getItemViewType(position);
@@ -323,6 +334,46 @@ public class HomeFragmentRecyclerViewAdapter extends RecyclerView.Adapter {
                     mContext.startActivity(intent);
                 }
             });
+        }
+    }
+
+    class Type6ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.type1_iv)
+        ImageView type1Iv;
+
+        public Type6ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        /**
+         * 设置数据
+         * @param position
+         */
+        public void setData(int position) {
+            Picasso.with(mContext).load(list.get(position).getPic_url()).into(type1Iv);
+        }
+
+        /**
+         * 设置监听器
+         * @param position
+         */
+        public void setListener(int position) {
+//            HomeFragmentBean.DataBean.ItemsBean.ListBean listBean = list.get(position);
+//            String pic_url = listBean.getPic_url();
+//            final String topic_url = listBean.getOne().getTopic_url();
+//            //点击图片跳转到H5页面
+//            type1Iv.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    //Log.e("TAG","首页面的第一种类型点击事件");
+//                    Intent intent = new Intent(mContext, ShopFragmentWebViewActivity.class);
+//                    intent.putExtra("topic_url",topic_url);
+//                    mContext.startActivity(intent);
+//
+//                }
+//            });
         }
     }
 }
