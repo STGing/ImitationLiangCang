@@ -93,4 +93,10 @@ public class NetWorkUrl {
 
     //杂志列表页面API
     public static final String MAGAZINELISTURL = "http://mobile.iliangcang.com/topic/magazineList?app_key=Android&author_id=1&sig=2FA0974FFF1BC3DFA562AA63C8B5A84F%7C118265010131868&v=1.0";
+
+
+    /**
+     * 分享页面：这里用百思不得姐的推荐API
+     */
+    public static final String SHAREFRAGMENTUR = "http://s.budejie.com/topic/list/jingxuan/1/budejie-android-6.6.3/0-20.json";
 }

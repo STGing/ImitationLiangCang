@@ -1,13 +1,19 @@
 package com.example.pc.imitationliangcang.ui.activity;
 
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -98,6 +104,8 @@ public class GoodsDetailActivity extends BaseActivity {
     ImageView titleIvShopCar;
     @BindView(R.id.base_title_layout)
     RelativeLayout baseTitleLayout;
+
+    private PopupWindow popWnd;
 
     @Override
     public void initView() {
@@ -265,7 +273,7 @@ public class GoodsDetailActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.title_iv_back, R.id.title_iv_shopCar,R.id.goods_detail_IvlikeCount, R.id.goods_detail_shared, R.id.goods_detail_goodsChoiceType, R.id.goods_detail_brandIv, R.id.goods_detail_brand_detail_rl, R.id.goods_detail_goodsRb, R.id.goods_detail_buyReadRb, R.id.goods_detail_radioGroup, R.id.goods_detail_buyRead_Detail_btn, R.id.goods_detail_ibServer, R.id.goods_detail_addShopCar, R.id.goods_detail_buy})
+    @OnClick({R.id.title_iv_back, R.id.title_iv_shopCar, R.id.goods_detail_IvlikeCount, R.id.goods_detail_shared, R.id.goods_detail_goodsChoiceType, R.id.goods_detail_brandIv, R.id.goods_detail_brand_detail_rl, R.id.goods_detail_goodsRb, R.id.goods_detail_buyReadRb, R.id.goods_detail_radioGroup, R.id.goods_detail_buyRead_Detail_btn, R.id.goods_detail_ibServer, R.id.goods_detail_addShopCar, R.id.goods_detail_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.goods_detail_IvlikeCount:
@@ -297,7 +305,10 @@ public class GoodsDetailActivity extends BaseActivity {
                 break;
             case R.id.goods_detail_ibServer:
                 break;
-            case R.id.goods_detail_addShopCar:
+            case R.id.goods_detail_addShopCar://点击加入购物车
+
+                showPopUpWindow();//点击显示/关闭popupwindow
+
                 break;
             case R.id.goods_detail_buy:
                 break;
@@ -309,6 +320,60 @@ public class GoodsDetailActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 用于显示popupwindow
+     */
+    private void showPopUpWindow() {
+
+        //校验:如果为空就初始化
+        if (popWnd == null) {
+
+            //获取屏幕的参数
+            WindowManager windowManager = this.getWindowManager();
+            Display display = windowManager.getDefaultDisplay();
+
+            View contentView = LayoutInflater.from(this).inflate(R.layout.add_goods_popwin, null,false);
+
+            //初始化popupwindow，占据全屏
+            popWnd = new PopupWindow(contentView, display.getWidth(), display.getHeight());
+
+            //设置popupwindow动画
+            popWnd.setAnimationStyle(R.style.popAnimation);
+
+            popWnd.setFocusable(true);
+
+            popWnd.setBackgroundDrawable(new BitmapDrawable());
+
+            
+
+        }
+
+        //如果不为空，就显示/关闭
+        if (popWnd.isShowing()) {
+            closePopupWindow();
+        } else {
+            //获取rootView
+            //ViewGroup rootView = (ViewGroup) findViewById(android.R.id.content);
+            //设置从底部弹出
+            popWnd.showAtLocation(GoodsDetailActivity.this.findViewById(R.id.goods_detail_ll),Gravity.BOTTOM,0,0);
+            //popWnd.showAtLocation(rootView, Gravity.BOTTOM,0,0);
+
+        }
+
+    }
+
+    /**
+     * 关闭窗口
+     */
+    private void closePopupWindow() {
+        if (popWnd != null && popWnd.isShowing()) {
+            popWnd.dismiss();
+            popWnd = null;
+            WindowManager.LayoutParams params = this.getWindow().getAttributes();
+            params.alpha = 1f;
+            this.getWindow().setAttributes(params);
+        }
+    }
 
 
 }

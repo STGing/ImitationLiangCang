@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/goods_detail_ll"
     android:background="#1e2125"
     android:orientation="vertical"
     tools:context="com.example.pc.imitationliangcang.ui.activity.GoodsDetailActivity">
@@ -10,10 +11,10 @@
     <include layout="@layout/base_title"/>
 
     <ScrollView
-        android:layout_weight="1"
-        android:background="#1e2125"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1e2125">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,12 +104,12 @@
                 android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_gravity="center_vertical"
-                    android:textColor="#6f98c3"
-                    android:textSize="24sp"
-                    android:text="￥"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="￥"
+                    android:textColor="#6f98c3"
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/goods_detail_current_price"
@@ -274,10 +275,10 @@
 
                     <!--商品信息的图片列表-->
                     <LinearLayout
-                        android:layout_margin="10dp"
                         android:id="@+id/goods_detail_goodsInfo_pic_ll"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
                         android:orientation="vertical"
                         android:visibility="gone">
 
@@ -453,38 +454,38 @@
 
             </FrameLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <ImageButton
-                    android:id="@+id/goods_detail_ibServer"
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:background="#1b4a6d"
-                    android:src="@drawable/goods_detail_service_bottom" />
-
-                <Button
-                    android:id="@+id/goods_detail_addShopCar"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#3a668e"
-                    android:text="加入购物车" />
-
-                <Button
-                    android:id="@+id/goods_detail_buy"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#6f98c3"
-                    android:text="直接购买" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <ImageButton
+            android:id="@+id/goods_detail_ibServer"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="#1b4a6d"
+            android:src="@drawable/goods_detail_service_bottom" />
+
+        <Button
+            android:id="@+id/goods_detail_addShopCar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#3a668e"
+            android:text="加入购物车" />
+
+        <Button
+            android:id="@+id/goods_detail_buy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#6f98c3"
+            android:text="直接购买" />
+
+    </LinearLayout>
 
 </LinearLayout>
