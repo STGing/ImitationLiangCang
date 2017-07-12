@@ -8,61 +8,63 @@
     android:background="#1e2125"
     android:orientation="vertical">
 
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="#303030" />
+        android:layout_height="220dp"
+        >
 
         <FrameLayout
+            android:background="#303030"
             android:layout_width="match_parent"
+            android:layout_height="130dp"/>
+
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:id="@+id/add_goods_pop_iv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+             />
+
+        <ImageView
+            android:id="@+id/add_goods_pop_ivBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp">
-
-            <ImageView
-                android:id="@+id/add_goods_pop_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
-
-            <ImageView
-                android:id="@+id/add_goods_pop_ivBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/add_goods_to_shopcar_close" />
-
-        </FrameLayout>
+            android:layout_gravity="end|bottom"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/add_goods_to_shopcar_close" />
 
     </FrameLayout>
 
+
+
     <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/add_goods_pop_brandName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:textColor="#cccccc"
-        android:textSize="18sp"
+        android:textSize="22sp"
         tools:text="品牌名称" />
 
     <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
         android:id="@+id/add_goods_pop_goodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:textColor="#c2c2c2"
-        android:textSize="14sp"
+        android:textSize="16sp"
         tools:text="品牌名称" />
 
     <TextView
         android:id="@+id/add_goods_pop_goodPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:textColor="#6f98c3"
         android:textSize="20sp"
         tools:text="199.88" />
@@ -73,34 +75,35 @@
         android:layout_margin="10dp"
         android:background="#3b3f44" />
 
-
     <LinearLayout
-        android:id="@+id/add_goods_pop_tagsLL"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
 
-        <!--sku标签-->
-        <com.zhy.view.flowlayout.FlowLayout
-            android:id="@+id/add_goods_to_shopcar_flowlayout"
+        <LinearLayout
+            android:id="@+id/add_goods_pop_skull"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:max_select="1" />
+            android:orientation="vertical">
+        </LinearLayout>
 
-        <!--商品数量加减-->
         <com.example.pc.imitationliangcang.ui.view.AddSubView
-            android:id="@+id/add_goods_to_shopcar_addsubview"
+            android:id="@+id/add_goods_pop_addsub"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            >
+
+
+        </com.example.pc.imitationliangcang.ui.view.AddSubView>
+
 
     </LinearLayout>
 
-
     <Button
-        android:id="@+id/add_goods_to_shopcar_btnConfirm"
+        android:id="@+id/add_goods_pop_btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

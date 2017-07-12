@@ -30,7 +30,8 @@
         <activity android:name=".ui.activity.TrendPersonActivity" />
         <activity android:name=".ui.activity.TrendPersonGoodsDetailActivity" />
         <activity android:name=".ui.activity.MaganizeActivity" />
-        <activity android:name=".ui.activity.MagazineAutherDetailActivity"></activity>
+        <activity android:name=".ui.activity.MagazineAutherDetailActivity" />
+        <activity android:name=".ui.activity.ShopCarActivity"></activity>
     </application>
 
 </manifest>

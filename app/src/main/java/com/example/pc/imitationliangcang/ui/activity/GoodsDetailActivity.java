@@ -1,5 +1,6 @@
 package com.example.pc.imitationliangcang.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
@@ -23,15 +24,21 @@ import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
 import com.example.pc.imitationliangcang.bean.GoodsDetailBean;
 import com.example.pc.imitationliangcang.common.NetWorkUrl;
+import com.example.pc.imitationliangcang.ui.view.AddSubView;
 import com.example.pc.imitationliangcang.utils.MyImageLoader;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
 
 /**
  * 用于显示具体的某个商品的详细信息
@@ -106,10 +113,24 @@ public class GoodsDetailActivity extends BaseActivity {
     RelativeLayout baseTitleLayout;
 
     private PopupWindow popWnd;
+    private GoodsDetailBean.DataBean.ItemsBean items;
+    private LayoutInflater mInflater;
+
+    /**
+     * 商品sku属性的标记
+     */
+    private String color = "1";
+    private String number = "7";
+    private String capacity = "6";//容量
+    private String species = "13";//种类
+    private String style = "37";//款式
+
 
     @Override
     public void initView() {
         super.initView();
+
+        mInflater = LayoutInflater.from(this);
 
         //设置标题
         baseTitleLayout.setBackgroundColor(Color.parseColor("#00ffffff"));//背景透明
@@ -141,7 +162,7 @@ public class GoodsDetailActivity extends BaseActivity {
 
         //1.解析json数据
         GoodsDetailBean goodsDetailBean = new Gson().fromJson(s, GoodsDetailBean.class);
-        GoodsDetailBean.DataBean.ItemsBean items = goodsDetailBean.getData().getItems();
+        items = goodsDetailBean.getData().getItems();
 
         //2.设置商品轮播图片
         List<String> images_item = items.getImages_item();//获取轮播图片集合
@@ -316,6 +337,9 @@ public class GoodsDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.title_iv_shopCar://标题购物车
+
+                Intent intent = new Intent(this,ShopCarActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -332,7 +356,7 @@ public class GoodsDetailActivity extends BaseActivity {
             WindowManager windowManager = this.getWindowManager();
             Display display = windowManager.getDefaultDisplay();
 
-            View contentView = LayoutInflater.from(this).inflate(R.layout.add_goods_popwin, null,false);
+            View contentView = LayoutInflater.from(this).inflate(R.layout.add_goods_popwin, null, false);
 
             //初始化popupwindow，占据全屏
             popWnd = new PopupWindow(contentView, display.getWidth(), display.getHeight());
@@ -344,9 +368,117 @@ public class GoodsDetailActivity extends BaseActivity {
 
             popWnd.setBackgroundDrawable(new BitmapDrawable());
 
-            
+            //初始化popupwindow里面的子View
+            ImageView addGoodsPopIv = (ImageView) contentView.findViewById(R.id.add_goods_pop_iv);
+            ImageView addGoodsPopIvBack = (ImageView) contentView.findViewById(R.id.add_goods_pop_ivBack);
+            TextView addGoodsPopBrandName = (TextView) contentView.findViewById(R.id.add_goods_pop_brandName);
+            TextView addGoodsPopGoodName = (TextView) contentView.findViewById(R.id.add_goods_pop_goodName);
+            TextView addGoodsPopGoodPrice = (TextView) contentView.findViewById(R.id.add_goods_pop_goodPrice);
+            LinearLayout skuLLs = (LinearLayout) contentView.findViewById(R.id.add_goods_pop_skull);
+            AddSubView addsub = (AddSubView) contentView.findViewById(R.id.add_goods_pop_addsub);
+            Button btnConfirm = (Button) contentView.findViewById(R.id.add_goods_pop_btnConfirm);
+
+            //设置数据
+            Picasso.with(this)
+                    .load(items.getGoods_image())
+                    .into(addGoodsPopIv);
+
+            //点击x号退出popupwindow
+            addGoodsPopIvBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    popWnd.dismiss();
+                }
+            });
+
+            //设置品牌名称
+            addGoodsPopBrandName.setText(items.getBrand_info().getBrand_name());
+
+            //设置商品名称
+            addGoodsPopGoodName.setText(items.getGoods_name());
+
+            //价格
+            String discount_price = items.getDiscount_price();
+            if (!TextUtils.isEmpty(discount_price)) {
+                addGoodsPopGoodPrice.setText(discount_price);
+            } else {
+                addGoodsPopGoodPrice.setText(items.getPrice());
+            }
+
+            //动态建立商品的sku
+            List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean> sku_info = items.getSku_info();
+            //循环遍历sku
+            for (int i = 0; i < sku_info.size(); i++) {
+
+                //动态生成装有一个TextView 和 flowLayout的LL布局
+                LinearLayout skull = (LinearLayout) mInflater.inflate(R.layout.sku_layout,null,false);
+                TextView skuTitle = (TextView) skull.findViewById(R.id.sku_title);
+                final TagFlowLayout skufl = (TagFlowLayout) skull.findViewById(R.id.sku_flowlayout);
+
+                //获取数据
+                GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean skuInfoBean = sku_info.get(i);
+                //1.sku标题
+                String type_name = skuInfoBean.getType_name();//获取类型名称
+                skuTitle.setText(type_name);
+
+
+                //2.sku属性
+                final List<String> skulist = new ArrayList<>();
+                List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean.AttrListBean> attrList = skuInfoBean.getAttrList();
+                for (int j = 0; j < attrList.size(); j++) {
+                    GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean.AttrListBean attrListBean = attrList.get(j);
+                    String attr_name = attrListBean.getAttr_name();//获取属性名称
+                    skulist.add(attr_name);
+                }
+
+                if (skulist != null && skulist.size() > 0) {
+                    //将sku属性的集合添加到flowlayout中
+                    skufl.setAdapter(new TagAdapter<String>(skulist) {
+                        @Override
+                        public View getView(FlowLayout parent, int position, String s) {
+                            TextView tv = (TextView) mInflater.inflate(R.layout.sku_text,
+                                    skufl, false);
+                            tv.setText(s);
+                            return tv;
+                        }
+
+                        //设置默认选中
+                        @Override
+                        public boolean setSelected(int position, String s) {
+
+                            String s1 = skulist.get(0);
+
+                            return s1.equals(s);
+                        }
+                    });
+                }
+
+                //3.最后将skulayout布局添加到pop总布局上
+                skuLLs.addView(skull);
+            }
+
+
+            //设置商品数量加减的监听
+            addsub.setOnNumberChangeListener(new AddSubView.OnNumberChangeListener() {
+                @Override
+                public void numberChange(int value) {
+
+                }
+            });
+
+
+            //设置点击确定，添加到购物车的监听
+            btnConfirm.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
 
         }
+
+
+
 
         //如果不为空，就显示/关闭
         if (popWnd.isShowing()) {
@@ -355,12 +487,13 @@ public class GoodsDetailActivity extends BaseActivity {
             //获取rootView
             //ViewGroup rootView = (ViewGroup) findViewById(android.R.id.content);
             //设置从底部弹出
-            popWnd.showAtLocation(GoodsDetailActivity.this.findViewById(R.id.goods_detail_ll),Gravity.BOTTOM,0,0);
+            popWnd.showAtLocation(GoodsDetailActivity.this.findViewById(R.id.goods_detail_ll), Gravity.BOTTOM, 0, 0);
             //popWnd.showAtLocation(rootView, Gravity.BOTTOM,0,0);
 
         }
 
     }
+
 
     /**
      * 关闭窗口
