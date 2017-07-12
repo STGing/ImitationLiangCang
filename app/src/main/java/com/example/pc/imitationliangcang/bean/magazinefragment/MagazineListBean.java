@@ -133,6 +133,7 @@ public class MagazineListBean {
         }
 
         public static class ItemsBean{
+
             private Map<String,List<Bean>> infos;
 
             private List<String> keys;

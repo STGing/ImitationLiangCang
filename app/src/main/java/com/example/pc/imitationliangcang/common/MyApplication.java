@@ -1,6 +1,7 @@
 package com.example.pc.imitationliangcang.common;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.lzy.okgo.OkGo;
 
@@ -10,9 +11,13 @@ import com.lzy.okgo.OkGo;
 
 public class MyApplication extends Application {
 
+    private static Context mContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mContext = getApplicationContext();
 
         //初始化okGo
         initOkGo();
@@ -21,4 +26,11 @@ public class MyApplication extends Application {
     private void initOkGo() {
         OkGo.getInstance().init(this);
     }
+
+    /**
+     * 获取全局上下文*/
+    public static Context getContext() {
+        return mContext;
+    }
+
 }

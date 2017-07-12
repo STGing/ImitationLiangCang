@@ -1,5 +1,6 @@
 package com.example.pc.imitationliangcang.ui.activity;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,7 +8,11 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
+import com.example.pc.imitationliangcang.bean.GoodsInfo;
+import com.example.pc.imitationliangcang.db.DBDao;
 import com.example.pc.imitationliangcang.ui.adapter.ShopCarAdapter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,6 +45,7 @@ public class ShopCarActivity extends BaseActivity {
     TextView shopCarSettlement;
 
     private ShopCarAdapter adapter;
+    private DBDao dbDao;
 
     @Override
     public int getLayoutID() {
@@ -55,6 +61,25 @@ public class ShopCarActivity extends BaseActivity {
         titleTvName.setVisibility(View.VISIBLE);
         titleTvName.setText("购物车");
         titleTvEdit.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+
+        //从数据库获取数据
+        dbDao = new DBDao();
+        List<GoodsInfo> goodsInfos = dbDao.getData();
+
+        //设置布局和适配器
+        if (goodsInfos != null && goodsInfos.size() > 0){
+            LinearLayoutManager manamger = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+            shopCarRv.setLayoutManager(manamger);
+
+            adapter = new ShopCarAdapter(this,goodsInfos);
+            shopCarRv.setAdapter(adapter);
+        }
+
     }
 
     @OnClick({R.id.title_iv_back, R.id.title_tv_edit, R.id.shop_car_swiAllCheck, R.id.shop_car_settlement})

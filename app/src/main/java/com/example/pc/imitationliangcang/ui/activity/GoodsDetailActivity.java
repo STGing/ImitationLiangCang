@@ -19,11 +19,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
 import com.example.pc.imitationliangcang.bean.GoodsDetailBean;
+import com.example.pc.imitationliangcang.bean.GoodsInfo;
 import com.example.pc.imitationliangcang.common.NetWorkUrl;
+import com.example.pc.imitationliangcang.db.DBDao;
 import com.example.pc.imitationliangcang.ui.view.AddSubView;
 import com.example.pc.imitationliangcang.utils.MyImageLoader;
 import com.google.gson.Gson;
@@ -124,6 +127,9 @@ public class GoodsDetailActivity extends BaseActivity {
     private String capacity = "6";//容量
     private String species = "13";//种类
     private String style = "37";//款式
+    private int goodsValue;//购买商品数量
+    private GoodsInfo goodsInfo;
+    private DBDao dbDao;
 
 
     @Override
@@ -286,6 +292,12 @@ public class GoodsDetailActivity extends BaseActivity {
 
         //13.设置购物须知
         goodsDetailBuyReadDetailTv.setText(items.getGood_guide().getContent());
+
+        //14.建立一个Bean对象保存要购买的商品信息
+        goodsInfo = new GoodsInfo();
+
+        //15.初始化数据库Dao
+        dbDao = new DBDao();
     }
 
     @Override
@@ -301,7 +313,8 @@ public class GoodsDetailActivity extends BaseActivity {
                 break;
             case R.id.goods_detail_shared:
                 break;
-            case R.id.goods_detail_goodsChoiceType:
+            case R.id.goods_detail_goodsChoiceType://选择颜色类型
+                showPopUpWindow();
                 break;
             case R.id.goods_detail_brandIv:
                 break;
@@ -462,7 +475,7 @@ public class GoodsDetailActivity extends BaseActivity {
             addsub.setOnNumberChangeListener(new AddSubView.OnNumberChangeListener() {
                 @Override
                 public void numberChange(int value) {
-
+                    goodsValue = value;
                 }
             });
 
@@ -471,7 +484,24 @@ public class GoodsDetailActivity extends BaseActivity {
             btnConfirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //获取数据
+                    goodsInfo.setGoods_id(items.getGoods_id());
+                    goodsInfo.setGoods_name(items.getGoods_name());
+                    goodsInfo.setGoods_image(items.getGoods_image());
+                    goodsInfo.setOwner_name(items.getOwner_name());
+                    goodsInfo.setPrice(items.getPrice());
+                    goodsInfo.setDiscount_price(items.getDiscount_price());
+                    goodsInfo.setSku_info(items.getSku_info());
 
+                    //一定要设置数量
+                    goodsInfo.setGoodsNumber(goodsValue);
+
+                    //将数据保存到数据库
+                    dbDao.addData(goodsInfo);
+
+                    //结束当前页面，并提示
+                    popWnd.dismiss();
+                    Toast.makeText(GoodsDetailActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                 }
             });
 
