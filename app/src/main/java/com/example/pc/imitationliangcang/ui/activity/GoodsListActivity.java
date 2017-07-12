@@ -1,5 +1,6 @@
 package com.example.pc.imitationliangcang.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -87,4 +88,18 @@ public class GoodsListActivity extends BaseActivity {
         return R.layout.activity_goods_list;
     }
 
+    @Override
+    public void initLIstener() {
+        super.initLIstener();
+
+        titleIvShopCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击购物车的点击事件
+                Intent intent = new Intent(GoodsListActivity.this,ShopCarActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 }

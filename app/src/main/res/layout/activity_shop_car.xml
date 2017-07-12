@@ -7,221 +7,222 @@
     android:orientation="vertical"
     tools:context="com.example.pc.imitationliangcang.ui.activity.ShopCarActivity">
 
-    <include layout="@layout/base_title"/>
+    <include layout="@layout/base_title" />
 
     <!--根据购物车中商品数量添加对应的商品View-->
     <android.support.v7.widget.RecyclerView
-        android:background="#1e2125"
         android:id="@+id/shop_car_rv"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1e2125" />
 
     <LinearLayout
-        android:background="#24262a"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="120dp"
+        android:background="#24262a"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/shop_car_iv_reach"
-                android:src="@drawable/shop_car_reach_discount"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/shop_car_reach_discount" />
 
             <TextView
-                android:layout_toRightOf="@id/shop_car_iv_reach"
-                android:textColor="#a6a6a6"
-                android:layout_marginLeft="20dp"
-                android:text="满减"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/shop_car_iv_reach"
+                android:text="满减"
+                android:textColor="#a6a6a6" />
 
             <TextView
                 android:id="@+id/shop_car_tv_fullSbuPrice"
-                android:layout_alignParentRight="true"
-                android:textColor="#a6a6a6"
-                android:text="-￥ %1$s"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="-￥ %1$s"
+                android:textColor="#a6a6a6" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/shop_car_iv_discount"
-                android:src="@drawable/shop_car_discount_discount"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/shop_car_discount_discount" />
 
             <TextView
-                android:layout_toRightOf="@id/shop_car_iv_discount"
-                android:textColor="#a6a6a6"
-                android:layout_marginLeft="20dp"
-                android:text="折扣"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/shop_car_iv_discount"
+                android:text="折扣"
+                android:textColor="#a6a6a6" />
 
             <TextView
                 android:id="@+id/shop_car_tv_discountPrice"
-                android:layout_alignParentRight="true"
-                android:textColor="#a6a6a6"
-                android:text="-￥ %1$s"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="-￥ %1$s"
+                android:textColor="#a6a6a6" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/shop_car_iv_pack"
-                android:src="@drawable/shop_car_pack_bottom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/shop_car_pack_bottom" />
 
             <TextView
-                android:layout_toRightOf="@id/shop_car_iv_pack"
-                android:textColor="#a6a6a6"
-                android:layout_marginLeft="20dp"
-                android:text="包装"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/shop_car_iv_pack"
+                android:text="包装"
+                android:textColor="#a6a6a6" />
 
             <TextView
                 android:id="@+id/shop_car_tv_packPrice"
-                android:layout_alignParentRight="true"
-                android:textColor="#a6a6a6"
-                android:text="+￥ %1$s (礼物包装费)"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="+￥ %1$s (礼物包装费)"
+                android:textColor="#a6a6a6" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/shop_car_ship"
-                android:src="@drawable/shop_car_ship_bottom"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/shop_car_ship_bottom" />
 
             <TextView
-                android:layout_toRightOf="@id/shop_car_ship"
-                android:textColor="#a6a6a6"
-                android:layout_marginLeft="20dp"
-                android:text="包邮"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/shop_car_ship"
+                android:text="包邮"
+                android:textColor="#a6a6a6" />
 
             <TextView
                 android:id="@+id/shop_car_tv_shipPrice"
-                android:layout_alignParentRight="true"
-                android:textColor="#a6a6a6"
-                android:text="￥ %1$s (限中国大陆地区)"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="￥ %1$s (限中国大陆地区)"
+                android:textColor="#a6a6a6" />
 
         </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_weight="3"
-            android:background="#3a668c"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="#3a668c">
 
             <ImageView
                 android:id="@+id/shop_car_swiAllCheck"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center"
-                android:src="@drawable/shop_cart_unselected"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:clickable="true"
+                android:src="@drawable/shop_car_swicheck_selector" />
 
             <TextView
-                android:textSize="16sp"
-                android:textColor="#fefefe"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center"
-                android:text="全选"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:text="全选"
+                android:textColor="#fefefe"
+                android:textSize="16sp" />
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:textColor="#f4f6f9"
-                        android:text="总计 ："
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="总计 ："
+                        android:textColor="#f4f6f9" />
 
                     <TextView
                         android:id="@+id/shop_car_totalPrice"
-                        android:textColor="#f4f6f9"
-                        android:text="￥ %1$s"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="￥ %1$s"
+                        android:textColor="#f4f6f9" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_marginLeft="10dp"
-                        android:textColor="#628cb6"
-                        android:text="已节省 ："
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="已节省 ："
+                        android:textColor="#628cb6" />
 
                     <TextView
                         android:id="@+id/shop_car_savePrice"
-                        android:textColor="#628cb6"
-                        android:text="￥ %1$s"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="￥ %1$s"
+                        android:textColor="#628cb6" />
 
                 </LinearLayout>
 
@@ -230,16 +231,15 @@
 
         <TextView
             android:id="@+id/shop_car_settlement"
-            android:gravity="center"
-            android:text="结算"
-            android:textColor="#fbfcfd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#6f98c3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:gravity="center"
+            android:text="结算"
+            android:textColor="#fbfcfd" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>
