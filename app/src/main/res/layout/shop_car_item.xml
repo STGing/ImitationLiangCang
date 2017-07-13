@@ -118,7 +118,7 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
-        android:text="× %1$d"
+        tools:text="× 3"
         android:textColor="#a6a6a6"
         android:visibility="gone" />
 
