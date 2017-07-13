@@ -138,7 +138,7 @@ public class GoodsDetailActivity extends BaseActivity {
     private List<String> specielist = new ArrayList<>();
     private List<String> stylelist = new ArrayList<>();
 
-    private static int goodsValue;//购买商品数量
+    private static int goodsValue = 1;//购买商品数量
 
     private DBDao dbDao;//数据库Dao
     /**

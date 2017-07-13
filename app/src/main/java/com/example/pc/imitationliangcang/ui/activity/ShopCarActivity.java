@@ -94,6 +94,8 @@ public class ShopCarActivity extends BaseActivity {
 
         });
 
+        //默认设置全选所有价格
+        shopCarSwiAllCheck.setChecked(true);
 
     }
 
