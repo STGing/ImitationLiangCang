@@ -63,6 +63,64 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         this.mLayoutInflater = LayoutInflater.from(mContext);
     }
 
+
+    public void setView(TextView shopCarTvFullSbuPrice, TextView shopCarTvDiscountPrice
+            , TextView shopCarTvPackPrice, TextView shopCarTvShipPrice
+            , CheckBox shopCarSwiAllCheck, TextView shopCarTotalPrice
+            , TextView shopCarSavePrice) {
+
+        this.shopCarTvFullSbuPrice = shopCarTvFullSbuPrice;
+        this.shopCarTvDiscountPrice = shopCarTvDiscountPrice;
+        this.shopCarTvPackPrice = shopCarTvPackPrice;
+        this.shopCarTvShipPrice = shopCarTvShipPrice;
+        this.shopCarSwiAllCheck = shopCarSwiAllCheck;
+        this.shopCarTotalPrice = shopCarTotalPrice;
+        this.shopCarSavePrice = shopCarSavePrice;
+
+        //获取3个价格的format格式
+        savePriceFormat = shopCarSavePrice.getText().toString();
+        toltalPriceFormat = shopCarTotalPrice.getText().toString();
+        discountPriceFomat = shopCarTvDiscountPrice.getText().toString();
+
+        /**
+         * 点击全选的checkBox的点击事件
+         */
+        shopCarSwiAllCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isAllCheckd){
+                    //现在为全选，点击了之后，切换到全不选的状态
+                    isAllCheckd = false;
+
+                    //切换item的所有checked状态，并刷新适配器
+                    switchItemCheckd();
+
+
+                    //1.清空 折扣 节省 总价 的全局变量
+                    clearAllPrice();
+
+                    //2.清空底部的价格选项
+                    clearBottomData();
+
+
+                    Toast.makeText(mContext, "全不选", Toast.LENGTH_SHORT).show();
+                } else {
+                    //现在为全不选，点击了之后，切换到全选的状态
+                    isAllCheckd = true;//设置状态全选
+
+                    //1.从新计算价格(底部的6个价格)
+                    //flashPrice();
+
+                    //2.切换item里面的checkBox的选择状态，并刷新适配器
+                    switchItemCheckd();
+
+                    Toast.makeText(mContext, "全选", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
     @Override
     public ShopCarViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -75,6 +133,9 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     public void onBindViewHolder(ShopCarViewHolder holder, int position) {
         //获取数据
         final GoodsInfo goodsInfo = list.get(position);
+
+        //checkBox的选择:根据商品是否被选中设置
+        holder.shopCarItemIvCheck.setChecked(goodsInfo.isChecked());
 
         //设置数据
         //商品图片
@@ -122,48 +183,42 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         //设置屏幕底部6个价格
         setBottomData(goodsInfo);
 
-        //checkBox的选择
-        holder.shopCarItemIvCheck.setChecked(true);
-
         //设置增加和减少商品数量按钮的监听
         holder.shopCarItemAddsub.setOnNumberChangeListener(new AddSubView.OnNumberChangeListener() {
             @Override
             public void numberChange(int value) {
                 //1.修改goodinfo的数量信息
-                goodsInfo.setGoodsNumber(value);
+                //goodsInfo.setGoodsNumber(value);
                 //2.刷新价格
             }
         });
 
 
-        /**
-         * 点击全选的checkBox的点击事件
-         */
-        shopCarSwiAllCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    }
+
+    //切换所有item的checkBox状态
+    private void switchItemCheckd() {
+
+        if (list != null && list.size() > 0) {
+
+            for (int i = 0; i < list.size(); i++) {
+
+                GoodsInfo goodsInfo = list.get(i);
+
                 if (isAllCheckd){
-                    //现在为全选，点击了之后，切换到全不选的状态
-                    isAllCheckd = false;
+                    //全选,所以item也全选
+                    goodsInfo.setChecked(true);
 
-                    //1.清空 折扣 节省 总价 的全局变量
-                    clearAllPrice();
-
-                    //2.清空底部的价格选项
-                    clearBottomData();
-
-                    Toast.makeText(mContext, "全不选", Toast.LENGTH_SHORT).show();
                 } else {
-                    //现在为全不选，点击了之后，切换到全选的状态
-                    isAllCheckd = true;//设置状态全选
-
-                    //从新计算价格(底部的6个价格)
-                    flashPrice();
-
-                    Toast.makeText(mContext, "全选", Toast.LENGTH_SHORT).show();
+                    //item全不选
+                    goodsInfo.setChecked(false);
                 }
             }
-        });
+
+            //循环完成之后，刷新适配器。
+            notifyDataSetChanged();
+        }
+
 
     }
 
@@ -232,7 +287,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         //设置折扣价
         setDiscountPrice();
         //设置总价格
-        setTatalPrice();
+        setTotalPrice();
         //设置节省价格
         setSavePrice();
     }
@@ -247,16 +302,6 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         String format1 = String.format(fullPrice, "0.0");
         shopCarTvFullSbuPrice.setText(format1);
         //2.折扣价格 = 未打折价格-打折价格
-        //判断有无折扣
-        if (goodsInfo.getDiscount_price().equals("0")){
-            //没有折扣
-            discountPri += 0.0;
-        } else {
-            //有折扣
-            Double disPri = (Double.parseDouble(goodsInfo.getPrice())-Double.parseDouble(goodsInfo.getDiscount_price()))
-                    *goodsInfo.getGoodsNumber();
-            discountPri += disPri;
-        }
         setDiscountPrice();
 
         //3.包装价格//设置为0.0
@@ -267,50 +312,111 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         String shipPrice = shopCarTvShipPrice.getText().toString();
         String format3 = String.format(shipPrice, "0.0");
         shopCarTvShipPrice.setText(format3);
-        //5.总价 : 1.有折扣 * 数量  2:无折扣   价格* 数量
-        if (goodsInfo.getDiscount_price().equals("0")){
-            //没有折扣
-            totalPri += Double.parseDouble(goodsInfo.getPrice())*goodsInfo.getGoodsNumber();
-        } else {
-            //有折扣
-            totalPri += Double.parseDouble(goodsInfo.getDiscount_price())*goodsInfo.getGoodsNumber();
-        }
-        setTatalPrice();
+
+        //5.设置总价格 : 1.有折扣 * 数量  2:无折扣   价格* 数量
+        setTotalPrice();
 
         //6.节省价格 = 折扣价格
-        if (goodsInfo.getDiscount_price().equals("0")){
-            //没有折扣
-            discountPri += 0.0;
-        } else {
-            //有折扣
-            Double svaePri = (Double.parseDouble(goodsInfo.getPrice())-Double.parseDouble(goodsInfo.getDiscount_price()))
-                    *goodsInfo.getGoodsNumber();
-            savePri += svaePri;
-        }
         setSavePrice();
     }
 
     /**
-     * 根据savePri设置节省的价格
+     * 根据数据设置节省的价格
      */
     private void setSavePrice() {
-        String format5 = String.format(savePriceFormat, savePri+"");
+
+        Double savePrice = 0.0;
+
+        if (list != null && list.size()>0) {
+
+            for (int i = 0; i < list.size(); i++) {
+
+                GoodsInfo goodsInfo = list.get(i);
+
+                //判断该商品有没有checked
+                if (goodsInfo.isChecked()){
+                    //选中，计算
+                    if (goodsInfo.getDiscount_price().equals("0")){
+                        //没有折扣
+                    } else {
+                        //有折扣
+                        Double svaePri = (Double.parseDouble(goodsInfo.getPrice())-Double.parseDouble(goodsInfo.getDiscount_price()))
+                                *goodsInfo.getGoodsNumber();
+                        savePrice += svaePri;
+                    }
+                } else {
+                    //没有选中，不用计算
+                }
+
+            }
+        }
+
+        String format5 = String.format(savePriceFormat, savePrice+"");
         shopCarSavePrice.setText(format5);
     }
 
     /**
-     * 根据totlaPri设置总价格
+     * 根据数据设置总价格
      */
-    private void setTatalPrice() {
-        String format4 = String.format(toltalPriceFormat, this.totalPri+"");
-        shopCarTotalPrice.setText(format4);
+    private void setTotalPrice() {
+        Double totalPrice = 0.0;
+
+        if (list != null && list.size()>0){
+
+            for (int i = 0; i < list.size(); i++) {
+
+                GoodsInfo goodsInfo = list.get(i);
+
+                //判断该商品有没有checked
+                if (goodsInfo.isChecked()) {
+                    //选中，计算
+
+                    //判断有无折扣
+                    if (goodsInfo.getDiscount_price().equals("0")){
+                        //没有折扣
+                        totalPrice += Double.parseDouble(goodsInfo.getPrice())*goodsInfo.getGoodsNumber();
+                    } else {
+                        //有折扣
+                        totalPrice += Double.parseDouble(goodsInfo.getDiscount_price())*goodsInfo.getGoodsNumber();
+                    }
+                }
+            }
+
+            //设置数据
+            String format4 = String.format(toltalPriceFormat, totalPrice+"");
+            shopCarTotalPrice.setText(format4);
+        }
+
     }
 
     /**
-     * 根据discountPri设置折扣价格
+     * 根据数据设置折扣价格
      */
     private void setDiscountPrice() {
-        String format = String.format(discountPriceFomat, discountPri+"");
+        Double discountPrice = 0.0;
+
+        if (list != null && list.size()>0) {
+
+            for (int i = 0; i < list.size(); i++) {
+                GoodsInfo goodsInfo = list.get(i);
+
+                //判断该商品有没有checked
+                if (goodsInfo.isChecked()) {
+                    //选中，计算
+                    if (goodsInfo.getDiscount_price().equals("0")){
+                        //没有折扣
+                    } else {
+                        //有折扣
+                        Double disPri = (Double.parseDouble(goodsInfo.getPrice())-Double.parseDouble(goodsInfo.getDiscount_price()))
+                                *goodsInfo.getGoodsNumber();
+                        discountPrice += disPri;
+                    }
+                }
+
+            }
+        }
+
+        String format = String.format(discountPriceFomat, discountPrice+"");
         shopCarTvDiscountPrice.setText(format);
     }
 
@@ -319,24 +425,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         return list == null ? 0 : list.size();
     }
 
-    public void setView(TextView shopCarTvFullSbuPrice, TextView shopCarTvDiscountPrice
-            , TextView shopCarTvPackPrice, TextView shopCarTvShipPrice
-            , CheckBox shopCarSwiAllCheck, TextView shopCarTotalPrice
-            , TextView shopCarSavePrice) {
 
-        this.shopCarTvFullSbuPrice = shopCarTvFullSbuPrice;
-        this.shopCarTvDiscountPrice = shopCarTvDiscountPrice;
-        this.shopCarTvPackPrice = shopCarTvPackPrice;
-        this.shopCarTvShipPrice = shopCarTvShipPrice;
-        this.shopCarSwiAllCheck = shopCarSwiAllCheck;
-        this.shopCarTotalPrice = shopCarTotalPrice;
-        this.shopCarSavePrice = shopCarSavePrice;
-
-        //获取3个价格的format格式
-        savePriceFormat = shopCarSavePrice.getText().toString();
-        toltalPriceFormat = shopCarTotalPrice.getText().toString();
-        discountPriceFomat = shopCarTvDiscountPrice.getText().toString();
-    }
 
 
     class ShopCarViewHolder extends RecyclerView.ViewHolder{

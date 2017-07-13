@@ -16,6 +16,16 @@ public class GoodsInfo implements Serializable{
     private String discount_price;//折扣价格
     private int goodsNumber;//商品数量
     private String choiceSku;
+    //是否被选中(默认被选中)
+    private boolean isChecked = true;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     public String getChoiceSku() {
         return choiceSku;
