@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class ShopCarActivity extends BaseActivity {
+    private static final String TAG = "ShopCarActivity";
 
     @BindView(R.id.title_iv_back)
     ImageView titleIvBack;
@@ -69,13 +70,15 @@ public class ShopCarActivity extends BaseActivity {
         titleIvBack.setVisibility(View.VISIBLE);
         titleTvName.setVisibility(View.VISIBLE);
         titleTvName.setText("购物车");
+
         titleTvEdit.setVisibility(View.VISIBLE);//显示编辑
-        titleTvEdit.setTag(EDIT);//设置状态
+        titleTvEdit.setTag(COMPLITE);//设置状态
 
         //设置监听
         titleTvEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Log.e("TAG","触发了编辑的点击事件");
                 int tag = (int) titleTvEdit.getTag();
                 switch (tag) {
                     case 1://编辑
@@ -94,25 +97,23 @@ public class ShopCarActivity extends BaseActivity {
 
     }
 
-
     /**
      * 显示完成，隐藏编辑
      */
     private void showComplite() {
         titleTvEdit.setText("完成");
-        titleTvEdit.setTag(COMPLITE);
+        titleTvEdit.setTag(EDIT);
 
-
+        adapter.showEdit();
     }
-
     /**
      * 显示编辑，隐藏完成
      */
     private void showEdit() {
         titleTvEdit.setText("编辑");
-        titleTvEdit.setTag(EDIT);
+        titleTvEdit.setTag(COMPLITE);
 
-
+        adapter.hideEdit();
     }
 
     @Override
@@ -136,6 +137,16 @@ public class ShopCarActivity extends BaseActivity {
 
             adapter = new ShopCarAdapter(this,list);
             shopCarRv.setAdapter(adapter);
+
+            //将activity的View传递到适配器中
+            adapter.setView(shopCarTvFullSbuPrice//满减费
+                    ,shopCarTvDiscountPrice//折扣费
+                    ,shopCarTvPackPrice//包装费
+                    ,shopCarTvShipPrice//运费
+                    ,shopCarSwiAllCheck//全选按钮
+                    ,shopCarTotalPrice//总价格
+                    ,shopCarSavePrice//节省价格
+                    );
         }
 
     }

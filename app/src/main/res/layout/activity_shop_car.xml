@@ -166,8 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:button="@drawable/shop_car_swicheck_selector"
-                />
+                android:button="@drawable/shop_car_swicheck_selector" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -185,46 +184,20 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/shop_car_totalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="总计 ：￥ %1$s"
+                    android:textColor="#f4f6f9" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="总计 ："
-                        android:textColor="#f4f6f9" />
-
-                    <TextView
-                        android:id="@+id/shop_car_totalPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥ %1$s"
-                        android:textColor="#f4f6f9" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/shop_car_savePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="已节省 ：￥ %1$s"
+                    android:textColor="#628cb6" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="已节省 ："
-                        android:textColor="#628cb6" />
-
-                    <TextView
-                        android:id="@+id/shop_car_savePrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥ %1$s"
-                        android:textColor="#628cb6" />
-
-                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>

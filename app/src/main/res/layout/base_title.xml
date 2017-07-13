@@ -88,6 +88,7 @@
 
     <!--购物车页面的编辑-->
     <TextView
+        android:clickable="true"
         android:text="编辑"
         android:textColor="#bdbdbd"
         android:id="@+id/title_tv_edit"

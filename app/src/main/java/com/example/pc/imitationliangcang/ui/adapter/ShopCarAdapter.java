@@ -30,6 +30,23 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     private final Context mContext;
     private final List<GoodsInfo> list;
     private final LayoutInflater mLayoutInflater;
+    private ShopCarViewHolder shopCarViewHolder;
+    private TextView shopCarTvFullSbuPrice;
+    private TextView shopCarTvDiscountPrice;
+    private TextView shopCarTvPackPrice;
+    private TextView shopCarTvShipPrice;
+    private CheckBox shopCarSwiAllCheck;
+    private TextView shopCarTotalPrice;
+    private TextView shopCarSavePrice;
+
+    //折扣的价格
+    private Double discountPri = 0.0;
+
+    //节约的价格
+    private Double savePri = 0.0;
+
+    //总价格
+    private Double totalPri = 0.0;
 
     //构造器
     public ShopCarAdapter(Context mContext, List<GoodsInfo> list) {
@@ -42,13 +59,14 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     public ShopCarViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = mLayoutInflater.inflate(R.layout.shop_car_item, null, false);
-        return new ShopCarViewHolder(view);
+        shopCarViewHolder = new ShopCarViewHolder(view);
+        return shopCarViewHolder;
     }
 
     @Override
     public void onBindViewHolder(ShopCarViewHolder holder, int position) {
         //获取数据
-        GoodsInfo goodsInfo = list.get(position);
+        final GoodsInfo goodsInfo = list.get(position);
 
         //设置数据
         //商品图片
@@ -71,25 +89,120 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
             //没有折扣，不显示
             holder.shopCarItemDiscountPrice.setVisibility(View.GONE);
         } else {
+            //有折扣，显示折扣价格
+            holder.shopCarItemDiscountPrice.setVisibility(View.VISIBLE);
             String dispri = holder.shopCarItemDiscountPrice.getText().toString();
             String disprice = String.format(dispri, goodsInfo.getDiscount_price());
-            holder.shopCarItemDiscountPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             holder.shopCarItemDiscountPrice.setText(disprice);
+
         }
 
-        //当前价格 = 价格-打折价格
-        String pri = holder.shopCarItemPrice.getText().toString();
-        double currPrice = Double.parseDouble(goodsInfo.getPrice()) - Double.parseDouble(goodsInfo.getDiscount_price());
-        String price = String.format(pri, currPrice+"");
-        holder.shopCarItemPrice.setText(price);
+        //未打折价格
+        if (goodsInfo.getDiscount_price().equals("0")){
+            //没有打折，显示
+            String pri = holder.shopCarItemPrice.getText().toString();
+            String price = String.format(pri, goodsInfo.getPrice());
+            holder.shopCarItemPrice.setText(price);
+        } else {
+            //有打折，带横线的显示
+            String pri = holder.shopCarItemPrice.getText().toString();
+            String price = String.format(pri, goodsInfo.getPrice());
+            holder.shopCarItemPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.shopCarItemPrice.setText(price);
+        }
 
 
+
+        /**
+         * 设置购物车Activity界面的数据
+         */
+        //1.满减价格//设置为0.0
+        String fullPrice = shopCarTvFullSbuPrice.getText().toString();
+        String format1 = String.format(fullPrice, "0.0");
+        shopCarTvFullSbuPrice.setText(format1);
+        //2.折扣价格 = 未打折价格-打折价格
+        //判断有无折扣
+        if (goodsInfo.getDiscount_price().equals("0")){
+            //没有折扣
+            discountPri += 0.0;
+        } else {
+            //有折扣
+            Double disPri = (Double.parseDouble(goodsInfo.getPrice())-Double.parseDouble(goodsInfo.getDiscount_price()))
+                    *goodsInfo.getGoodsNumber();
+            discountPri += disPri;
+        }
+        String s = shopCarTvDiscountPrice.getText().toString();
+        String format = String.format(s, discountPri+"");
+        shopCarTvDiscountPrice.setText(format);
+
+        //3.包装价格//设置为0.0
+        String packPrice = shopCarTvPackPrice.getText().toString();
+        String format2 = String.format(packPrice, "0.0");
+        shopCarTvPackPrice.setText(format2);
+//        //4.邮费//设置为0.0
+        String shipPrice = shopCarTvShipPrice.getText().toString();
+        String format3 = String.format(shipPrice, "0.0");
+        shopCarTvShipPrice.setText(format3);
+        //5.总价 : 1.有折扣 * 数量  2:无折扣   价格* 数量
+        if (goodsInfo.getDiscount_price().equals("0")){
+            //没有折扣
+            totalPri += Double.parseDouble(goodsInfo.getPrice())*goodsInfo.getGoodsNumber();
+        } else {
+            //有折扣
+            totalPri += Double.parseDouble(goodsInfo.getDiscount_price())*goodsInfo.getGoodsNumber();
+        }
+        String tolPri = shopCarTotalPrice.getText().toString();
+        String format4 = String.format(tolPri, this.totalPri+"");
+        shopCarTotalPrice.setText(format4);
+
+        //6.节省价格 = 折扣价格
+        if (goodsInfo.getDiscount_price().equals("0")){
+            //没有折扣
+            discountPri += 0.0;
+        } else {
+            //有折扣
+            Double disPri = (Double.parseDouble(goodsInfo.getPrice())-Double.parseDouble(goodsInfo.getDiscount_price()))
+                    *goodsInfo.getGoodsNumber();
+            savePri += disPri;
+        }
+        String save = shopCarSavePrice.getText().toString();
+        String format5 = String.format(save, savePri+"");
+        shopCarSavePrice.setText(format5);
+
+
+
+
+
+
+        //设置增加和减少商品数量按钮的监听
+        holder.shopCarItemAddsub.setOnNumberChangeListener(new AddSubView.OnNumberChangeListener() {
+            @Override
+            public void numberChange(int value) {
+                //1.修改goodinfo的数量信息
+                goodsInfo.setGoodsNumber(value);
+                //2.刷新价格
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return list == null ? 0 : list.size();
+    }
+
+    public void setView(TextView shopCarTvFullSbuPrice, TextView shopCarTvDiscountPrice
+            , TextView shopCarTvPackPrice, TextView shopCarTvShipPrice
+            , CheckBox shopCarSwiAllCheck, TextView shopCarTotalPrice
+            , TextView shopCarSavePrice) {
+
+        this.shopCarTvFullSbuPrice = shopCarTvFullSbuPrice;
+        this.shopCarTvDiscountPrice = shopCarTvDiscountPrice;
+        this.shopCarTvPackPrice = shopCarTvPackPrice;
+        this.shopCarTvShipPrice = shopCarTvShipPrice;
+        this.shopCarSwiAllCheck = shopCarSwiAllCheck;
+        this.shopCarTotalPrice = shopCarTotalPrice;
+        this.shopCarSavePrice = shopCarSavePrice;
     }
 
 
@@ -119,17 +232,35 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
             super(view);
             ButterKnife.bind(this, view);
         }
+
     }
 
     //显示编辑的View
     public void showEdit(){
+        //隐藏数量
+        shopCarViewHolder.shopCarItemTvGoodsNumber.setVisibility(View.GONE);
+        //隐藏sku
+        shopCarViewHolder.shopCarItemTvSku.setVisibility(View.GONE);
+
         //显示addsbu
+        shopCarViewHolder.shopCarItemAddsub.setVisibility(View.VISIBLE);
         //显示删除按钮
+        shopCarViewHolder.shopCarItemTvDel.setVisibility(View.VISIBLE);
     }
 
     //隐藏编辑的View
     public void hideEdit(){
+
         //隐藏addsbu
+        shopCarViewHolder.shopCarItemAddsub.setVisibility(View.GONE);
         //隐藏删除按钮
+        shopCarViewHolder.shopCarItemTvDel.setVisibility(View.GONE);
+
+        //显示数量
+        shopCarViewHolder.shopCarItemTvGoodsNumber.setVisibility(View.VISIBLE);
+        //显示sku
+        shopCarViewHolder.shopCarItemTvSku.setVisibility(View.VISIBLE);
     }
+
+
 }
