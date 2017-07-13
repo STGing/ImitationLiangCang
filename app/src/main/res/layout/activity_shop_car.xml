@@ -160,14 +160,14 @@
             android:layout_weight="3"
             android:background="#3a668c">
 
-            <ImageView
+            <CheckBox
                 android:id="@+id/shop_car_swiAllCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:clickable="true"
-                android:src="@drawable/shop_car_swicheck_selector" />
+                android:button="@drawable/shop_car_swicheck_selector"
+                />
 
             <TextView
                 android:layout_width="wrap_content"

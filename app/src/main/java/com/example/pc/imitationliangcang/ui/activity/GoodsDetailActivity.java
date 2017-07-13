@@ -3,6 +3,7 @@ package com.example.pc.imitationliangcang.ui.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.Gravity;
@@ -374,6 +375,10 @@ public class GoodsDetailActivity extends BaseActivity {
             case R.id.title_iv_shopCar://标题购物车
 
                 Intent intent = new Intent(this,ShopCarActivity.class);
+                //这里测试数据，将shopgoodsInfo传入到购物车
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("shopGoodsInfo",shopGoodsInfo);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 break;
         }
@@ -433,7 +438,7 @@ public class GoodsDetailActivity extends BaseActivity {
             addGoodsPopGoodName.setText(items.getGoods_name());
 
             //价格
-            String discount_price = items.getDiscount_price();
+            final String discount_price = items.getDiscount_price();
             if (!TextUtils.isEmpty(discount_price)) {
                 addGoodsPopGoodPrice.setText(discount_price);
             } else {
@@ -532,9 +537,18 @@ public class GoodsDetailActivity extends BaseActivity {
                     shopGoodsInfo.setGoods_id(items.getGoods_id());
                     shopGoodsInfo.setGoods_name(items.getGoods_name());
                     shopGoodsInfo.setGoods_image(items.getGoods_image());
-                    shopGoodsInfo.setOwner_name(items.getOwner_name());
-                    shopGoodsInfo.setPrice(items.getPrice());
-                    shopGoodsInfo.setDiscount_price(items.getDiscount_price());
+                    shopGoodsInfo.setBrand_name(items.getOwner_name());
+                    shopGoodsInfo.setPrice(items.getPrice());//原价
+
+                    //判断有无折扣价格
+                    String discount_price1 = items.getDiscount_price();
+                    if (!TextUtils.isEmpty(discount_price)) {
+                        shopGoodsInfo.setDiscount_price(discount_price1);//打折价格
+                    } else {
+                        shopGoodsInfo.setDiscount_price("0");//打折价格为0
+                    }
+
+
                     //一定要设置数量
                     shopGoodsInfo.setGoodsNumber(goodsValue);
 
@@ -569,7 +583,7 @@ public class GoodsDetailActivity extends BaseActivity {
                     shopGoodsInfo.setChoiceSku(sku);
 
                     //将数据保存到数据库
-                    dbDao.addData(shopGoodsInfo);
+                    //dbDao.addData(shopGoodsInfo);
 
                     //结束当前页面，并提示
                     popWnd.dismiss();
