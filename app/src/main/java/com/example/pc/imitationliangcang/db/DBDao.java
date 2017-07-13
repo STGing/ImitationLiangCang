@@ -2,6 +2,7 @@ package com.example.pc.imitationliangcang.db;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.pc.imitationliangcang.bean.GoodsInfo;
 import com.example.pc.imitationliangcang.common.MyApplication;
@@ -20,12 +21,20 @@ import java.util.List;
 
 public class DBDao {
 
+    private static DBDao mDBDao = null;
     private DBHelper dbHelper;
-
-    public DBDao() {
-
+    private DBDao(){
         dbHelper = new DBHelper(MyApplication.getContext());
     }
+    public static DBDao getInstance() {
+        synchronized (DBDao.class) {
+            if (mDBDao == null) {
+                mDBDao = new DBDao();
+            }
+        }
+        return mDBDao;
+    }
+
 
     //增加一条数据(数据类型：对象)
     public void addData(GoodsInfo good){
@@ -33,18 +42,16 @@ public class DBDao {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         try {
-
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(arrayOutputStream);
             objectOutputStream.writeObject(good);
             objectOutputStream.flush();
 
             byte data[] = arrayOutputStream.toByteArray();
-            Object[] objects = {data};
             objectOutputStream.close();
             arrayOutputStream.close();
 
+            Object[] objects = {data};
             database.execSQL("insert into "+DBWord.TABLENAME+ " ( "+DBWord.ID+" , " + DBWord.GOODINFO+" ) values( "+good.getGoods_id()+" ,"+objects+" )");
-            database.close();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -67,7 +74,7 @@ public class DBDao {
 
     //查询所有数据(数据类型：对象)
     public  List<GoodsInfo> getData(){
-        List<GoodsInfo> list = new ArrayList<GoodsInfo>();
+        List<GoodsInfo> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("select * from " + DBWord.TABLENAME, null);
 
@@ -77,10 +84,12 @@ public class DBDao {
             while (cursor.moveToNext()){
 
                 byte[] blob = cursor.getBlob(cursor.getColumnIndex(DBWord.GOODINFO));
+                Log.e("TAG","数据库中读取数据，查询到的数组的长度"+blob.length);
                 ByteArrayInputStream bais = new ByteArrayInputStream(blob);
                 try {
                     ObjectInputStream ois = new ObjectInputStream(bais);
                     GoodsInfo o = (GoodsInfo) ois.readObject();
+                    Log.e("TAG","数据库中读取数据，查询到的数据有："+o.getGoods_name());
                     list.add(o);
 
                     //最后关闭流

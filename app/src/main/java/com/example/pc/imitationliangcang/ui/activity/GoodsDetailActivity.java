@@ -120,17 +120,39 @@ public class GoodsDetailActivity extends BaseActivity {
     private LayoutInflater mInflater;
 
     /**
-     * 商品sku属性的标记
+     * 商品sku标题的标记
      */
-    private String color = "1";
-    private String number = "7";
-    private String capacity = "6";//容量
-    private String species = "13";//种类
-    private String style = "37";//款式
-    private int goodsValue;//购买商品数量
-    private GoodsInfo goodsInfo;
-    private DBDao dbDao;
+    private static final String COLOR = "1";
+    private static final String NUMBER = "7";
+    private static final String CAPACITY = "6";//容量
+    private static final String SPECIES = "13";//种类
+    private static final String STYLE = "37";//款式
 
+    /**
+     * 存放每个sku属性的集合
+     */
+    private List<String> colorlist = new ArrayList<>();
+    private List<String> numberlist = new ArrayList<>();
+    private List<String> capacitylist = new ArrayList<>();
+    private List<String> specielist = new ArrayList<>();
+    private List<String> stylelist = new ArrayList<>();
+
+    private static int goodsValue;//购买商品数量
+
+    private DBDao dbDao;//数据库Dao
+    /**
+     * 购物车要用的数据
+     */
+    private GoodsInfo shopGoodsInfo;
+
+    //当前选择的sku
+    private String choiceColor;
+    private String choiceNumber;
+    private String choiceCapacity;
+    private String choiceSpecie;
+    private String choiceStyle;
+
+    private String sku = "";//当前选择的sku
 
     @Override
     public void initView() {
@@ -294,10 +316,10 @@ public class GoodsDetailActivity extends BaseActivity {
         goodsDetailBuyReadDetailTv.setText(items.getGood_guide().getContent());
 
         //14.建立一个Bean对象保存要购买的商品信息
-        goodsInfo = new GoodsInfo();
+        shopGoodsInfo = new GoodsInfo();
 
         //15.初始化数据库Dao
-        dbDao = new DBDao();
+        dbDao = DBDao.getInstance();
     }
 
     @Override
@@ -419,34 +441,53 @@ public class GoodsDetailActivity extends BaseActivity {
             }
 
             //动态建立商品的sku
-            List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean> sku_info = items.getSku_info();
+            final List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean> sku_info = items.getSku_info();
             //循环遍历sku
             for (int i = 0; i < sku_info.size(); i++) {
 
+                //获取数据
+                final GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean skuInfoBean = sku_info.get(i);
+
                 //动态生成装有一个TextView 和 flowLayout的LL布局
                 LinearLayout skull = (LinearLayout) mInflater.inflate(R.layout.sku_layout,null,false);
-                TextView skuTitle = (TextView) skull.findViewById(R.id.sku_title);
+                final TextView skuTitle = (TextView) skull.findViewById(R.id.sku_title);
+                //建立了flowlayout
                 final TagFlowLayout skufl = (TagFlowLayout) skull.findViewById(R.id.sku_flowlayout);
+                //为flowLayout设置tag
+                skufl.setTag(skuInfoBean.getType_id());
+                //点击事件
+                skufl.setOnTagClickListener(new MyOnTagClickLIstener());
 
-                //获取数据
-                GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean skuInfoBean = sku_info.get(i);
+
                 //1.sku标题
                 String type_name = skuInfoBean.getType_name();//获取类型名称
                 skuTitle.setText(type_name);
 
-
-                //2.sku属性
-                final List<String> skulist = new ArrayList<>();
-                List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean.AttrListBean> attrList = skuInfoBean.getAttrList();
+                //2.sku具体属性
+                final List<String> skuNamelist = new ArrayList<>();//名称的集合
+                final List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean.AttrListBean> attrList = skuInfoBean.getAttrList();
                 for (int j = 0; j < attrList.size(); j++) {
                     GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean.AttrListBean attrListBean = attrList.get(j);
                     String attr_name = attrListBean.getAttr_name();//获取属性名称
-                    skulist.add(attr_name);
+                    skuNamelist.add(attr_name);
+
+                    //根据标题添加数据到对应的sku属性集合
+                    if (skuInfoBean.getType_id().equals(COLOR)){//颜色
+                        colorlist.add(attr_name);
+                    } else if (skuInfoBean.getType_id().equals(NUMBER)){//数量单位
+                        numberlist.add(attr_name);
+                    }else if (skuInfoBean.getType_id().equals(CAPACITY)){//容量
+                        capacitylist.add(attr_name);
+                    } else if (skuInfoBean.getType_id().equals(SPECIES)){//种类
+                        specielist.add(attr_name);
+                    } else if (skuInfoBean.getType_id().equals(STYLE)) {//款式
+                        stylelist.add(attr_name);
+                    }
                 }
 
-                if (skulist != null && skulist.size() > 0) {
+                if (skuNamelist != null && skuNamelist.size() > 0) {
                     //将sku属性的集合添加到flowlayout中
-                    skufl.setAdapter(new TagAdapter<String>(skulist) {
+                    skufl.setAdapter(new TagAdapter<String>(skuNamelist) {
                         @Override
                         public View getView(FlowLayout parent, int position, String s) {
                             TextView tv = (TextView) mInflater.inflate(R.layout.sku_text,
@@ -459,16 +500,18 @@ public class GoodsDetailActivity extends BaseActivity {
                         @Override
                         public boolean setSelected(int position, String s) {
 
-                            String s1 = skulist.get(0);
+                            String skuName = skuNamelist.get(0);
 
-                            return s1.equals(s);
+                            return skuName.equals(s);
                         }
                     });
+
                 }
 
                 //3.最后将skulayout布局添加到pop总布局上
                 skuLLs.addView(skull);
             }
+
 
 
             //设置商品数量加减的监听
@@ -484,20 +527,49 @@ public class GoodsDetailActivity extends BaseActivity {
             btnConfirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //获取数据
-                    goodsInfo.setGoods_id(items.getGoods_id());
-                    goodsInfo.setGoods_name(items.getGoods_name());
-                    goodsInfo.setGoods_image(items.getGoods_image());
-                    goodsInfo.setOwner_name(items.getOwner_name());
-                    goodsInfo.setPrice(items.getPrice());
-                    goodsInfo.setDiscount_price(items.getDiscount_price());
-                    goodsInfo.setSku_info(items.getSku_info());
 
+                    //获取数据
+                    shopGoodsInfo.setGoods_id(items.getGoods_id());
+                    shopGoodsInfo.setGoods_name(items.getGoods_name());
+                    shopGoodsInfo.setGoods_image(items.getGoods_image());
+                    shopGoodsInfo.setOwner_name(items.getOwner_name());
+                    shopGoodsInfo.setPrice(items.getPrice());
+                    shopGoodsInfo.setDiscount_price(items.getDiscount_price());
                     //一定要设置数量
-                    goodsInfo.setGoodsNumber(goodsValue);
+                    shopGoodsInfo.setGoodsNumber(goodsValue);
+
+                    /**
+                            COLOR = "1";
+                             NUMBER = "7";
+                             CAPACITY = "6";//容量
+                            SPECIES = "13";//种类
+                             STYLE = "37";//款式
+                     */
+
+                    //判断当前商品有什么sku标题，及当前选择的sku属性，并添加到集合
+                    if (colorlist != null && colorlist.size()>0){//有颜色
+                        sku += "颜色: "+choiceColor+" ";
+                    }
+                    if (colorlist != null && numberlist.size()>0){//数量单位
+                        sku += "数量: "+choiceNumber+" ";
+                    }
+                    if (colorlist != null && capacitylist.size()>0){//容量
+                        sku += "容量: "+choiceCapacity+" ";
+                    }
+                    if (colorlist != null && specielist.size()>0){//种类
+                        sku += "种类: "+choiceSpecie+" ";
+                    }
+                    if (colorlist != null && stylelist.size()>0) {//款式
+                        sku += "款式: "+choiceStyle+" ";
+                    }
+
+
+                    //将上面的数据添加到goodsinfo种
+//                    Log.e("TAG","当前选择的属性有"+sku);
+                    shopGoodsInfo.setChoiceSku(sku);
 
                     //将数据保存到数据库
-                    dbDao.addData(goodsInfo);
+                    dbDao.addData(shopGoodsInfo);
 
                     //结束当前页面，并提示
                     popWnd.dismiss();
@@ -506,8 +578,6 @@ public class GoodsDetailActivity extends BaseActivity {
             });
 
         }
-
-
 
 
         //如果不为空，就显示/关闭
@@ -538,5 +608,42 @@ public class GoodsDetailActivity extends BaseActivity {
         }
     }
 
+    //点击事件
+    /**
+     *   private String color = "1";
+         private String number = "7";
+         private String capacity = "6";//容量
+         private String species = "13";//种类
+         private String style = "37";//款式
+     */
+    private class MyOnTagClickLIstener implements TagFlowLayout.OnTagClickListener {
+        @Override
+        public boolean onTagClick(View view, int position, FlowLayout parent) {
+            String tag = (String) parent.getTag();
+            switch (tag) {
+                case COLOR://颜色
+                    //从颜色集合获取数据
+                    choiceColor = colorlist.get(position);
 
+                    break;
+                case NUMBER://数量单位
+                    choiceNumber = numberlist.get(position);
+                    break;
+                case CAPACITY://容量单位
+                    choiceCapacity = capacitylist.get(position);
+                    break;
+                case SPECIES://种类单位
+                    choiceSpecie = specielist.get(position);
+
+                    break;
+                case STYLE://款式单位
+                    choiceStyle = stylelist.get(position);
+                    break;
+                default:
+                    break;
+            }
+
+            return false;
+        }
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.pc.imitationliangcang.bean;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -574,7 +573,7 @@ public class GoodsDetailBean {
                 }
             }
 
-            public static class SkuInfoBean implements Serializable {
+            public static class SkuInfoBean {
                 /**
                  * type_id : 7
                  * type_name : 数量

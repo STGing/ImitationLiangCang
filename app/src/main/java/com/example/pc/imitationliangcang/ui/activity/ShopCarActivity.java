@@ -68,7 +68,7 @@ public class ShopCarActivity extends BaseActivity {
         super.initData();
 
         //从数据库获取数据
-        dbDao = new DBDao();
+        dbDao = DBDao.getInstance();
         List<GoodsInfo> goodsInfos = dbDao.getData();
 
         //设置布局和适配器

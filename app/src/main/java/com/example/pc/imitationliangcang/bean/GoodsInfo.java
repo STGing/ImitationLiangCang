@@ -1,7 +1,6 @@
 package com.example.pc.imitationliangcang.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 用来保存一个商品的信息，存放至数据库，用于购物车读取要购买的商品信息。
@@ -64,8 +63,16 @@ public class GoodsInfo implements Serializable{
     private String price;
     private String owner_name;//品牌名称
     private String discount_price;//折扣价格
-    private List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean > sku_info;//选择的种类样式信息
-    private int goodsNumber;
+    private int goodsNumber;//商品数量
+    private String choiceSku;
+
+    public String getChoiceSku() {
+        return choiceSku;
+    }
+
+    public void setChoiceSku(String choiceSku) {
+        this.choiceSku = choiceSku;
+    }
 
     public int getGoodsNumber() {
         return goodsNumber;
@@ -122,17 +129,6 @@ public class GoodsInfo implements Serializable{
     public void setDiscount_price(String discount_price) {
         this.discount_price = discount_price;
     }
-
-    public List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean > getSku_info() {
-        return sku_info;
-    }
-
-    public void setSku_info(List<GoodsDetailBean.DataBean.ItemsBean.SkuInfoBean > sku_info) {
-        this.sku_info = sku_info;
-    }
-
-
-
 
 
 
