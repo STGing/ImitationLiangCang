@@ -3,7 +3,6 @@ package com.example.pc.imitationliangcang.ui.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.Gravity;
@@ -376,9 +375,9 @@ public class GoodsDetailActivity extends BaseActivity {
 
                 Intent intent = new Intent(this,ShopCarActivity.class);
                 //这里测试数据，将shopgoodsInfo传入到购物车
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("shopGoodsInfo",shopGoodsInfo);
-                intent.putExtras(bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("shopGoodsInfo",shopGoodsInfo);
+//                intent.putExtras(bundle);
                 startActivity(intent);
                 break;
         }
@@ -583,7 +582,7 @@ public class GoodsDetailActivity extends BaseActivity {
                     shopGoodsInfo.setChoiceSku(sku);
 
                     //将数据保存到数据库
-                    //dbDao.addData(shopGoodsInfo);
+                    dbDao.addData(shopGoodsInfo);
 
                     //结束当前页面，并提示
                     popWnd.dismiss();

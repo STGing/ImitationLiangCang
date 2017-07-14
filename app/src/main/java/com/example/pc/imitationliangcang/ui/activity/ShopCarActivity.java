@@ -13,11 +13,14 @@ import com.example.pc.imitationliangcang.bean.GoodsInfo;
 import com.example.pc.imitationliangcang.db.DBDao;
 import com.example.pc.imitationliangcang.ui.adapter.ShopCarAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class ShopCarActivity extends BaseActivity {
     private static final String TAG = "ShopCarActivity";
@@ -123,16 +126,27 @@ public class ShopCarActivity extends BaseActivity {
         super.initData();
 
 //        //从数据库获取数据
-//        dbDao = DBDao.getInstance();
-//        List<GoodsInfo> goodsInfos = dbDao.getData();
+        dbDao = DBDao.getInstance();
+        dbDao.getData().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<GoodsInfo>>() {
+                    @Override
+                    public void accept(@NonNull List<GoodsInfo> goodsInfos) throws Exception {
+                        setData(goodsInfos);
+                    }
+                });
 
-        //从intent接受数据
-        GoodsInfo goodsInfo = (GoodsInfo) getIntent().getExtras().getSerializable("shopGoodsInfo");
-        List<GoodsInfo> list = new ArrayList<>();
-        list.add(goodsInfo);
+        //从intent接受数据（测试数据）
+//        GoodsInfo goodsInfo = (GoodsInfo) getIntent().getExtras().getSerializable("shopGoodsInfo");
+//        List<GoodsInfo> list = new ArrayList<>();
+//        list.add(goodsInfo);
+        //setData(list);
+    }
 
-
-        //设置布局和适配器
+    /*
+    //设置布局和适配器
+     */
+    private void setData(List<GoodsInfo> list) {
         if (list != null && list.size() > 0){
             LinearLayoutManager manamger = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
             shopCarRv.setLayoutManager(manamger);
@@ -149,8 +163,30 @@ public class ShopCarActivity extends BaseActivity {
                     ,shopCarTotalPrice//总价格
                     ,shopCarSavePrice//节省价格
                     );
-        }
+        } else {
+            //如果没有数据
+            String price = 0.0+"";
 
+            //1.设置满减少价格
+            String fll = shopCarTvFullSbuPrice.getText().toString();
+            shopCarTvFullSbuPrice.setText(String.format(fll, price));
+            //2.折扣价格
+            String dis = shopCarTvDiscountPrice.getText().toString();
+            shopCarTvDiscountPrice.setText(String.format(dis, price));
+            //3.包装价格
+            String pack = shopCarTvPackPrice.getText().toString();
+            shopCarTvPackPrice.setText(String.format(pack, price));
+            //4.运费价格
+            String ship = shopCarTvShipPrice.getText().toString();
+            shopCarTvShipPrice.setText(String.format(ship, price));
+            //5.总计价格
+            String total = shopCarTotalPrice.getText().toString();
+            shopCarTotalPrice.setText(String.format(total, price));
+            //6.节省价格
+            String save = shopCarSavePrice.getText().toString();
+            shopCarSavePrice.setText(String.format(save, price));
+
+        }
     }
 
     @OnClick({R.id.title_iv_back, R.id.title_tv_edit, R.id.shop_car_swiAllCheck, R.id.shop_car_settlement})
