@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--顶部用户信息-->
+    <include layout="@layout/common_user_info" />
+
+    <!--图片布局-->
+    <TextView
+        android:id="@+id/recommend_image_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:textColor="#434343"
+        android:textSize="18sp"
+        tools:text="这哪里是在斗牛，分明就是玩命嘛！" />
+
+    <ImageView
+        android:id="@+id/recommend_image_iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:scaleType="center" />
+
+    <!--底部布局-->
+    <include layout="@layout/common_bottom" />
+
+</LinearLayout>

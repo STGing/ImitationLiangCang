@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.GoodsInfo;
+import com.example.pc.imitationliangcang.db.DBDao;
 import com.example.pc.imitationliangcang.ui.view.AddSubView;
 import com.squareup.picasso.Picasso;
 
@@ -379,6 +380,10 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                     //3.刷新适配器
                     notifyDataSetChanged();
 
+                    //4.同步数据库
+                    DBDao.getInstance().update(goodsInfo.getGoods_id(),goodsInfo);
+                    //5.同步服务器
+
 
                 }
             });
@@ -398,6 +403,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     //1.list集合中删除
+                                    String goods_id = list.get(getLayoutPosition()).getGoods_id();
                                     list.remove(getLayoutPosition());
 
                                     //2.校验是否全选
@@ -410,6 +416,10 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                                     setDiscountPrice();
                                     setTotalPrice();
                                     setSavePrice();
+
+                                    //5.同步数据库
+                                    DBDao.getInstance().deleteData(goods_id);
+                                    //6.同步服务器
                                 }
                             })
                             .setNegativeButton("取消",null)

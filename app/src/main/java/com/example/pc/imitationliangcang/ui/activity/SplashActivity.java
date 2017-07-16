@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
 import com.example.pc.imitationliangcang.ui.adapter.SplashActivityViewPagerAdapter;
@@ -57,7 +56,6 @@ public class SplashActivity extends BaseActivity {
 
             Glide.with(this)
                     .load(imagesID[i])//加载图片地址
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)//设置缓存为：缓存全部
                     .into(imageView);
 
             //将图片添加到集合中

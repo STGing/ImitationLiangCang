@@ -126,6 +126,16 @@ public class ShopCarActivity extends BaseActivity {
         super.initData();
 
 //        //从数据库获取数据
+        getData();
+
+        //从intent接受数据（测试数据）
+//        GoodsInfo goodsInfo = (GoodsInfo) getIntent().getExtras().getSerializable("shopGoodsInfo");
+//        List<GoodsInfo> list = new ArrayList<>();
+//        list.add(goodsInfo);
+        //setData(list);
+    }
+
+    private void getData() {
         dbDao = DBDao.getInstance();
         dbDao.getData().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -135,12 +145,6 @@ public class ShopCarActivity extends BaseActivity {
                         setData(goodsInfos);
                     }
                 });
-
-        //从intent接受数据（测试数据）
-//        GoodsInfo goodsInfo = (GoodsInfo) getIntent().getExtras().getSerializable("shopGoodsInfo");
-//        List<GoodsInfo> list = new ArrayList<>();
-//        list.add(goodsInfo);
-        //setData(list);
     }
 
     /*
@@ -187,6 +191,13 @@ public class ShopCarActivity extends BaseActivity {
             shopCarSavePrice.setText(String.format(save, price));
 
         }
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getData();
     }
 
     @OnClick({R.id.title_iv_back, R.id.title_tv_edit, R.id.shop_car_swiAllCheck, R.id.shop_car_settlement})

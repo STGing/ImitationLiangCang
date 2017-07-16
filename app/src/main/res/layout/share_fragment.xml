@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/share_fragment_rv"
+    <include layout="@layout/base_title"/>
+
+    <com.androidkun.xtablayout.XTabLayout
+        android:id="@+id/share_fragment_tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        app:xTabIndicatorColor="#ffffff"
+        app:xTabSelectedTextColor="#ffabb6"
+        app:xTabTextColor="#b8babd"
+        app:xTabIndicatorWidth="20dp"
+        android:background="#1c1c1c" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/share_fragment_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

@@ -1,15 +1,20 @@
 package com.example.pc.imitationliangcang.ui.fragment;
 
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.androidkun.xtablayout.XTabLayout;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseFragment;
-import com.example.pc.imitationliangcang.bean.sharefragment.ShareFragmentBean;
-import com.example.pc.imitationliangcang.common.NetWorkUrl;
-import com.example.pc.imitationliangcang.ui.adapter.sharefragment.ShareFragmentAdapter;
-import com.google.gson.Gson;
+import com.example.pc.imitationliangcang.ui.adapter.shopfragment.ShopFragmenViewPagerAdapter;
+import com.example.pc.imitationliangcang.ui.fragment.shard_fragment.share_duanzi_fragment;
+import com.example.pc.imitationliangcang.ui.fragment.shard_fragment.share_recommend_fragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -19,10 +24,24 @@ import butterknife.BindView;
  */
 
 public class ShareFragment extends BaseFragment {
-    @BindView(R.id.share_fragment_rv)
-    RecyclerView shareFragmentRv;
 
-    private ShareFragmentAdapter adapter;
+
+    @BindView(R.id.title_tv_name)
+    TextView titleTvName;
+    @BindView(R.id.base_title_layout)
+    RelativeLayout baseTitleLayout;
+    @BindView(R.id.share_fragment_tabLayout)
+    XTabLayout shareFragmentTabLayout;
+    @BindView(R.id.share_fragment_viewPager)
+    ViewPager shareFragmentViewPager;
+
+    //存放fragment集合
+    private List<BaseFragment> fragments;
+
+    //存放tabLayout标题的集合
+    private List<String> title_list;
+    //viewpager的适配器
+    private ShopFragmenViewPagerAdapter adapter;
 
     @Override
     public int getLayoutID() {
@@ -32,28 +51,31 @@ public class ShareFragment extends BaseFragment {
     @Override
     public void initView() {
 
+        //初始化标题
+        titleTvName.setText("百思不得姐");
+        titleTvName.setTextColor(Color.parseColor("#fffefe"));
+
+        //初始化fragments
+        fragments = new ArrayList<>();
+        fragments.add(new share_recommend_fragment());
+        fragments.add(new share_duanzi_fragment());
+
+        //tablayout标题
+        title_list = new ArrayList<>();
+        title_list.add("推荐");
+        title_list.add("段子");
+
+        //设置ViewPager
+        FragmentManager fm = getFragmentManager();
+        adapter = new ShopFragmenViewPagerAdapter(fm,fragments,title_list);
+        shareFragmentViewPager.setAdapter(adapter);
+
+        //设置tablayout
+        shareFragmentTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        shareFragmentTabLayout.setupWithViewPager(shareFragmentViewPager);
+
+        //设置默认选中首页页面
+        shareFragmentViewPager.setCurrentItem(0);
     }
 
-    @Override
-    public String getUrl() {
-        return NetWorkUrl.SHAREFRAGMENTUR;
-    }
-
-    @Override
-    public void processData(String s) {
-        super.processData(s);
-
-        if (!TextUtils.isEmpty(s)) {
-
-            //解析数据
-            ShareFragmentBean shareFragmentBean = new Gson().fromJson(s, ShareFragmentBean.class);
-            List<ShareFragmentBean.ListBean> list = shareFragmentBean.getList();
-
-            //设置布局及适配器
-//            LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-//            shareFragmentRv.setLayoutManager(manager);
-//            adapter = new ShareFragmentAdapter(this,list);
-//            shareFragmentRv.setAdapter(adapter);
-        }
-    }
 }

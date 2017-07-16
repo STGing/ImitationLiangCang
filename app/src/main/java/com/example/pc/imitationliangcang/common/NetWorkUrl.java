@@ -96,7 +96,11 @@ public class NetWorkUrl {
 
 
     /**
-     * 分享页面：这里用百思不得姐的推荐API
+     * 分享页面：
      */
-    public static final String SHAREFRAGMENTUR = "http://s.budejie.com/topic/list/jingxuan/1/budejie-android-6.6.3/0-20.json";
+    //这里用百思不得姐的推荐API
+    public static final String SHARERECOMMENDURL = "http://s.budejie.com/topic/list/jingxuan/1/budejie-android-6.6.3/0-20.json";
+
+    //百思不得姐的 段子的 API
+    public static final String SHAREREDUANZIURL = "http://s.budejie.com/topic/tag-topic/64/hot/budejie-android-6.6.3/0-20.json";
 }
