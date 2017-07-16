@@ -29,6 +29,7 @@ import com.example.pc.imitationliangcang.common.NetWorkUrl;
 import com.example.pc.imitationliangcang.db.DBDao;
 import com.example.pc.imitationliangcang.ui.view.AddSubView;
 import com.example.pc.imitationliangcang.utils.MyImageLoader;
+import com.example.pc.imitationliangcang.utils.ShareSDK;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.youth.banner.Banner;
@@ -333,7 +334,8 @@ public class GoodsDetailActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.goods_detail_IvlikeCount:
                 break;
-            case R.id.goods_detail_shared:
+            case R.id.goods_detail_shared://点击分享之后弹出
+                ShareSDK.showShare(this,items.getGoods_name(),"分享");
                 break;
             case R.id.goods_detail_goodsChoiceType://选择颜色类型
                 showPopUpWindow();
