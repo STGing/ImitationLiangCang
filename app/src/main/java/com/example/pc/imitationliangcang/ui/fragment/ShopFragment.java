@@ -1,5 +1,6 @@
 package com.example.pc.imitationliangcang.ui.fragment;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -9,12 +10,15 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseFragment;
+import com.example.pc.imitationliangcang.ui.activity.LoginActivity;
+import com.example.pc.imitationliangcang.ui.activity.ShopCarActivity;
 import com.example.pc.imitationliangcang.ui.adapter.shopfragment.ShopFragmenViewPagerAdapter;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.BrandFragment;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.GiftFragment;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.HomeFragment;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.TopicFragment;
 import com.example.pc.imitationliangcang.ui.fragment.shop_fragment_detail.classifyFragment;
+import com.example.pc.imitationliangcang.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +137,20 @@ public class ShopFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.title_iv_search:
                 break;
-            case R.id.title_iv_shopCar:
+            case R.id.title_iv_shopCar://点击购物车的事件
+
+                //判断是否登陆，没有跳转到登陆界面，有：跳转购物车
+                boolean isLogin = (boolean) SPUtils.get(mContext, "isLogin", false);
+                if (isLogin){
+                    //登录过
+                    Intent intent = new Intent(mContext,ShopCarActivity.class);
+                    startActivity(intent);
+                } else {
+                    //没有登陆过
+                    Intent intent = new Intent(mContext,LoginActivity.class);
+                    startActivity(intent);
+                }
+
                 break;
         }
     }

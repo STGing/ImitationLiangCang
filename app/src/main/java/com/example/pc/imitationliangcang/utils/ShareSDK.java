@@ -9,10 +9,17 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  */
 
 public class ShareSDK {
+
+    /**
+     * 分享
+     * @param context
+     * @param title
+     * @param content
+     */
     public static void showShare(Context context,String title, String content) {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
-        oks.disableSSOWhenAuthorize();
+        //oks.disableSSOWhenAuthorize();
 
         // 分享时Notification的图标和文字  2.5.9以后的版本不     调用此方法
         //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
@@ -36,4 +43,9 @@ public class ShareSDK {
         // 启动分享GUI
         oks.show(context);
     }
+
+
+
+
+
 }

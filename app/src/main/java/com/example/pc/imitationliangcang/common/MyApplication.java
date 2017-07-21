@@ -21,6 +21,8 @@ public class MyApplication extends Application {
 
         //初始化okGo
         initOkGo();
+
+
     }
 
     private void initOkGo() {

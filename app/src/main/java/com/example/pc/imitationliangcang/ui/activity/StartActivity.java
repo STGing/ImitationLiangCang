@@ -16,6 +16,7 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.request.target.Target;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
+import com.example.pc.imitationliangcang.utils.SPUtils;
 
 /**
  * 启动页面：播放GIF
@@ -37,9 +38,16 @@ public class StartActivity extends BaseActivity {
             switch (msg.what) {
                 case WHAT_GIF_FINISH:
 
-                    //GIF播放结束，跳转到SplashActivity
-                    startActivity(new Intent(StartActivity.this,SplashActivity.class));
-                    finish();
+                    //判断是否第一次进入，是：跳转欢迎界面，否：直接进入主页面
+                    boolean isFirst = (boolean) SPUtils.get(StartActivity.this, "first_entry", true);
+                    if (isFirst){
+                        startActivity(new Intent(StartActivity.this,SplashActivity.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(StartActivity.this,MainActivity.class));
+                        finish();
+                    }
+
                     break;
             }
         }

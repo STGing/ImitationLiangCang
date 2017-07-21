@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.base.BaseActivity;
 import com.example.pc.imitationliangcang.ui.adapter.SplashActivityViewPagerAdapter;
+import com.example.pc.imitationliangcang.utils.SPUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +119,10 @@ public class SplashActivity extends BaseActivity {
     public void onViewClicked() {
         //点击图片，进入MainActivity
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
+
+        //记录
+        SPUtils.put(SplashActivity.this,"first_entry",false);
+
         finish();
     }
 }

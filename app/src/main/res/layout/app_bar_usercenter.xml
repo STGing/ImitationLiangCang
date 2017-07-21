@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.pc.imitationliangcang.ui.activity.test">
+
+    <!--标题栏-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppToolBarTheme"
+        app:logo="@drawable/bili_default_avatar"
+        app:navigationIcon="@drawable/ic_nav_home"
+        app:title="未登录">
+
+        <!--四个图标-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end">
+
+            <ImageView
+                android:id="@+id/toolbar_iv1_bili"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/toolbar_bili_ic1" />
+
+            <ImageView
+                android:id="@+id/toolbar_iv2_bili"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/toolbar_bili_ic2" />
+
+            <ImageView
+                android:id="@+id/toolbar_iv3_bili"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/toolbar_bili_ic3" />
+
+            <ImageView
+                android:id="@+id/toolbar_iv4_bili"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/toolbar_bili_ic4" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <!--内容-->
+    <include layout="@layout/content_usercenter" />
+
+</LinearLayout>

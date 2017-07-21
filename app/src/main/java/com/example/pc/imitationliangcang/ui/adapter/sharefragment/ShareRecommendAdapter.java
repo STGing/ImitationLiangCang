@@ -140,6 +140,8 @@ public class ShareRecommendAdapter extends RecyclerView.Adapter {
         TextView tvCommentNumber;
         @BindView(R.id.ll_comment)
         LinearLayout llTalk;
+        @BindView(R.id.common_bottom_comments_ll)
+        LinearLayout commonBottomCommentsLL;
 
         public BaseViewHolder(View view) {
             super(view);
@@ -169,6 +171,30 @@ public class ShareRecommendAdapter extends RecyclerView.Adapter {
             //讨论的数量
             tvCommentNumber.setText(listBean.getComment());
 
+            //底部讨论的内容
+
+            //获取评论的数据
+            List<ShareRecommendBean.ListBean.TopCommentsBean> top_comments = listBean.getTop_comments();
+            if (top_comments != null && top_comments.size()>0){
+                for (int i = 0; i < top_comments.size(); i++) {
+                    ShareRecommendBean.ListBean.TopCommentsBean topCommentsBean = top_comments.get(i);
+                    String userName = topCommentsBean.getU().getName();
+                    String content = topCommentsBean.getContent();
+
+                    TextView tvUserName = (TextView) mLayoutInflater.inflate(R.layout.comments_username_text,null,false);
+                    TextView tvUserContent = (TextView) mLayoutInflater.inflate(R.layout.comments_usertalk_text,null,false);
+                    tvUserName.setText(userName+"：");
+                    tvUserContent.setText(content);
+
+                    //加入到ll布局中
+                    LinearLayout ll = (LinearLayout) mLayoutInflater.inflate(R.layout.share_fragment_bottom_comments, null, false);
+                    ll.addView(tvUserName);
+                    ll.addView(tvUserContent);
+
+                    //加入到总布局中
+                    commonBottomCommentsLL.addView(ll);
+                }
+            }
         }
 
     }

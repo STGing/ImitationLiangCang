@@ -60,4 +60,18 @@
         <item name="android:windowExitAnimation">@anim/popwindow_out_anim</item>
     </style>
 
+    <!--EditText的下划线颜色-->
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#000000</item>
+        <item name="colorControlActivated">#000000</item>
+    </style>
+
+    <!--toolbar的主题-->
+    <style name="AppToolBarTheme" parent="Theme.AppCompat">
+        <!-- customize the color palette -->
+        <item name="colorPrimary">#fb7299</item>
+        <item name="colorPrimaryDark">#eb6b90</item>
+        <item name="colorAccent">#fb7299</item>
+    </style>
+
 </resources>
