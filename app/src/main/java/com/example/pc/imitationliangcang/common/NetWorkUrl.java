@@ -103,4 +103,10 @@ public class NetWorkUrl {
 
     //百思不得姐的 段子的 API
     public static final String SHAREREDUANZIURL = "http://s.budejie.com/topic/tag-topic/64/hot/budejie-android-6.6.3/0-20.json";
+
+
+    /**
+     * bilibili的直播地址
+     */
+    public static final String BILIURL= "http://live.bilibili.com/AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&scale=hdpi&ts=1490013188000&sign=92541a11ed62841120e786e637b9db3b";
 }

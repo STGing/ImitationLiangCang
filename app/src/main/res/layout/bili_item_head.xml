@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/head_ll_bili"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--RecyclerView的头View-->
+    <com.youth.banner.Banner
+        android:id="@+id/banner_bili"
+        android:layout_width="match_parent"
+        android:layout_height="140dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_follow_bili"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/live_home_follow_anchor"
+            android:gravity="center"
+            android:text="关注" />
+
+        <TextView
+            android:id="@+id/tv_center_bili"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/live_home_live_center"
+            android:gravity="center"
+            android:text="中心" />
+
+        <TextView
+            android:id="@+id/tv_slipvideo_bili"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/live_home_clip_video"
+            android:gravity="center"
+            android:text="小视频" />
+
+        <TextView
+            android:id="@+id/tv_search_bili"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/live_home_search_room"
+            android:gravity="center"
+            android:text="收索" />
+
+        <TextView
+            android:id="@+id/tv_all_category_bili"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/live_home_all_category"
+            android:gravity="center"
+            android:text="分类" />
+
+    </LinearLayout>
+
+</LinearLayout>
