@@ -95,6 +95,7 @@
             android:value="8b7aee142a553ed33542fe011d6e258f" />
 
         <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.LivePlayerActivity"></activity>
     </application>
 
 </manifest>

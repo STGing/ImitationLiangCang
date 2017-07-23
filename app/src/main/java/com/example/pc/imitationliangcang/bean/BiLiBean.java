@@ -1,12 +1,13 @@
 package com.example.pc.imitationliangcang.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by PC on 2017/7/21.
  */
 
-public class BiLiBean {
+public class BiLiBean implements Serializable{
     /**
      * code : 0
      * message : ok
@@ -41,7 +42,7 @@ public class BiLiBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         private List<BannerBean> banner;
         private List<EntranceIconsBean> entranceIcons;
         private List<PartitionsBean> partitions;
@@ -79,7 +80,7 @@ public class BiLiBean {
             this.navigator = navigator;
         }
 
-        public static class BannerBean {
+        public static class BannerBean implements Serializable{
             /**
              * title : cos&绘画名次
              * img : http://i0.hdslb.com/bfs/live/f4ea3530dc57e99bf17d0411b9f06731b4657b3c.jpg
@@ -125,7 +126,7 @@ public class BiLiBean {
             }
         }
 
-        public static class EntranceIconsBean {
+        public static class EntranceIconsBean implements Serializable{
             /**
              * id : 9
              * name : 绘画专区
@@ -197,7 +198,7 @@ public class BiLiBean {
             }
         }
 
-        public static class PartitionsBean {
+        public static class PartitionsBean implements Serializable{
             /**
              * partition : {"id":9,"name":"绘画专区","area":"draw","sub_icon":{"src":"http://static.hdslb.com/live-static/images/mobile/android/small/hdpi/9.png?20170717153252","height":"32","width":"32"},"count":207}
              * lives : [{"owner":{"face":"http://i1.hdslb.com/bfs/face/80e4a142d9ef39d4c6044b3a2fc311de8d38c9dc.jpg","mid":4428043,"name":"-小太阳-"},"cover":{"src":"http://i0.hdslb.com/bfs/live/a9f1f111e7705aafabbd0b346df343f0185f8b66.jpg","height":180,"width":320},"title":"修图","room_id":154824,"check_version":0,"online":1178,"area":"绘画专区","area_id":9,"playurl":"http://txy.live-play.acgvideo.com/live-txy/736992/live_4428043_9109635.flv?wsSecret=d51e7652eadafb6fd3fd1cdd5b5d7193&wsTime=1500623762","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/f73563c65f3263db8322952d55032a8842d11e99.jpg","mid":9919954,"name":"刺客约翰"},"cover":{"src":"http://i0.hdslb.com/bfs/live/22a44e295ec50e03a44d01c1ab29fa29454568b8.jpg","height":180,"width":320},"title":"涂点东西，随时停电","room_id":355650,"check_version":0,"online":173,"area":"绘画专区","area_id":9,"playurl":"http://live-play.acgvideo.com/live/312/live_9919954_2227928.flv?wsSecret=3266e7d72e3b9b30a4eadaf8a7835234&wsTime=594a2d9a","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i0.hdslb.com/bfs/face/df5d0ead01ae507aefadedb499cf02d6ff7bbfaa.jpg","mid":74246958,"name":"药药鱼f"},"cover":{"src":"http://i0.hdslb.com/bfs/live/d6c20442f45be61702b7372ab45acdb5b4b886b9.jpg","height":180,"width":320},"title":"赶紧把同人画完（再画手书","room_id":3204500,"check_version":0,"online":15,"area":"绘画专区","area_id":9,"playurl":"http://live-play.acgvideo.com/live/659/live_74246958_6330852.flv?wsSecret=c5d987dc23826ed205a1553dd3854840&wsTime=594a2d9a","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i1.hdslb.com/bfs/face/295ab44088388d07de8ee3170b6719f0b79e59b2.gif","mid":11137241,"name":"paplo"},"cover":{"src":"http://i0.hdslb.com/bfs/live/a7adf6e4b728d913de81f16f2b2691b5bef9641e.jpg","height":180,"width":320},"title":"萝莉正太控日常","room_id":47672,"check_version":0,"online":429,"area":"绘画专区","area_id":9,"playurl":"http://xl.live-play.acgvideo.com/live-xl/371535/live_11137241_8652200.flv?wsSecret=a85041674383e37af67825168ca42940&wsTime=1500623762","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/f97dd213db992b0dac1a7b3185decef92b3345c4.jpg","mid":431482,"name":"FLOREmeow"},"cover":{"src":"http://i0.hdslb.com/bfs/live/943a269645927daa7ef9236b7c413f6d03173392.jpg","height":180,"width":320},"title":"【FLORE】回国的帅哥 画稿子","room_id":1352939,"check_version":0,"online":136,"area":"绘画专区","area_id":9,"playurl":"http://txy.live-play.acgvideo.com/live-txy/968197/live_431482_4823637.flv?wsSecret=54cfb060042560c65b54953c051eb69a&wsTime=1500623762","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i0.hdslb.com/bfs/face/0f0016850de7bc978f5d600674e6df5b324ee273.jpg","mid":140328,"name":"冷场施法者"},"cover":{"src":"http://i0.hdslb.com/bfs/live/822ae80e812bcd057c524a179b5ed92df8f6aae0.jpg","height":180,"width":320},"title":"小姐姐进房送头像","room_id":90491,"check_version":0,"online":256,"area":"绘画专区","area_id":9,"playurl":"http://xl.live-play.acgvideo.com/live-xl/802121/live_140328_9053316.flv?wsSecret=c57e27945c82179b64e4ad4099851a76&wsTime=1500623762","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i0.hdslb.com/bfs/face/bcb4690092a3ca1403e1d09a28752dc8384a450f.gif","mid":6188477,"name":"勇妹"},"cover":{"src":"http://i0.hdslb.com/bfs/live/1a9535f80d8bd36da715422ab5b9048312c7eae8.jpg","height":180,"width":320},"title":"精了","room_id":36600,"check_version":0,"online":511,"area":"绘画专区","area_id":9,"playurl":"http://live-play.acgvideo.com/live/142/live_6188477_1561069.flv?wsSecret=90a68f6eefb17d52793020dfe372a701&wsTime=594a2d9a","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/e1c60d9768e3b2ecf6fd3130fc584be9bd05e339.jpg","mid":13686964,"name":"漫画家LDART大魔王"},"cover":{"src":"http://i0.hdslb.com/bfs/live/21d79285f27014ed1249e1fb49f26b5768f46560.jpg","height":180,"width":320},"title":"漫画家LDART大魔王的赶稿日常","room_id":32421,"check_version":0,"online":667,"area":"绘画专区","area_id":9,"playurl":"http://txy.live-play.acgvideo.com/live-txy/353524/live_13686964_7370783.flv?wsSecret=74e51ab3eaa322cf6c203e49a0005885&wsTime=1500623762","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i2.hdslb.com/bfs/face/03ea0b85ce9234cde72c9d40044ebdba21153f5b.jpg","mid":1628734,"name":"呷茶赏花"},"cover":{"src":"http://i0.hdslb.com/bfs/live/7161e3ac6a954abab8de01d1995b7d9454d238e8.jpg","height":180,"width":320},"title":"沉迷撸线稿无法自拔","room_id":1089716,"check_version":0,"online":661,"area":"绘画专区","area_id":9,"playurl":"http://xl.live-play.acgvideo.com/live-xl/950590/live_1628734_3995954.flv?wsSecret=a0aaaa7087a2782d6f391ea804efb18a&wsTime=1500623762","accept_quality":"4","broadcast_type":0,"is_tv":0},{"owner":{"face":"http://i1.hdslb.com/bfs/face/63db14b60c844aeb10697c8e9c1ad372c0eae559.jpg","mid":56829276,"name":"青行灯Q_Q"},"cover":{"src":"http://i0.hdslb.com/bfs/live/4a19e63555cdcdf8233af400333704aac9a5a879.jpg","height":180,"width":320},"title":"一起来画画吧！画些练习啦","room_id":2546837,"check_version":0,"online":736,"area":"绘画专区","area_id":9,"playurl":"http://live-play.acgvideo.com/live/152/live_56829276_7282338.flv?wsSecret=f46f1c062f8e22f20906bfbdbbfbc88f&wsTime=594a2d9a","accept_quality":"4","broadcast_type":0,"is_tv":0}]
@@ -222,7 +223,7 @@ public class BiLiBean {
                 this.lives = lives;
             }
 
-            public static class PartitionBean {
+            public static class PartitionBean implements Serializable{
                 /**
                  * id : 9
                  * name : 绘画专区
@@ -277,7 +278,7 @@ public class BiLiBean {
                     this.count = count;
                 }
 
-                public static class SubIconBean {
+                public static class SubIconBean implements Serializable{
                     /**
                      * src : http://static.hdslb.com/live-static/images/mobile/android/small/hdpi/9.png?20170717153252
                      * height : 32
@@ -314,7 +315,7 @@ public class BiLiBean {
                 }
             }
 
-            public static class LivesBean {
+            public static class LivesBean implements Serializable{
                 /**
                  * owner : {"face":"http://i1.hdslb.com/bfs/face/80e4a142d9ef39d4c6044b3a2fc311de8d38c9dc.jpg","mid":4428043,"name":"-小太阳-"}
                  * cover : {"src":"http://i0.hdslb.com/bfs/live/a9f1f111e7705aafabbd0b346df343f0185f8b66.jpg","height":180,"width":320}
@@ -439,7 +440,7 @@ public class BiLiBean {
                     this.is_tv = is_tv;
                 }
 
-                public static class OwnerBean {
+                public static class OwnerBean implements Serializable{
                     /**
                      * face : http://i1.hdslb.com/bfs/face/80e4a142d9ef39d4c6044b3a2fc311de8d38c9dc.jpg
                      * mid : 4428043
@@ -475,7 +476,7 @@ public class BiLiBean {
                     }
                 }
 
-                public static class CoverBean {
+                public static class CoverBean implements Serializable{
                     /**
                      * src : http://i0.hdslb.com/bfs/live/a9f1f111e7705aafabbd0b346df343f0185f8b66.jpg
                      * height : 180
@@ -513,7 +514,7 @@ public class BiLiBean {
             }
         }
 
-        public static class NavigatorBean {
+        public static class NavigatorBean implements Serializable{
             /**
              * id : 9
              * name : 绘画

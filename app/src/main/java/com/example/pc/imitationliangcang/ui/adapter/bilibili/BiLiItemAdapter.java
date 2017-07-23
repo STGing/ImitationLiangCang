@@ -1,6 +1,8 @@
 package com.example.pc.imitationliangcang.ui.adapter.bilibili;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.BiLiBean;
+import com.example.pc.imitationliangcang.ui.activity.LivePlayerActivity;
 import com.example.pc.imitationliangcang.utils.GlideUtils;
 
 import java.util.List;
@@ -78,12 +81,17 @@ public class BiLiItemAdapter extends RecyclerView.Adapter<BiLiItemAdapter.BiLiIt
 
         public void setListener(int position){
 
-            BiLiBean.DataBean.PartitionsBean.LivesBean livesBean = lives.get(position);
+            final BiLiBean.DataBean.PartitionsBean.LivesBean livesBean = lives.get(position);
 
+            //点击进入视频播放界面
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(mContext,LivePlayerActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("data",livesBean);
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
                 }
             });
         }
