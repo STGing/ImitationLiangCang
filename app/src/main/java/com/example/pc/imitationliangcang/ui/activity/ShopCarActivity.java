@@ -50,6 +50,11 @@ public class ShopCarActivity extends BaseActivity {
     @BindView(R.id.shop_car_settlement)
     TextView shopCarSettlement;
 
+    @BindView(R.id.shop_car_iv_empty)
+    ImageView shopCarIvEmpty;
+    @BindView(R.id.shop_car_tv_empty)
+    TextView shopCarTvEmpty;
+
     private ShopCarAdapter adapter;
     private DBDao dbDao;
 
@@ -97,9 +102,6 @@ public class ShopCarActivity extends BaseActivity {
 
         });
 
-        //默认设置全选所有价格
-        shopCarSwiAllCheck.setChecked(true);
-
     }
 
     /**
@@ -109,8 +111,9 @@ public class ShopCarActivity extends BaseActivity {
         titleTvEdit.setText("完成");
         titleTvEdit.setTag(EDIT);
 
-        adapter.showEdit();
+        adapter.setShowEdidView(true);
     }
+
     /**
      * 显示编辑，隐藏完成
      */
@@ -118,7 +121,7 @@ public class ShopCarActivity extends BaseActivity {
         titleTvEdit.setText("编辑");
         titleTvEdit.setTag(COMPLITE);
 
-        adapter.hideEdit();
+        adapter.setShowEdidView(false);
     }
 
     @Override
@@ -151,25 +154,37 @@ public class ShopCarActivity extends BaseActivity {
     //设置布局和适配器
      */
     private void setData(List<GoodsInfo> list) {
-        if (list != null && list.size() > 0){
-            LinearLayoutManager manamger = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        if (list != null && list.size() > 0) {
+
+            //设置隐藏空购物车的背景
+            shopCarIvEmpty.setVisibility(View.GONE);
+            shopCarTvEmpty.setVisibility(View.GONE);
+
+            LinearLayoutManager manamger = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             shopCarRv.setLayoutManager(manamger);
 
-            adapter = new ShopCarAdapter(this,list);
-            shopCarRv.setAdapter(adapter);
+            adapter = new ShopCarAdapter(this, list);
 
             //将activity的View传递到适配器中
-            adapter.setView(shopCarTvFullSbuPrice//满减费
-                    ,shopCarTvDiscountPrice//折扣费
-                    ,shopCarTvPackPrice//包装费
-                    ,shopCarTvShipPrice//运费
-                    ,shopCarSwiAllCheck//全选按钮
-                    ,shopCarTotalPrice//总价格
-                    ,shopCarSavePrice//节省价格
-                    );
+            adapter.setView(
+                    shopCarTvFullSbuPrice//满减费
+                    , shopCarTvDiscountPrice//折扣费
+                    , shopCarTvPackPrice//包装费
+                    , shopCarTvShipPrice//运费
+                    , shopCarSwiAllCheck//全选按钮
+                    , shopCarTotalPrice//总价格
+                    , shopCarSavePrice//节省价格
+            );
+            shopCarRv.setAdapter(adapter);
         } else {
             //如果没有数据
-            String price = 0.0+"";
+
+            //设置显示背景
+            shopCarIvEmpty.setVisibility(View.VISIBLE);
+            shopCarTvEmpty.setVisibility(View.VISIBLE);
+
+            //设置价格
+            String price = 0.0 + "";
 
             //1.设置满减少价格
             String fll = shopCarTvFullSbuPrice.getText().toString();
@@ -207,7 +222,17 @@ public class ShopCarActivity extends BaseActivity {
                 break;
             case R.id.title_tv_edit:
                 break;
-            case R.id.shop_car_swiAllCheck:
+            case R.id.shop_car_swiAllCheck://点击 全选 或者 不全选
+
+                //1.获取当前的状态
+                boolean checked = shopCarSwiAllCheck.isChecked();
+
+                //2.根据状态设置 全选 或者 不全选
+                adapter.setAllDatasIsChecked(checked);
+
+                //3.重新计算价格
+                adapter.setBottomPrice();
+
                 break;
             case R.id.shop_car_settlement:
                 break;

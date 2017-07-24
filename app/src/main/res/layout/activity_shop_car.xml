@@ -9,13 +9,39 @@
 
     <include layout="@layout/base_title" />
 
-    <!--根据购物车中商品数量添加对应的商品View-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/shop_car_rv"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#1e2125" />
+        android:background="#1e2125">
+
+        <!--根据购物车中商品数量添加对应的商品View-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/shop_car_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#1e2125" />
+
+        <ImageView
+            android:id="@+id/shop_car_iv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_shopping_cart_empty"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/shop_car_tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_car_iv_empty"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="购物车为空"
+            android:textColor="#ffffff"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

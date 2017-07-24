@@ -18,6 +18,16 @@ public class GoodsInfo implements Serializable{
     private String choiceSku;
     //是否被选中(默认被选中)
     private boolean isChecked = true;
+    //是否显示删除/加减按钮(默认不选中)
+    private boolean isShowEdit = false;
+
+    public boolean isShowEdit() {
+        return isShowEdit;
+    }
+
+    public void setShowEdit(boolean showEdit) {
+        isShowEdit = showEdit;
+    }
 
     public boolean isChecked() {
         return isChecked;

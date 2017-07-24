@@ -461,12 +461,13 @@ public class GoodsDetailActivity extends BaseActivity {
                 final TagFlowLayout skufl = (TagFlowLayout) skull.findViewById(R.id.sku_flowlayout);
                 //为flowLayout设置tag
                 skufl.setTag(skuInfoBean.getType_id());
-                //点击事件
+                //点击事件的监听
                 skufl.setOnTagClickListener(new MyOnTagClickLIstener());
 
 
                 //1.sku标题
-                String type_name = skuInfoBean.getType_name();//获取类型名称
+                final String type_name = skuInfoBean.getType_name();//获取类型名称
+                final String type_id = skuInfoBean.getType_id();//获取类型的ID
                 skuTitle.setText(type_name);
 
                 //2.sku具体属性
@@ -478,15 +479,15 @@ public class GoodsDetailActivity extends BaseActivity {
                     skuNamelist.add(attr_name);
 
                     //根据标题添加数据到对应的sku属性集合
-                    if (skuInfoBean.getType_id().equals(COLOR)){//颜色
+                    if (type_id.equals(COLOR)){//颜色
                         colorlist.add(attr_name);
-                    } else if (skuInfoBean.getType_id().equals(NUMBER)){//数量单位
+                    } else if (type_id.equals(NUMBER)){//数量单位
                         numberlist.add(attr_name);
-                    }else if (skuInfoBean.getType_id().equals(CAPACITY)){//容量
+                    }else if (type_id.equals(CAPACITY)){//容量
                         capacitylist.add(attr_name);
-                    } else if (skuInfoBean.getType_id().equals(SPECIES)){//种类
+                    } else if (type_id.equals(SPECIES)){//种类
                         specielist.add(attr_name);
-                    } else if (skuInfoBean.getType_id().equals(STYLE)) {//款式
+                    } else if (type_id.equals(STYLE)) {//款式
                         stylelist.add(attr_name);
                     }
                 }
@@ -507,6 +508,29 @@ public class GoodsDetailActivity extends BaseActivity {
                         public boolean setSelected(int position, String s) {
 
                             String skuName = skuNamelist.get(0);
+
+                            //设置当前选中的sku属性
+                            switch (type_id) {
+                                case COLOR://颜色
+                                    //从颜色集合获取数据
+                                    choiceColor = skuName;
+
+                                    break;
+                                case NUMBER://数量单位
+                                    choiceNumber = skuName;
+                                    break;
+                                case CAPACITY://容量单位
+                                    choiceCapacity = skuName;
+                                    break;
+                                case SPECIES://种类单位
+                                    choiceSpecie = skuName;
+
+                                    break;
+                                case STYLE://款式单位
+                                    choiceStyle = skuName;
+                                    break;
+                            }
+
 
                             return skuName.equals(s);
                         }

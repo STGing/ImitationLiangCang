@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     private String savePriceFormat;//节省价格的string.format
     private String goodsNumberFormat;
 
+
     //构造器
     public ShopCarAdapter(Context mContext, List<GoodsInfo> list) {
         this.mContext = mContext;
@@ -69,46 +71,31 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         this.shopCarTotalPrice = shopCarTotalPrice;
         this.shopCarSavePrice = shopCarSavePrice;
 
+
         //获取3个价格的format格式
         savePriceFormat = shopCarSavePrice.getText().toString();
         toltalPriceFormat = shopCarTotalPrice.getText().toString();
         discountPriceFomat = shopCarTvDiscountPrice.getText().toString();
 
-        /**
-         * 点击全选的checkBox的点击事件
-         */
-        shopCarSwiAllCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                boolean isCheck = shopCarSwiAllCheck.isChecked();//获取当前的状态
-                setAllDatasIsChecked(isCheck);
-            }
-        });
-    }
-
-    /**
-     * 根据传递进来的 boolean 设置数据的对应属性
-     * @param isCheck
-     */
-    private void setAllDatasIsChecked(boolean isCheck) {
-        if (list != null && list.size() > 0) {
-            //有数据
-            for (int i = 0; i < list.size(); i++) {
-                GoodsInfo goodsInfo = list.get(i);
-                goodsInfo.setChecked(isCheck);
-                //刷新适配器
-                notifyItemChanged(i);
-            }
+        //判断有无数据，是否设置全选 checkBox
+        if (list != null && list.size() > 0){
+            shopCarSwiAllCheck.setChecked(true);
+        } else {
+            shopCarSwiAllCheck.setChecked(false);
         }
+
+        //设置底部6个价格
+        setBottomPrice();
+
     }
+
+
 
 
     @Override
     public ShopCarViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = mLayoutInflater.inflate(R.layout.shop_car_item, null, false);
-        shopCarViewHolder = new ShopCarViewHolder(view);
+        shopCarViewHolder = new ShopCarViewHolder(mLayoutInflater.inflate(R.layout.shop_car_item, null, false));
         return shopCarViewHolder;
     }
 
@@ -117,6 +104,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         //获取数据
         final GoodsInfo goodsInfo = list.get(position);
 
+        holder.shopCarItemIvCheck.setOnCheckedChangeListener(null);
         //checkBox的选择:根据商品是否被选中设置
         holder.shopCarItemIvCheck.setChecked(goodsInfo.isChecked());
 
@@ -128,7 +116,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
 
         holder.shopCarItemTvBrandName.setText(goodsInfo.getBrand_name());//品牌名称
         holder.shopCarItemTvGoodName.setText(goodsInfo.getGoods_name());//商品名称
-        holder.shopCarItemTvSku.setText(goodsInfo.getChoiceSku());
+        holder.shopCarItemTvSku.setText(goodsInfo.getChoiceSku());//设置商品sku
 
         //设置商品显示数量
         holder.shopCarItemTvGoodsNumber.setVisibility(View.VISIBLE);
@@ -162,25 +150,32 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
             holder.shopCarItemPrice.setText(price);
         }
 
-        //设置屏幕底部6个价格
-        setBottomData(goodsInfo);
-
-        //设置item的view的点击事件
-        holder.setListener();
-
         //设置AddSubView的当前数值
         holder.shopCarItemAddsub.setValue(goodsInfo.getGoodsNumber());
         //设置最小值
         holder.shopCarItemAddsub.setMinValue(1);
 
+        //设置是否显示删除/加减按钮
+        if (goodsInfo.isShowEdit()){
+            //true说明显示
+            holder.shopCarItemTvDel.setVisibility(View.VISIBLE);
+            holder.shopCarItemAddsub.setVisibility(View.VISIBLE);
+        } else {
+            //false说明不显示
+            holder.shopCarItemTvDel.setVisibility(View.GONE);
+            holder.shopCarItemAddsub.setVisibility(View.GONE);
+        }
+
+        //设置item的view的点击事件
+        holder.setListener();
+
     }
 
 
     /**
-     * 根据传入的Bean对象，设置底部数据
-     * @param goodsInfo
+     * 设置购物车底部的各个价格
      */
-    private void setBottomData(GoodsInfo goodsInfo) {
+    public void setBottomPrice() {
         //1.满减价格//设置为0.0
         String fullPrice = shopCarTvFullSbuPrice.getText().toString();
         String format1 = String.format(fullPrice, "0.0");
@@ -310,9 +305,6 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     }
 
 
-
-
-
     class ShopCarViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.shop_car_item_iv_Check)
         CheckBox shopCarItemIvCheck;
@@ -338,6 +330,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         ShopCarViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+
         }
 
         public void setListener(){
@@ -350,12 +343,13 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                     int layoutPosition = getLayoutPosition();//当前item的位置
                     GoodsInfo goodsInfo = list.get(layoutPosition);//获取对应的数据
                     goodsInfo.setChecked(!goodsInfo.isChecked());//改变数据状态
-
-                    //刷新适配器及价格数据
-                    notifyDataSetChanged();
-
                     //检查数据以设置全选按钮状态
                     checkIsAllChenked();
+
+
+                    // item 的 checkBox 变化了，重新计算价格
+                    setBottomPrice();
+
                 }
             });
 
@@ -377,8 +371,8 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                     GoodsInfo goodsInfo = list.get(layoutPosition);
                     goodsInfo.setGoodsNumber(value);
 
-                    //3.刷新适配器
-                    notifyDataSetChanged();
+                    //3.数量发生了变化，计算的价格也改变
+                    setBottomPrice();
 
                     //4.同步数据库
                     DBDao.getInstance().update(goodsInfo.getGoods_id(),goodsInfo);
@@ -406,9 +400,6 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                                     String goods_id = list.get(getLayoutPosition()).getGoods_id();
                                     list.remove(getLayoutPosition());
 
-                                    //2.校验是否全选
-                                    checkIsAllChenked();
-
                                     //3.刷新数据
                                     notifyDataSetChanged();
 
@@ -431,11 +422,11 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
 
     }
 
+
     /**
-     * 判断是否全部选中，如果不是将全选的状态改变
+     * 检查是否全部选中，如果不是将全选的状态改变
      */
     private void checkIsAllChenked() {
-
         if (list != null && list.size() > 0){
             //有数据
 
@@ -456,36 +447,38 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         } else {
             //没有数据
             //设置全选按钮为不全选
-            setAllDatasIsChecked(false);
+            shopCarSwiAllCheck.setChecked(false);
         }
     }
 
-    //显示编辑的View
-    public void showEdit(){
-        //隐藏数量
-        shopCarViewHolder.shopCarItemTvGoodsNumber.setVisibility(View.GONE);
-        //隐藏sku
-        shopCarViewHolder.shopCarItemTvSku.setVisibility(View.GONE);
+    /**
+     * 根据传递进来的 boolean 设置数据是否选中状态，同时改变全选的 checkBox 的状态
+     * @param isCheck
+     */
+    public void setAllDatasIsChecked(boolean isCheck) {
+        Log.d("tag111", "checkIsAllChenked: ");
+        if (list != null && list.size() > 0) {
+            //有数据
+            for (int i = 0; i < list.size(); i++) {
+                GoodsInfo goodsInfo = list.get(i);
+                goodsInfo.setChecked(isCheck);
+            }
 
-        //显示addsbu
-        shopCarViewHolder.shopCarItemAddsub.setVisibility(View.VISIBLE);
-        //显示删除按钮
-        shopCarViewHolder.shopCarItemTvDel.setVisibility(View.VISIBLE);
+            notifyDataSetChanged();
+        } else {
+            shopCarSwiAllCheck.setChecked(false);
+        }
     }
 
-    //隐藏编辑的View
-    public void hideEdit(){
-
-        //隐藏addsbu
-        shopCarViewHolder.shopCarItemAddsub.setVisibility(View.GONE);
-        //隐藏删除按钮
-        shopCarViewHolder.shopCarItemTvDel.setVisibility(View.GONE);
-
-        //显示数量
-        shopCarViewHolder.shopCarItemTvGoodsNumber.setVisibility(View.VISIBLE);
-        //显示sku
-        shopCarViewHolder.shopCarItemTvSku.setVisibility(View.VISIBLE);
+    /**
+     * 根据传入的变量改变GoodInfo中的是否显示 删除/加减 的变量的值
+     */
+    public void setShowEdidView(boolean isShow) {
+        for (int j = 0; j < list.size(); j++) {
+            GoodsInfo goodsInfo = list.get(j);
+            goodsInfo.setShowEdit(isShow);
+        }
+        notifyDataSetChanged();
     }
-
 
 }
