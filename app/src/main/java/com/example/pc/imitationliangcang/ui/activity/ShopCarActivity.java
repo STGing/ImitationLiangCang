@@ -174,6 +174,7 @@ public class ShopCarActivity extends BaseActivity {
                     , shopCarSwiAllCheck//全选按钮
                     , shopCarTotalPrice//总价格
                     , shopCarSavePrice//节省价格
+                    ,shopCarSettlement//结算
             );
             shopCarRv.setAdapter(adapter);
         } else {
@@ -234,7 +235,8 @@ public class ShopCarActivity extends BaseActivity {
                 adapter.setBottomPrice();
 
                 break;
-            case R.id.shop_car_settlement:
+            case R.id.shop_car_settlement://点击了结算
+
                 break;
         }
     }

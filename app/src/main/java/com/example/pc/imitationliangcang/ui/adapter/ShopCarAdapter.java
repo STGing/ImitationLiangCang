@@ -2,6 +2,7 @@ package com.example.pc.imitationliangcang.ui.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,9 +17,11 @@ import android.widget.TextView;
 import com.example.pc.imitationliangcang.R;
 import com.example.pc.imitationliangcang.bean.GoodsInfo;
 import com.example.pc.imitationliangcang.db.DBDao;
+import com.example.pc.imitationliangcang.ui.activity.PayActivity;
 import com.example.pc.imitationliangcang.ui.view.AddSubView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,12 +45,14 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     private CheckBox shopCarSwiAllCheck;
     private TextView shopCarTotalPrice;
     private TextView shopCarSavePrice;
+    private TextView shopCarSettlement;//结算
 
     //是否全选所有商品(true为默认全选)
     private String discountPriceFomat;//折扣价格的string.format
     private String toltalPriceFormat;//总价格的string.format
     private String savePriceFormat;//节省价格的string.format
     private String goodsNumberFormat;
+
 
 
     //构造器
@@ -61,7 +66,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
     public void setView(TextView shopCarTvFullSbuPrice, TextView shopCarTvDiscountPrice
             , TextView shopCarTvPackPrice, TextView shopCarTvShipPrice
             , final CheckBox shopCarSwiAllCheck, TextView shopCarTotalPrice
-            , final TextView shopCarSavePrice) {
+            , final TextView shopCarSavePrice,TextView shopCarSettlement) {
 
         this.shopCarTvFullSbuPrice = shopCarTvFullSbuPrice;
         this.shopCarTvDiscountPrice = shopCarTvDiscountPrice;
@@ -70,6 +75,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         this.shopCarSwiAllCheck = shopCarSwiAllCheck;
         this.shopCarTotalPrice = shopCarTotalPrice;
         this.shopCarSavePrice = shopCarSavePrice;
+        this.shopCarSettlement = shopCarSettlement;
 
 
         //获取3个价格的format格式
@@ -86,6 +92,30 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
 
         //设置底部6个价格
         setBottomPrice();
+
+        //结算的点击事件
+        shopCarSettlement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //建立一个新的集合
+                ArrayList<GoodsInfo> payGoods = new ArrayList<GoodsInfo>();
+
+                //便利数据，凡是有被选中的，就将数据放入到新的集合中。
+                for (int i = 0; i < list.size(); i++) {
+                    GoodsInfo goodsInfo = list.get(i);
+                    if (goodsInfo.isChecked()){
+                        //如果被选中
+                        payGoods.add(goodsInfo);
+                    }
+                }
+
+
+                //将数据传递到新的Activity
+                Intent intent = new Intent(mContext, PayActivity.class);
+                intent.putExtra("payGoods",payGoods);
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -104,7 +134,7 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
         //获取数据
         final GoodsInfo goodsInfo = list.get(position);
 
-        holder.shopCarItemIvCheck.setOnCheckedChangeListener(null);
+        //holder.shopCarItemIvCheck.setOnCheckedChangeListener(null);
         //checkBox的选择:根据商品是否被选中设置
         holder.shopCarItemIvCheck.setChecked(goodsInfo.isChecked());
 
@@ -342,11 +372,9 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     int layoutPosition = getLayoutPosition();//当前item的位置
                     GoodsInfo goodsInfo = list.get(layoutPosition);//获取对应的数据
-                    goodsInfo.setChecked(!goodsInfo.isChecked());//改变数据状态
+                    goodsInfo.setChecked(isChecked);//改变数据状态
                     //检查数据以设置全选按钮状态
                     checkIsAllChenked();
-
-
                     // item 的 checkBox 变化了，重新计算价格
                     setBottomPrice();
 
@@ -431,11 +459,9 @@ public class ShopCarAdapter extends RecyclerView.Adapter<ShopCarAdapter.ShopCarV
             //有数据
 
             for (int i = 0; i < list.size(); i++) {
-
                 GoodsInfo goodsInfo = list.get(i);
                 if (!goodsInfo.isChecked()){
                     //如果有没有被选中的
-
                     //设置全选的checkBox状态为不全选
                     shopCarSwiAllCheck.setChecked(false);
                     return;//结束，只要有1个没选中，全选就不设置

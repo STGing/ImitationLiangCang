@@ -95,7 +95,8 @@
             android:value="8b7aee142a553ed33542fe011d6e258f" />
 
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.LivePlayerActivity"></activity>
+        <activity android:name=".ui.activity.LivePlayerActivity" />
+        <activity android:name=".ui.activity.PayActivity"></activity>
     </application>
 
 </manifest>
